@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 const helmet = require("helmet");
 const path = require("path");
 const cors = require("cors");
-const jwt = require("jsonwebtoken");
+// const jwt = require("jsonwebtoken");
 const clohes = require("./routes/clothes.routes");
 const { errorHandler, notFoundHandler } = require("./utils/errorHandlers");
 dotenv.config({ path: "./.env" });

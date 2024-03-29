@@ -18,7 +18,6 @@
         "asyncArrow": "always"
       }
     ],
-    "quotes": ["error", "double"],
     "semi": ["error", "always"],
     "no-use-before-define": "off",
     "complexity": ["warn", { "max": 7 }],
