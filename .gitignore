@@ -1,0 +1,12 @@
+# dependencies
+/node_modules
+
+# files
+/public
+/.nyc_output
+/.vscode
+/dist
+
+# dotenv environment variables file
+.env
+.env.test
