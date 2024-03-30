@@ -19,9 +19,6 @@ describe("/clothes tests", () => {
         if (err) {
           done();
         }
-        if (res.body === null) {
-          throw new Error("Response body is null ");
-        }
         expect(res).to.have.status(200);
         expect(res.body).to.be.a("object").that.has.property("clothes");
         expect(res.body.clothes).to.be.an("array");
