@@ -4,7 +4,6 @@ const server = require("../app");
 
 process.env.NODE_ENV = "test";
 const expect = chai.expect;
-const should = chai.should();
 
 chai.use(chaiHttp);
 /**
@@ -17,12 +16,15 @@ describe("/clothes tests", () => {
       .request(server)
       .get("/api/clothes")
       .end((err, res) => {
+        if (err) {
+          done();
+        }
         if (res.body === null) {
           throw new Error("Response body is null ");
         }
-        res.should.have.status(200);
-        res.body.should.be.a("object").that.has.property("clothes");
-        res.body.clothes.should.be.an("array");
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.a("object").that.has.property("clothes");
+        expect(res.body.clothes).to.be.an("array");
         const allClothes = res.body;
         expect(allClothes);
         done();

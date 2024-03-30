@@ -32,7 +32,7 @@ app.get("/", (req, res) => {
 });
 
 const server = app.listen(port || 8000, () => {
-  console.log(`Server is running on port ${port}...`);
+  console.log(`Server is running on port 8000...`);
 });
 
 module.exports = server;
