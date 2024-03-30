@@ -13,15 +13,15 @@ const findAllClothes = async () => {
       throw new Error("Database is empty!");
     }
 
-    const clothes = rows.map((row) => ({
-      id: row.id,
-      name: row.name,
-      size: row.size,
-      price: row.price,
-      commission: row.commission,
-    }));
+    // const clothes = rows.map((row) => ({
+    //   id: row.id,
+    //   name: row.name,
+    //   size: row.size,
+    //   price: row.price,
+    //   commission: row.commission,
+    // }));
 
-    return clothes;
+    return rows;
   } catch (err) {
     console.error("Error fetching clothes:", err);
     throw new Error("Failed to fetch clothes");

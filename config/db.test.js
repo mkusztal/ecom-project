@@ -1,7 +1,7 @@
 const mysql = require("mysql2");
 const dotenv = require("dotenv");
 
-dotenv.config({ path: "./.env" });
+dotenv.config({ path: "./.env.test" });
 
 const db_port = process.env.DB_PORT ? parseInt(process.env.DB_PORT, 10) : 3306;
 
@@ -23,4 +23,4 @@ const pool = mysql.createPool({
   }
 })();
 
-module.exports = pool;
+module.exports.pool;

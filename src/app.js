@@ -4,7 +4,7 @@ const helmet = require("helmet");
 const path = require("path");
 const cors = require("cors");
 // const jwt = require("jsonwebtoken");
-const clohes = require("./routes/clothes.routes");
+const clothes = require("./routes/clothes.routes");
 const { errorHandler, notFoundHandler } = require("./utils/errorHandlers");
 dotenv.config({ path: "./.env" });
 
@@ -19,7 +19,7 @@ app.use(express.static(path.dirname("/client/build")));
 app.use(helmet());
 
 // routes
-app.use("/api", clohes);
+app.use("/api", clothes);
 
 // error handler
 app.use(errorHandler);
@@ -38,5 +38,5 @@ const server = app.listen(port || 8000, () => {
 module.exports = server;
 
 /**
- * @param {} asdsd
+ * @param {} asdsda sdsad
  */
