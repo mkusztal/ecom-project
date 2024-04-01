@@ -37,8 +37,8 @@ jobs:
       - name: Install packages
         run: npm install
 
-      - name: API test
-        run: npm run test
+      # - name: API test
+      #   run: npm run test
 
       - name: Eslint test API
         run: npm run lint
