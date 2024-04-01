@@ -12,7 +12,7 @@ chai.use(chaiHttp);
  */
 
 describe("/clothes tests", () => {
-  it("db.connection.connect should ...", (done) => {
+  before((done) => {
     pool.getConnection((err, connection) => {
       if (err) {
         done(err);

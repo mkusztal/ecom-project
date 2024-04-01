@@ -10,12 +10,16 @@
     "test": "cross-env NODE_ENV=test mocha --exit",
     "lint": "eslint src/**/*.js",
     "lint-client": "eslint client/src/**/*.js",
-    "format": "eslint src/**/*.ts --fix"
+    "format": "eslint src/**/*.ts --fix",
+    "prepare": "husky install"
   },
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint"
     }
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
     "@babel/eslint-parser": "^7.24.1",
@@ -40,6 +44,8 @@
     "eslint-plugin-n": "^16.6.2",
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-promise": "^6.1.1",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
     "mocha": "^10.4.0",
     "prettier": "^3.2.5"
   }
