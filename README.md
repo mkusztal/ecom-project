@@ -1,7 +1,7 @@
 # Project
 
 The portfolio project to improve my web development skills.
-Project is focus on Typescript technology which is uses with node in backend site of the web application.
+Project is focus on Node.js technology which is uses with node in backend site of the web application.
 
 ## Installation
 
