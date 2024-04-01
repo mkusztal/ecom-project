@@ -26,7 +26,7 @@ describe("/clothes tests", () => {
   it("should return all clothes from database", (done) => {
     chai
       .request(server)
-      .get("/api/clothes")
+      .get("/api/clothe")
       .end((err, res) => {
         if (err) {
           done();
