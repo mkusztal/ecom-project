@@ -16,7 +16,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint-test"
+      "pre-commit": "npm run lint-test",
+      "commit-msg": "npx --no -- commitlint --edit $1"
     }
   },
   "lint-staged": {
