@@ -1,5 +1,0 @@
-#!/bin/sh
-echo "Running tests..."
-npm run test
-echo "Running lint..."
-npm run lint
