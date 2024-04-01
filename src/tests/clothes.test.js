@@ -1,10 +1,10 @@
 const chai = require("chai");
 const chaiHttp = require("chai-http");
 const server = require("../app");
+const pool = require("../../config/db");
 
 process.env.NODE_ENV = "test";
 const expect = chai.expect;
-const should = chai.should();
 
 chai.use(chaiHttp);
 /**
@@ -12,17 +12,28 @@ chai.use(chaiHttp);
  */
 
 describe("/clothes tests", () => {
+  before((done) => {
+    pool.getConnection((err, connection) => {
+      if (err) {
+        done(err);
+      }
+      console.log("Connected with database...");
+      connection.release();
+      done();
+    });
+  });
+
   it("should return all clothes from database", (done) => {
     chai
       .request(server)
       .get("/api/clothes")
       .end((err, res) => {
-        if (res.body === null) {
-          throw new Error("Response body is null ");
+        if (err) {
+          done();
         }
-        res.should.have.status(200);
-        res.body.should.be.a("object").that.has.property("clothes");
-        res.body.clothes.should.be.an("array");
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.a("object").that.has.property("clothes");
+        expect(res.body.clothes).to.be.an("array");
         const allClothes = res.body;
         expect(allClothes);
         done();
