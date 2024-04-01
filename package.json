@@ -10,12 +10,12 @@
     "test": "cross-env NODE_ENV=test mocha --exit",
     "lint": "eslint src/**/*.js",
     "lint-client": "eslint client/src/**/*.js",
-    "format": "eslint src/**/*.ts --fix",
-    "prepare": "husky"
+    "format": "eslint src/**/*.js --fix",
+    "prepare": "husky install"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "npm run lint && npm run test"
     }
   },
   "lint-staged": {
