@@ -11,13 +11,12 @@
     "lint": "eslint src/**/*.js",
     "lint-client": "eslint client/src/**/*.js",
     "format": "eslint src/**/*.js --fix",
-    "prepare": "husky install",
-    "lint-test": "npm-run-all --parallel test lint"
+    "prepare": "husky install"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint-test",
-      "commit-msg": "npx --no -- commitlint --edit $1"
+      "pre-commit": "sh .husky/pre-commit",
+      "commit-msg": "sh .husky/commit-msg"
     }
   },
   "lint-staged": {
