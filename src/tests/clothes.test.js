@@ -32,8 +32,7 @@ describe("/clothes tests", () => {
           done();
         }
         expect(res).to.have.status(200);
-        expect(res.body).to.be.a("object").that.has.property("clothes");
-        expect(res.body.clothes).to.be.an("array");
+        expect(res.body).to.be.a("array");
         const allClothes = res.body;
         expect(allClothes);
         done();

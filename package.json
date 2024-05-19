@@ -11,7 +11,8 @@
     "lint": "eslint src/**/*.js",
     "lint-client": "eslint client/src/**/*.js",
     "format": "eslint src/**/*.js --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "start-pm2": "pm2 start src/app.js && pm2 monit"
   },
   "husky": {
     "hooks": {
