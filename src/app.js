@@ -27,8 +27,8 @@ app.use(notFoundHandler);
 
 // jsonwebtoken
 
-app.get("/", (req, res) => {
-  res.status(200).json("Home page");
+app.get("*", (req, res) => {
+  res.sendFile(path.join(path.dirname + "/client/build/index.html"));
 });
 
 const server = app.listen(port || 8000, () => {

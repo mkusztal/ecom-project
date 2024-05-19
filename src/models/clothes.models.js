@@ -19,6 +19,7 @@ const findAllClothes = async () => {
     //   size: row.size,
     //   price: row.price,
     //   commission: row.commission,
+    //   image: row.image
     // }));
 
     return rows;
