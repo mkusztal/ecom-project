@@ -20,6 +20,7 @@ const findAllYerbamate = async () => {
     //   price: row.price,
     //   commission: row.commission,
     //   image: row.image
+    //   type: row.type
     // }));
 
     return rows;
