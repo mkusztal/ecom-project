@@ -7,7 +7,7 @@ const db = require("../../config/db");
 
 const findAllYerbamate = async () => {
   try {
-    const [rows] = await db.promise().query(`SELECT * FROM yerba_mate`);
+    const [rows] = await db.promise().query(`SELECT * FROM yerbamate`);
 
     if (rows.lenth < 0) {
       throw new Error("Database is empty!");
