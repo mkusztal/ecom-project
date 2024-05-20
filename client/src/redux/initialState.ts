@@ -1,3 +1,3 @@
 export const initialState: any = {
-  clothes: [],
+  yerbamate: [],
 };

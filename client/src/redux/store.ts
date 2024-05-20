@@ -1,7 +1,7 @@
 import { combineReducers, Store } from "redux";
 import { thunk, ThunkMiddleware } from "redux-thunk";
 import { initialState } from "./initialState";
-import { clothesReducer } from "./clothesReducer";
+import { yerbamateReducer } from "./yerbamateReducer";
 import { configureStore } from "@reduxjs/toolkit";
 
 /**
@@ -15,7 +15,7 @@ import { configureStore } from "@reduxjs/toolkit";
 type RootState = ReturnType<typeof reducer>;
 
 const subreducers = {
-  clothes: clothesReducer,
+  yerbamate: yerbamateReducer,
 };
 
 const reducer = combineReducers(subreducers);

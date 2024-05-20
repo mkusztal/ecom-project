@@ -4,7 +4,7 @@ const helmet = require("helmet");
 const path = require("path");
 const cors = require("cors");
 // const jwt = require("jsonwebtoken");
-const clothes = require("./routes/clothes.routes");
+const yerbamate = require("./routes/yerbamate.routes");
 const { errorHandler, notFoundHandler } = require("./utils/errorHandlers");
 dotenv.config({ path: "./.env" });
 
@@ -19,7 +19,7 @@ app.use(express.static(path.dirname("/client/build")));
 app.use(helmet());
 
 // routes
-app.use("/api", clothes);
+app.use("/api", yerbamate);
 
 // error handler
 app.use(errorHandler);
