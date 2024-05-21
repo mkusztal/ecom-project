@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import { IYerbamate } from "../../interfaces/IYerbamate";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchYerbamate, getYerbamate } from "../../redux/yerbamateReducer";
-import { Col, Container, Image, Row } from "react-bootstrap";
+import { Button, Col, Container, Image, Row } from "react-bootstrap";
+import styles from "./HomePage.module.scss";
 
 export const HomePage: React.FC = () => {
   const yerbamateData: IYerbamate[] = useSelector(getYerbamate);
@@ -15,23 +16,19 @@ export const HomePage: React.FC = () => {
   console.log("yerbamateData", yerbamateData);
 
   return (
-    <Container>
+    <Container className={styles.container}>
       <Row className="mx-5 d-flex justify-content-end">
-        <Col xs={6} md={6} className="d-flex align-items-center">
-          <h1>Hello! I will help you to find your favourite yerba mate...</h1>
-        </Col>
-        <Col xs={6} md={4}>
-          <Image
-            src="images/yerba1.jpg"
-            // rounded
-            style={{ borderRadius: "50%" }}
-            width={172}
-            height={180}
-            alt="YerbaOfficial"
-          />
+        <Image
+          src="images/yerba2.jpg"
+          alt="YerbaOfficial"
+          className={styles.background}
+        />
+        <Col xs={6} md={6} className={styles.columns}>
+          <h2>Hello! I will help you to find your favourite yerba mate...</h2>
+          <Button className={styles.button}>Read more</Button>
         </Col>
       </Row>
-      <Row>
+      <Row className="mt-5">
         <Col>
           <h1>What is Yerba mate?</h1>
           <p>
