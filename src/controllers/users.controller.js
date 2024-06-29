@@ -4,6 +4,7 @@ const {
 } = require("../models/users.model");
 const { uuidv7 } = require("uuidv7");
 const os = require("os");
+const validator = require("express-validator");
 
 const userRegistration = async (req, res) => {
   const { email, password } = req.body;
@@ -33,6 +34,14 @@ const userRegistration = async (req, res) => {
 const userLogin = async (req, res) => {
   const { email, password } = req.body;
   try {
+    if (!validator.check(email).isEmail()) {
+      res.status(409).json({ message: "isEmail check failed" });
+    }
+
+    if (!validator.check(password).isLength({ min: 5 })) {
+      res.status(409).json({ message: "Password is too short" });
+    }
+
     const loggedUser = await findUserInDatabase(email, password);
     console.log("Logged in!");
     res.status(200).json(loggedUser);

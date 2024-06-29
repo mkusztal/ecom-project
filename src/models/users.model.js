@@ -1,26 +1,30 @@
 const db = require("../../config/db");
-// const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 
 const addUserToDatabase = async (id, email, password) => {
   // add regex
   try {
     if (typeof id !== "string" || id === "") {
-      throw new Error("Id is not string or is empty");
+      throw new Error("Invalid id format");
     }
 
     if (typeof email !== "string" || email === "") {
-      throw new Error("Email is not string or is empty");
+      throw new Error("Invalid email format");
     }
 
     if (typeof password !== "string" || password === "") {
-      throw new Error("Password is not string or is empty");
+      throw new Error("Invalid password format");
     }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     const [rows] = await db
       .promise()
-      .query(
-        `INSERT INTO users (id, email, password) VALUES ('${id}', '${email}', '${password}');`,
-      );
+      .query(`INSERT INTO users (id, email, password) VALUES (?, ?, ?);`, [
+        id,
+        email,
+        `${hashedPassword}`,
+      ]);
 
     console.log(`Successfully added to the database: `, email);
 
@@ -34,11 +38,11 @@ const addUserToDatabase = async (id, email, password) => {
 const findUserInDatabase = async (email, password) => {
   try {
     if (typeof email !== "string" || email === "") {
-      throw new Error("email is not string or is empty");
+      throw new Error("Invalid email format");
     }
 
     if (typeof password !== "string" || password === "") {
-      throw new Error("password is not string or is empty");
+      throw new Error("Invalid password format");
     }
 
     /*
@@ -46,21 +50,26 @@ const findUserInDatabase = async (email, password) => {
       1. `anything" OR "1"="1` |  protected
     */
 
-    const row = await db
+    const [row] = await db
       .promise()
-      .query(`SELECT * FROM users WHERE email= ? AND password= ?`, [
-        email,
-        password,
-      ]);
+      .query(`SELECT * FROM users WHERE email = ?`, [email]);
 
     if (row[0].length === 0) {
       throw new Error("User doesn't exist");
     }
 
-    return row[0];
+    // Hash password
+    const user = row[0];
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+      throw new Error("Invalid credentials");
+    }
+
+    return user;
   } catch (err) {
     console.error("Error searching user in database", err);
-    throw new Error("Failed searching a user");
+    throw new Error("Failed to search for the user");
   }
 };
 

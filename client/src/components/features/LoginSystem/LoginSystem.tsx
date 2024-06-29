@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Alert } from "react-bootstrap";
 import { registerValidation } from "../../../utils/validation";
 import { logIn } from "../../../redux/userReduces";
 import { useDispatch } from "react-redux";
@@ -19,6 +19,11 @@ export const LoginSystem: React.FC = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
+    if (!email || !password) {
+      setStatus("Please fill in all fields");
+      return;
+    }
+
     const user = {
       email,
       password,
@@ -36,7 +41,7 @@ export const LoginSystem: React.FC = () => {
     fetch(`${API_URL}api/login`, options)
       .then((res) => {
         if (res.status === 200) {
-          setStatus("Logged in!");
+          setStatus("Logged in");
           console.log("Status: ", status);
 
           dispatch(logIn({ email }));
@@ -45,10 +50,8 @@ export const LoginSystem: React.FC = () => {
           }, 2000);
         } else if (res.status === 400) {
           setStatus("ClientError");
-          console.log("Status: ", status);
         } else {
           setStatus("ServerError");
-          console.log("Status: ", status);
         }
       })
       .catch((err: string) => {
@@ -80,6 +83,24 @@ export const LoginSystem: React.FC = () => {
         <Button variant="primary" type="submit">
           Submit
         </Button>
+
+        {status === "Logged in" && (
+          <Alert key="success" variant="success">
+            Welcome!
+          </Alert>
+        )}
+
+        {status === "ClientError" && (
+          <Alert key="warning" variant="warning">
+            Something went wrong!
+          </Alert>
+        )}
+
+        {status === "ServerError" && (
+          <Alert key="danger" variant="danger">
+            Technical issue!
+          </Alert>
+        )}
       </Form>
     </div>
   );
