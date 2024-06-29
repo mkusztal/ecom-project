@@ -41,11 +41,17 @@ const findUserInDatabase = async (email, password) => {
       throw new Error("password is not string or is empty");
     }
 
+    /*
+      SQL injection:
+      1. `anything" OR "1"="1` |  protected
+    */
+
     const row = await db
       .promise()
-      .query(
-        `SELECT * FROM users WHERE email="${email}" AND password="${password}"`,
-      );
+      .query(`SELECT * FROM users WHERE email= ? AND password= ?`, [
+        email,
+        password,
+      ]);
 
     if (row[0].length === 0) {
       throw new Error("User doesn't exist");
