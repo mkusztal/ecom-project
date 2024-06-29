@@ -3,6 +3,7 @@ import { thunk, ThunkMiddleware } from "redux-thunk";
 import { initialState } from "./initialState";
 import { yerbamateReducer } from "./yerbamateReducer";
 import { configureStore } from "@reduxjs/toolkit";
+import { userReducer } from "./userReduces";
 
 /**
  * A friendly abstraction over the standard Redux `createStore()` function.
@@ -16,6 +17,7 @@ type RootState = ReturnType<typeof reducer>;
 
 const subreducers = {
   yerbamate: yerbamateReducer,
+  user: userReducer,
 };
 
 const reducer = combineReducers(subreducers);

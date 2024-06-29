@@ -1,7 +1,11 @@
 import React from "react";
 import { Col, Container, Nav, Navbar, NavDropdown, Row } from "react-bootstrap";
+import { IUser } from "../../../interfaces/IUser";
+import { useSelector } from "react-redux";
+import { getUser } from "../../../redux/userReduces";
 
 export const NavigationBar: React.FC = () => {
+  const user: IUser = useSelector(getUser);
   return (
     <Navbar collapseOnSelect expand="lg" className="bg-info wrap">
       <Container fluid className="d-flex flex-column">
@@ -13,7 +17,7 @@ export const NavigationBar: React.FC = () => {
           </Col>
         </Row>
         <Row className="w-100">
-          <Col className="text-center d-flex flex-column justify-content-center align-items-center">
+          <Col className="text-center d-flex flex-column justify-content-center align-items-end">
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
@@ -31,6 +35,21 @@ export const NavigationBar: React.FC = () => {
                 </Nav.Link>
               </Nav>
             </Navbar.Collapse>
+          </Col>
+          <Col className="d-flex flex-column justify-content-center align-items-end">
+            {!user && (
+              <Nav.Link href="/login" rel="stylesheet">
+                Login
+              </Nav.Link>
+            )}
+            {user && (
+              <Nav.Link href="/logout" rel="stylesheet">
+                Logout
+              </Nav.Link>
+            )}
+            <Nav.Link href="/register" rel="stylesheet">
+              Register
+            </Nav.Link>
           </Col>
         </Row>
       </Container>

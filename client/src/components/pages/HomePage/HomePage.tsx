@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { IYerbamate } from "../../interfaces/IYerbamate";
+import { IYerbamate } from "../../../interfaces/IYerbamate";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchYerbamate, getYerbamate } from "../../redux/yerbamateReducer";
+import { fetchYerbamate, getYerbamate } from "../../../redux/yerbamateReducer";
 import { Button, Col, Container, Image, Row } from "react-bootstrap";
 import styles from "./HomePage.module.scss";
 

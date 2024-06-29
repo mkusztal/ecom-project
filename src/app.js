@@ -5,6 +5,7 @@ const path = require("path");
 const cors = require("cors");
 // const jwt = require("jsonwebtoken");
 const yerbamate = require("./routes/yerbamate.routes");
+const registration = require("./routes/users.routes");
 const { errorHandler, notFoundHandler } = require("./utils/errorHandlers");
 dotenv.config({ path: "./.env" });
 
@@ -20,6 +21,7 @@ app.use(helmet());
 
 // routes
 app.use("/api", yerbamate);
+app.use("/api", registration);
 
 // error handler
 app.use(errorHandler);
