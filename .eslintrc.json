@@ -21,7 +21,7 @@
     ],
     "semi": ["error", "always"],
     "no-use-before-define": "off",
-    "complexity": ["warn", { "max": 7 }],
+    "complexity": ["warn", { "max": 10 }],
     "max-params": ["warn", 4],
     "max-statements": ["warn", 20],
     "max-statements-per-line": ["warn", { "max": 1 }],

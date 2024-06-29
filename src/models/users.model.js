@@ -1,28 +1,28 @@
 const db = require("../../config/db");
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
 
-const addUserToDatabase = async (user_id, user_email, user_password) => {
+const addUserToDatabase = async (id, email, password) => {
   // add regex
   try {
-    if (typeof user_id !== "string" || user_id === "") {
+    if (typeof id !== "string" || id === "") {
       throw new Error("Id is not string or is empty");
     }
 
-    if (typeof user_email !== "string" || user_email === "") {
+    if (typeof email !== "string" || email === "") {
       throw new Error("Email is not string or is empty");
     }
 
-    if (typeof user_password !== "string" || user_password === "") {
+    if (typeof password !== "string" || password === "") {
       throw new Error("Password is not string or is empty");
     }
 
     const [rows] = await db
       .promise()
       .query(
-        `INSERT INTO users (id, email, password) VALUES ('${user_id}', '${user_email}', '${user_password}');`,
+        `INSERT INTO users (id, email, password) VALUES ('${id}', '${email}', '${password}');`,
       );
 
-    console.log(`Successfully added to the database: `, user_email);
+    console.log(`Successfully added to the database: `, email);
 
     return rows;
   } catch (err) {
@@ -31,20 +31,20 @@ const addUserToDatabase = async (user_id, user_email, user_password) => {
   }
 };
 
-const findUserInDatabase = async (user_email, user_password) => {
+const findUserInDatabase = async (email, password) => {
   try {
-    if (typeof user_email !== "string" || user_email === "") {
+    if (typeof email !== "string" || email === "") {
       throw new Error("email is not string or is empty");
     }
 
-    if (typeof user_password !== "string" || user_password === "") {
+    if (typeof password !== "string" || password === "") {
       throw new Error("password is not string or is empty");
     }
 
     const row = await db
       .promise()
       .query(
-        `SELECT * FROM users WHERE email="${user_email}" AND password="${user_password}"`,
+        `SELECT * FROM users WHERE email="${email}" AND password="${password}"`,
       );
 
     if (row[0].length === 0) {

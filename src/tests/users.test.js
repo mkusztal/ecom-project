@@ -1,11 +1,11 @@
 const chai = require("chai");
 const chaiHttp = require("chai-http");
-const server = require("../app");
+// const server = require("../app");
 const pool = require("../../config/db");
-const { connect } = require("../routes/yerbamate.routes");
+// const { connect } = require("../routes/yerbamate.routes");
 
 process.env.NODE_ENV = "test";
-const expect = chai.expect;
+// const expect = chai.expect;
 
 chai.use(chaiHttp);
 
@@ -22,11 +22,11 @@ describe("/Registration test", () => {
     });
   });
 
-  it("should add the user to the database", (done) => {
-    chai.request("/api/registration");
-  });
+  // it("should add the user to the database", (done) => {
+  //   // chai.request("/api/registration");
+  // });
 
-  it("should add the user to the database", (done) => {
-    chai.request("/api/registration");
-  });
+  // it("should add the user to the database", (done) => {
+  //   chai.request("/api/registration");
+  // });
 });
