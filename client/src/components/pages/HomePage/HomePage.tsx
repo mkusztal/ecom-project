@@ -6,15 +6,6 @@ import { Button, Col, Container, Image, Row } from "react-bootstrap";
 import styles from "./HomePage.module.scss";
 
 export const HomePage: React.FC = () => {
-  const yerbamateData: IYerbamate[] = useSelector(getYerbamate);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchYerbamate());
-  }, [dispatch]);
-
-  console.log("yerbamateData", yerbamateData);
-
   return (
     <Container className={styles.container}>
       <Row className="mx-5 d-flex justify-content-end">

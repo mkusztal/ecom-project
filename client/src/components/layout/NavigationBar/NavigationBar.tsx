@@ -5,7 +5,8 @@ import { useSelector } from "react-redux";
 import { getUser } from "../../../redux/userReduces";
 
 export const NavigationBar: React.FC = () => {
-  const user: IUser = useSelector(getUser);
+  const localStoreUsers: IUser = useSelector(getUser);
+
   return (
     <Navbar collapseOnSelect expand="lg" className="bg-info wrap">
       <Container fluid className="d-flex flex-column">
@@ -37,12 +38,12 @@ export const NavigationBar: React.FC = () => {
             </Navbar.Collapse>
           </Col>
           <Col className="d-flex flex-column justify-content-center align-items-end">
-            {!user && (
+            {localStoreUsers === null && (
               <Nav.Link href="/login" rel="stylesheet">
                 Login
               </Nav.Link>
             )}
-            {user && (
+            {localStoreUsers !== null && (
               <Nav.Link href="/logout" rel="stylesheet">
                 Logout
               </Nav.Link>

@@ -5,6 +5,10 @@ const {
 const { uuidv7 } = require("uuidv7");
 const os = require("os");
 const validator = require("express-validator");
+const jwtwebtoken = require("jsonwebtoken");
+const dotenv = require("dotenv");
+
+dotenv.config({ path: "../../.env" });
 
 const userRegistration = async (req, res) => {
   const { email, password } = req.body;
@@ -43,8 +47,21 @@ const userLogin = async (req, res) => {
     }
 
     const loggedUser = await findUserInDatabase(email, password);
+
+    req.session.email = loggedUser.email;
+
+    // generate JWT
+    const token = jwtwebtoken.sign(
+      {
+        id: loggedUser.id,
+        email: loggedUser.email,
+      },
+      process.env.JWT_SECRET_KEY,
+      { expiresIn: "1h" },
+    );
+
     console.log("Logged in!");
-    res.status(200).json(loggedUser);
+    res.status(200).json({ token });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -53,7 +70,7 @@ const userLogin = async (req, res) => {
 const userLogout = async (req, res) => {
   try {
     req.session.destroy();
-    res.status(200).json({ message: "OK" });
+    res.json({ message: "OK" });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

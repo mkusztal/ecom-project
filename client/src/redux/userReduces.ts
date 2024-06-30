@@ -1,7 +1,7 @@
 import { IUser } from "../interfaces/IUser";
 import { initialState } from "./initialState";
 
-export const getUser = ({ user }: any): IUser => user;
+export const getUser = (state: any): IUser => state.user;
 
 // actions
 const createActionName = (actionName: string) => `app/users/${actionName}`;
@@ -15,13 +15,17 @@ export const logIn = (payload: any) => ({
 
 export const logOut = () => ({ type: LOG_OUT });
 
-export const userReducer = (statePart = null, action: any) => {
+export const userReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case LOG_IN:
-      return action.payload;
+      return {
+        ...state,
+        user: action.payload.email,
+        token: action.payload.token,
+      };
     case LOG_OUT:
       return null;
     default:
-      return statePart;
+      return state;
   }
 };

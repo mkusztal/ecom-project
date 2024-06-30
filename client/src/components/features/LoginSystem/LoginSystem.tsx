@@ -5,6 +5,7 @@ import { logIn } from "../../../redux/userReduces";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../../../config/urls";
+import { initialState } from "../../../redux/initialState";
 
 export const LoginSystem: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -14,7 +15,7 @@ export const LoginSystem: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  console.info("Status: ", status);
+  console.log(initialState.user);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -39,19 +40,15 @@ export const LoginSystem: React.FC = () => {
 
     setStatus("Loading");
     fetch(`${API_URL}api/login`, options)
-      .then((res) => {
-        if (res.status === 200) {
-          setStatus("Logged in");
-          console.log("Status: ", status);
-
-          dispatch(logIn({ email }));
-          setTimeout(() => {
-            navigate("/");
-          }, 2000);
-        } else if (res.status === 400) {
-          setStatus("ClientError");
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.token) {
+          setStatus("Logged In!");
+          localStorage.setItem("token", data.token);
+          dispatch(logIn({ email, token: data.token }));
+          navigate("/");
         } else {
-          setStatus("ServerError");
+          setStatus("Login failed!");
         }
       })
       .catch((err: string) => {
@@ -84,13 +81,13 @@ export const LoginSystem: React.FC = () => {
           Submit
         </Button>
 
-        {status === "Logged in" && (
+        {status === "Logged in!" && (
           <Alert key="success" variant="success">
             Welcome!
           </Alert>
         )}
 
-        {status === "ClientError" && (
+        {status === "Login failed!" && (
           <Alert key="warning" variant="warning">
             Something went wrong!
           </Alert>
