@@ -1,5 +1,5 @@
 const authMiddleware = (req, res, next) => {
-  if (req.session.email) {
+  if (req.session && req.session.email) {
     req.user = {
       email: req.session.email,
     };
