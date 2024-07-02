@@ -11,6 +11,7 @@ import { Footer } from "./components/layout/Footer/Footer";
 import { RegisterPage } from "./components/pages/Register/RegisterPage";
 import { LoginPage } from "./components/pages/Login/LoginPage";
 import { Logout } from "./components/features/Logout/Logout";
+import { YerbamatePage } from "./components/pages/Products/YerbamatePage";
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const App: React.FC = () => {
       <NavigationBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/yerbamate" element={<YerbamatePage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/logout" element={<Logout />} />

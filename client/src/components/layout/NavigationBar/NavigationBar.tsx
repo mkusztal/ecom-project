@@ -23,7 +23,9 @@ export const NavigationBar: React.FC = () => {
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
                 <NavDropdown title="Products" id="collapsible-nav-dropdown">
-                  <NavDropdown.Item href="/yerba">Yerba mate</NavDropdown.Item>
+                  <NavDropdown.Item href="/yerbamate">
+                    Yerba mate
+                  </NavDropdown.Item>
                   <NavDropdown.Item href="accessories">
                     Accessories
                   </NavDropdown.Item>

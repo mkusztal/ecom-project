@@ -1,0 +1,8 @@
+.root {
+  padding: 20px;
+  .row {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 50%;
+  }
+}
