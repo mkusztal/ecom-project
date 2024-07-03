@@ -30,7 +30,6 @@ export const YerbamatePage: React.FC = () => {
                     type={e.type}
                     image={e.image}
                   />
-                  ;
                 </Col>
               );
             })}

@@ -13,17 +13,12 @@ const findAllYerbamate = async () => {
       throw new Error("Database is empty!");
     }
 
-    // const yerbamate = rows.map((row) => ({
-    //   id: row.id,
-    //   name: row.name,
-    //   size: row.size,
-    //   price: row.price,
-    //   commission: row.commission,
-    //   image: row.image
-    //   type: row.type
-    // }));
+    const yerbamateData = rows.map((row) => ({
+      ...row,
+      image: Buffer.from(row.image).toString("base64"),
+    }));
 
-    return rows;
+    return yerbamateData;
   } catch (err) {
     console.error("Error fetching yerba mate:", err);
     throw new Error("Failed to fetch yerba mate");

@@ -5,5 +5,5 @@ export interface IYerbamate {
   price: number;
   commission: number;
   type: string;
-  image: File;
+  image: string;
 }
