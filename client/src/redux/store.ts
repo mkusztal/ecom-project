@@ -1,8 +1,9 @@
 import { combineReducers, Store } from "redux";
 import { thunk, ThunkMiddleware } from "redux-thunk";
 import { initialState } from "./initialState";
-import { clothesReducer } from "./clothesReducer";
+import { yerbamateReducer } from "./yerbamateReducer";
 import { configureStore } from "@reduxjs/toolkit";
+import { userReducer } from "./userReduces";
 
 /**
  * A friendly abstraction over the standard Redux `createStore()` function.
@@ -15,7 +16,8 @@ import { configureStore } from "@reduxjs/toolkit";
 type RootState = ReturnType<typeof reducer>;
 
 const subreducers = {
-  clothes: clothesReducer,
+  yerbamate: yerbamateReducer,
+  user: userReducer,
 };
 
 const reducer = combineReducers(subreducers);

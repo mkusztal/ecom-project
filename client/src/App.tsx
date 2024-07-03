@@ -1,26 +1,40 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import { HomePage } from "./components/pages/HomePage";
+import React, { useEffect } from "react";
+import styles from "./App.module.scss";
+import { useDispatch } from "react-redux";
+import { logIn } from "../src/redux/userReduces";
+import { jwtDecode } from "jwt-decode";
+import { IDecodedToken } from "./interfaces/IDecodedToken";
+import { HomePage } from "./components/pages/HomePage/HomePage";
+import { Routes, Route } from "react-router-dom";
+import { NavigationBar } from "./components/layout/NavigationBar/NavigationBar";
+import { Footer } from "./components/layout/Footer/Footer";
+import { RegisterPage } from "./components/pages/Register/RegisterPage";
+import { LoginPage } from "./components/pages/Login/LoginPage";
+import { Logout } from "./components/features/Logout/Logout";
+import { YerbamatePage } from "./components/pages/Products/YerbamatePage";
 
-const App = () => {
+const App: React.FC = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decodedToken = jwtDecode<IDecodedToken>(token);
+      dispatch(logIn({ email: decodedToken.email, token }));
+    }
+  }, [dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <HomePage />
+    <div className={styles.root}>
+      <NavigationBar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/yerbamate" element={<YerbamatePage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/logout" element={<Logout />} />
+      </Routes>
+      <Footer />
     </div>
   );
 };
