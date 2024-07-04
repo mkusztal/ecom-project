@@ -25,4 +25,57 @@ const findAllYerbamate = async () => {
   }
 };
 
-module.exports = { findAllYerbamate };
+const addProductToDatabase = async (
+  id,
+  name,
+  size,
+  price,
+  commission,
+  image,
+  type,
+) => {
+  try {
+    if (typeof id !== "string" || id === "") {
+      throw new Error("Invalid id format");
+    }
+
+    if (typeof name !== "string" || name === "") {
+      throw new Error("Invalid name format");
+    }
+
+    if (typeof size !== "number" || size <= 0) {
+      throw new Error("Invalid size format");
+    }
+
+    if (typeof price !== "number" || price <= 0) {
+      throw new Error("Invalid price format");
+    }
+
+    if (typeof commission !== "number" || commission < 0) {
+      throw new Error("Invalid commission format");
+    }
+
+    if (typeof type !== "string" || type === "") {
+      throw new Error("Invalid type format");
+    }
+
+    if (!Buffer.isBuffer(image)) {
+      throw new Error("Invalid image format");
+    }
+
+    const [rows] = await db
+      .promise()
+      .query(
+        `INSERT INTO yerbamate (id, name, size, price, commission, image, type) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+        [id, name, size, price, commission, image, type],
+      );
+
+    console.log("Successfully added product to the database: ", rows);
+    return rows;
+  } catch (err) {
+    console.error("Error adding product:", err);
+    throw new Error("Failed to adding product");
+  }
+};
+
+module.exports = { findAllYerbamate, addProductToDatabase };
