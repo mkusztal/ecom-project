@@ -23,6 +23,7 @@ app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.dirname("/client/build")));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(helmet());
 app.use(
   session({

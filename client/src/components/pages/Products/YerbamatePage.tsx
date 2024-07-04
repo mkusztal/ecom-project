@@ -4,7 +4,9 @@ import { fetchYerbamate, getYerbamate } from "../../../redux/yerbamateReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { ProductCards } from "../../features/ProductCards/ProductCards";
 import { Col, Container, Row } from "react-bootstrap";
+import { NotFound } from "../../features/NotFound/NotFound";
 import styles from "./YerbaPage.module.scss";
+import { PaginationComponent } from "../../features/Pagination/PaginationComponent";
 
 export const YerbamatePage: React.FC = () => {
   const yerbamateData: IYerbamate[] = useSelector(getYerbamate);
@@ -19,10 +21,10 @@ export const YerbamatePage: React.FC = () => {
     <div className={`${styles.root}`}>
       <Container>
         <Row className={`${styles.row}`}>
-          {yerbamateData &&
+          {yerbamateData ? (
             yerbamateData.map((e) => {
               return (
-                <Col key={e.id}>
+                <Col key={e.id} xs={12} sm={6} md={4} lg={3} className="mb-4">
                   <ProductCards
                     id={e.id}
                     name={e.name}
@@ -32,7 +34,13 @@ export const YerbamatePage: React.FC = () => {
                   />
                 </Col>
               );
-            })}
+            })
+          ) : (
+            <NotFound />
+          )}
+        </Row>
+        <Row>
+          <PaginationComponent />
         </Row>
       </Container>
     </div>
