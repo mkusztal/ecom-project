@@ -15,7 +15,12 @@ export const ProductCards: React.FC<ProductProps> = (props) => {
   return (
     <Card className={`${styles.card}`}>
       <Card.Link href={`/yerbamate/${id}`} className={`${styles.link}`}>
-        <Card.Img variant="top" src={`${image}`} width={30} height={200} />
+        <Card.Img
+          variant="top"
+          src={`data:image/jpeg;base64,${image}`}
+          width={30}
+          height={200}
+        />
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Text>{type}</Card.Text>
