@@ -1,9 +1,10 @@
-const errorHandler = (err, req, res) => {
-  res.status(500).json({ message: err });
+const errorHandler = (err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: "Internal Server Error" });
 };
 
-const notFoundHandler = (req, res) => {
-  res.status(404).json({ message: "Not found..." });
+const notFoundHandler = (req, res, next) => {
+  res.status(404).json({ message: "Not Found" });
 };
 
 module.exports = {

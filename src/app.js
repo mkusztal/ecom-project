@@ -5,12 +5,12 @@ const path = require("path");
 const cors = require("cors");
 const session = require("express-session");
 const crypto = require("crypto");
-// const jwt = require("jsonwebtoken");
+// const https = require("https");
+// const fs = require("fs");
 const yerbamate = require("./routes/yerbamate.routes");
 const registration = require("./routes/users.routes");
 const { errorHandler, notFoundHandler } = require("./utils/errorHandlers");
 dotenv.config({ path: "./.env" });
-
 const app = express();
 const port = process.env.PORT;
 
@@ -22,7 +22,7 @@ const generateCSRFTToken = () => {
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.dirname("/client/build")));
+app.use(express.static(path.join(__dirname, "../client/build")));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(helmet());
 app.use(
@@ -51,8 +51,16 @@ app.use(notFoundHandler);
 // jsonwebtoken
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(path.dirname + "/client/build/index.html"));
+  res.sendFile(path.join(__dirname, "../client/public/index.html"));
 });
+
+// const options = {
+//   key: fs.readFileSync(path.join(`./config/cert`, "sslkey.pem")),
+//   cert: fs.readFileSync(path.join(`./config/cert`, "sslcert.pem")),
+//   passphrase: process.env.PASS_PHRASE,
+// };
+
+// https.createServer(options, app);
 
 const server = app.listen(port || 8000, () => {
   console.log(`Server is running on port 8000...`);
