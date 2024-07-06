@@ -12,6 +12,7 @@ import { RegisterPage } from "./components/pages/Register/RegisterPage";
 import { LoginPage } from "./components/pages/Login/LoginPage";
 import { Logout } from "./components/features/Logout/Logout";
 import { YerbamatePage } from "./components/pages/Products/YerbamatePage";
+import { Contact } from "./components/features/Contact/Contact";
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const App: React.FC = () => {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
     </div>

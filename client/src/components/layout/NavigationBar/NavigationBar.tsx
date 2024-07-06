@@ -3,16 +3,17 @@ import { Col, Container, Nav, Navbar, NavDropdown, Row } from "react-bootstrap";
 import { IUser } from "../../../interfaces/IUser";
 import { useSelector } from "react-redux";
 import { getUser } from "../../../redux/userReduces";
+import styles from "./NavigationBar.module.scss";
 
 export const NavigationBar: React.FC = () => {
   const localStoreUsers: IUser = useSelector(getUser);
 
   return (
-    <Navbar collapseOnSelect expand="lg" className="bg-info wrap">
+    <Navbar collapseOnSelect expand="lg" className={`${styles.root} wrap`}>
       <Container fluid className="d-flex flex-column">
         <Row className="w-100">
           <Col className="text-center">
-            <Navbar.Brand href="/" className="ms-3">
+            <Navbar.Brand href="/" className={`${styles.title} ms-3`}>
               Yours Yerba
             </Navbar.Brand>
           </Col>
@@ -30,7 +31,7 @@ export const NavigationBar: React.FC = () => {
                     Accessories
                   </NavDropdown.Item>
                 </NavDropdown>
-                <Nav.Link href="/aboutme" rel="stylesheet">
+                <Nav.Link href="/aboutus" rel="stylesheet">
                   About us
                 </Nav.Link>
                 <Nav.Link href="/contact" rel="stylesheet">

@@ -9,6 +9,7 @@ const crypto = require("crypto");
 // const fs = require("fs");
 const yerbamate = require("./routes/yerbamate.routes");
 const registration = require("./routes/users.routes");
+const email = require("./routes/email.routes");
 const { errorHandler, notFoundHandler } = require("./utils/errorHandlers");
 dotenv.config({ path: "./.env" });
 const app = express();
@@ -43,6 +44,7 @@ app.use((req, res, next) => {
 // routes
 app.use("/api", yerbamate);
 app.use("/api", registration);
+app.use("/api", email);
 
 // error handler
 app.use(errorHandler);

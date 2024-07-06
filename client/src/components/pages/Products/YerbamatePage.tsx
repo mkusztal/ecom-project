@@ -16,7 +16,6 @@ export const YerbamatePage: React.FC = () => {
     dispatch(fetchYerbamate());
   }, [dispatch]);
 
-  console.log("yerbamateData: ", yerbamateData);
   return (
     <div className={`${styles.root}`}>
       <Container>

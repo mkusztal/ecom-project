@@ -1,0 +1,41 @@
+/* Contact.css */
+.form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 2rem;
+
+  .custom_form_group {
+    width: 100%; /* Ensure full width for form groups */
+    max-width: 400px; /* Optional: Limit the max width */
+    padding-left: 0; /* Remove left padding */
+    padding-right: 0; /* Remove right padding */
+    font-size: 12px;
+
+    .form_label {
+      display: block; /* Ensure block display */
+      width: 100%; /* Ensure full width */
+    }
+
+    .form_control {
+      display: block; /* Ensure block display */
+      width: 100%; /* Ensure full width */
+      font-size: 12px; /* Set font size for input text */
+
+      &::placeholder {
+        font-size: 12px; /* Set font size for placeholder text */
+        color: #888; /* Optional: change placeholder color */
+      }
+    }
+  }
+
+  .custom_error_info {
+    color: red;
+    font-size: 0.675rem !important;
+  }
+
+  .submit_button {
+    margin-top: 0.5rem;
+    font-size: 12px;
+  }
+}

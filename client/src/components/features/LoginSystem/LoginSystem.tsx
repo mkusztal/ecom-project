@@ -6,11 +6,16 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../../../config/urls";
 import { initialState } from "../../../redux/initialState";
+import styles from "./LoginSystem.module.scss";
 
 export const LoginSystem: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [status, setStatus] = useState<string>("");
+
+  const validateUserData =
+    registerValidation.email.test(email) &&
+    registerValidation.password.test(password);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -57,10 +62,10 @@ export const LoginSystem: React.FC = () => {
   };
 
   return (
-    <div>
-      <Form className="w-25" onSubmit={handleSubmit}>
+    <div className={`${styles.root}`}>
+      <Form className="w-100" onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formGroupEmail">
-          <Form.Label>Email address</Form.Label>
+          <Form.Label className={`${styles.label}`}>Email address</Form.Label>
           <Form.Control
             type="email"
             placeholder="Enter email"
@@ -69,7 +74,7 @@ export const LoginSystem: React.FC = () => {
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formGroupPassword">
-          <Form.Label>Password</Form.Label>
+          <Form.Label className={`${styles.label}`}>Password</Form.Label>
           <Form.Control
             type="password"
             placeholder="Password"
@@ -77,7 +82,7 @@ export const LoginSystem: React.FC = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" disabled={!validateUserData}>
           Submit
         </Button>
 

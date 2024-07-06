@@ -3,10 +3,11 @@ import { Container, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { links } from "../../../utils/links";
+import styles from "./Footer.module.scss";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-danger text-light mt-auto">
+    <footer className={`${styles.footer} text-light mt-auto`}>
       <Container>
         <Row>
           <Col>
