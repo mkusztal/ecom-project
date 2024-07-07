@@ -28,14 +28,16 @@ const App: React.FC = () => {
   return (
     <div className={styles.root}>
       <NavigationBar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/yerbamate" element={<YerbamatePage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/logout" element={<Logout />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      <div className={`${styles.routes}`}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/yerbamate" element={<YerbamatePage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/logout" element={<Logout />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </div>
       <Footer />
     </div>
   );

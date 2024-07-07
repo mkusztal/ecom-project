@@ -5,7 +5,7 @@ import styles from "./HomePageSlider.module.scss";
 export const HomePageSlider: React.FC = () => {
   return (
     <div className={`${styles.root}`}>
-      <Carousel>
+      <Carousel interval={5000}>
         <Carousel.Item>
           {/* <ExampleCarouselImage text="First slide" /> */}
           <Image
@@ -16,7 +16,7 @@ export const HomePageSlider: React.FC = () => {
           <Carousel.Caption>
             {/* <Col xs={6} md={6} className={styles.first_row_colum}> */}
             <h2>Hello! I will help you to find your favourite yerba mate...</h2>
-            <Button className={styles.button}>Read more</Button>
+            <Button className={styles.first_slide_button}>Read more</Button>
             {/* </Col> */}
           </Carousel.Caption>
         </Carousel.Item>

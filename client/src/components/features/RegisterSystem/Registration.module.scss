@@ -1,7 +1,14 @@
+@import "../../../styles/variables.module.scss";
+
 .root {
   width: 25%;
 
   .label {
     font-size: 1.5rem;
+  }
+
+  .main_button {
+    background-color: $button_color !important;
+    border-color: $button_color !important;
   }
 }

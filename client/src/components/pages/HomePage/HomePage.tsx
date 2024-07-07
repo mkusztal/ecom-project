@@ -11,12 +11,9 @@ export const HomePage: React.FC = () => {
     <div className={`${styles.root}`}>
       <Container className={styles.container}>
         <Row className={`${styles.row}`}>
-          <HomePageSlider />
-        </Row>
-        <Row className={`${styles.row}`}>
           <Col>
             <h1>What is Yerba mate?</h1>
-            <p>
+            <p className={`${styles.p}`}>
               Yerba mate or yerba-maté is a plant species of the holly genus
               Ilex native to South America. It was named by the French botanist
               Augustin Saint-Hilaire. The leaves of the plant can be steeped in
@@ -27,13 +24,16 @@ export const HomePage: React.FC = () => {
           </Col>
           <Col xs={6} md={4}>
             <h3>Types of yerba mate</h3>
-            <ul>
+            <ul className={`${styles.li}`}>
               <li>Argentinian Yerba Mate</li>
               <li>Paraguayan Yerba Mate</li>
               <li>Uruguayan Yerba Mate</li>
               <li>Brazilian Erva Mate (Chimarrão)</li>
             </ul>
           </Col>
+        </Row>
+        <Row className={`${styles.row}`}>
+          <HomePageSlider />
         </Row>
       </Container>
     </div>

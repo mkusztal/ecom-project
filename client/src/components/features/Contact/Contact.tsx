@@ -223,15 +223,16 @@ export const Contact: React.FC = () => {
             </p>
           </div>
         </Form.Group>
+      </Form>
+      <div className={`${styles.button_row}`}>
         <Button
-          variant="success"
           type="submit"
           disabled={statusMessage == "Please fill out the form correctly."}
           className={`${styles.submit_button}`}
         >
           Submit
         </Button>
-      </Form>
+      </div>
     </div>
   );
 };

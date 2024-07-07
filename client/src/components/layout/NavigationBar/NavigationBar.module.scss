@@ -1,4 +1,4 @@
-.root {
+.navbar {
   border-bottom: solid 2px black;
   margin-bottom: 2rem;
 
@@ -8,4 +8,12 @@
     font-weight: 400;
     font-size: 2rem;
   }
+}
+
+.grass_image {
+  position: absolute;
+  opacity: 0.4;
+  z-index: -1;
+  left: 0;
+  top: 0;
 }

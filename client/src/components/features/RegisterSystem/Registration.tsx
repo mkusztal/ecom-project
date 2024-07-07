@@ -73,7 +73,7 @@ export const Registration: React.FC = () => {
           />
         </Form.Group>
         <Button
-          variant="primary"
+          className={`${styles.main_button}`}
           type="submit"
           disabled={!validateUserData}
           onClick={handleSubmit}

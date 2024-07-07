@@ -1,4 +1,5 @@
-/* Contact.css */
+@import "../../../styles/variables.module.scss";
+
 .form {
   display: flex;
   align-items: center;
@@ -33,9 +34,14 @@
     color: red;
     font-size: 0.675rem !important;
   }
+}
 
+.button_row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .submit_button {
-    margin-top: 0.5rem;
-    font-size: 12px;
+    background-color: $button_color !important;
+    border-color: $button_color !important;
   }
 }

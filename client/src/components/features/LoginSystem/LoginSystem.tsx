@@ -82,7 +82,11 @@ export const LoginSystem: React.FC = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <Button variant="primary" type="submit" disabled={!validateUserData}>
+        <Button
+          type="submit"
+          disabled={!validateUserData}
+          className={`${styles.main_button}`}
+        >
           Submit
         </Button>
 
