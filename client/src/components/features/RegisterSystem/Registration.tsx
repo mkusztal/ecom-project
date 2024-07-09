@@ -53,7 +53,26 @@ export const Registration: React.FC = () => {
 
   return (
     <div className={`${styles.root}`}>
-      <Form className="w-100" onSubmit={handleSubmit}>
+      <h2 className="text-center">Sign up</h2>
+      <br></br>
+      <Form onSubmit={handleSubmit}>
+        {status === "Success" && (
+          <Alert key="success" variant="success">
+            Welcome!
+          </Alert>
+        )}
+
+        {status === "ClientError" && (
+          <Alert key="warning" variant="warning">
+            Something went wrong!
+          </Alert>
+        )}
+
+        {status === "ServerError" && (
+          <Alert key="danger" variant="danger">
+            Technical issue!
+          </Alert>
+        )}
         <Form.Group className="mb-3" controlId="formGroupEmail">
           <Form.Label className={`${styles.label}`}>Email address</Form.Label>
           <Form.Control
@@ -80,24 +99,6 @@ export const Registration: React.FC = () => {
         >
           Submit
         </Button>
-
-        {status === "Success" && (
-          <Alert key="success" variant="success">
-            Welcome!
-          </Alert>
-        )}
-
-        {status === "ClientError" && (
-          <Alert key="warning" variant="warning">
-            Something went wrong!
-          </Alert>
-        )}
-
-        {status === "ServerError" && (
-          <Alert key="danger" variant="danger">
-            Technical issue!
-          </Alert>
-        )}
       </Form>
     </div>
   );

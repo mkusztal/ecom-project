@@ -122,7 +122,7 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className={`${styles.root}`}>
       <h2 className="text-center">Contact with us</h2>
       <br></br>
       <Form className={`${styles.form}`} onSubmit={sendEmailHandler}>
@@ -136,7 +136,7 @@ export const Contact: React.FC = () => {
           </Alert>
         )}
         <Form.Group className={styles.custom_form_group}>
-          <Form.Label className={`${styles.form_label}`}>Name</Form.Label>
+          <Form.Label className={`${styles.form_label}`}>Full Name</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter your name"
@@ -157,7 +157,7 @@ export const Contact: React.FC = () => {
           )}
         </Form.Group>
 
-        <Form.Group className={styles.custom_form_group}>
+        <Form.Group className={`mb-3 ${styles.custom_form_group}`}>
           <Form.Label className={`${styles.form_label}`}>Subject</Form.Label>
           <Form.Control
             type="text"
@@ -179,7 +179,7 @@ export const Contact: React.FC = () => {
           )}
         </Form.Group>
 
-        <Form.Group className={styles.custom_form_group}>
+        <Form.Group className={`mb-3 ${styles.custom_form_group}`}>
           <Form.Label className={`${styles.form_label}`}>Email</Form.Label>
           <Form.Control
             type="email"
@@ -201,7 +201,7 @@ export const Contact: React.FC = () => {
           )}
         </Form.Group>
 
-        <Form.Group className={styles.custom_form_group}>
+        <Form.Group className={`mb-3 ${styles.custom_form_group}`}>
           <Form.Label className={`${styles.form_label}`}>Message</Form.Label>
           <Form.Control
             as="textarea"
@@ -224,15 +224,13 @@ export const Contact: React.FC = () => {
           </div>
         </Form.Group>
       </Form>
-      <div className={`${styles.button_row}`}>
-        <Button
-          type="submit"
-          disabled={statusMessage == "Please fill out the form correctly."}
-          className={`${styles.submit_button}`}
-        >
-          Submit
-        </Button>
-      </div>
+      <Button
+        type="submit"
+        disabled={statusMessage === "Please fill out the form correctly."}
+        className={`${styles.main_button}`}
+      >
+        Submit
+      </Button>
     </div>
   );
 };

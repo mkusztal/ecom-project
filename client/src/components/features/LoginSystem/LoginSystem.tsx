@@ -63,7 +63,27 @@ export const LoginSystem: React.FC = () => {
 
   return (
     <div className={`${styles.root}`}>
-      <Form className="w-100" onSubmit={handleSubmit}>
+      <h2 className="text-center">Sign in</h2>
+      <br></br>
+      <Form onSubmit={handleSubmit}>
+        {status === "Logged in!" && (
+          <Alert key="success" variant="success">
+            Welcome!
+          </Alert>
+        )}
+
+        {status === "Login failed!" && (
+          <Alert key="warning" variant="warning">
+            Something went wrong!
+          </Alert>
+        )}
+
+        {status === "ServerError" && (
+          <Alert key="danger" variant="danger">
+            Technical issue!
+          </Alert>
+        )}
+
         <Form.Group className="mb-3" controlId="formGroupEmail">
           <Form.Label className={`${styles.label}`}>Email address</Form.Label>
           <Form.Control
@@ -89,24 +109,6 @@ export const LoginSystem: React.FC = () => {
         >
           Submit
         </Button>
-
-        {status === "Logged in!" && (
-          <Alert key="success" variant="success">
-            Welcome!
-          </Alert>
-        )}
-
-        {status === "Login failed!" && (
-          <Alert key="warning" variant="warning">
-            Something went wrong!
-          </Alert>
-        )}
-
-        {status === "ServerError" && (
-          <Alert key="danger" variant="danger">
-            Technical issue!
-          </Alert>
-        )}
       </Form>
     </div>
   );

@@ -9,8 +9,8 @@ export const Footer: React.FC = () => {
   return (
     <div className={`${styles.root}`}>
       <Image src="images/tree.jpg" className={`${styles.tree_image}`} />
-      <footer className={`${styles.footer} text-light mt-auto`}>
-        <Container>
+      <footer className={`${styles.footer} text-dark mt-auto`}>
+        <Container className={`${styles.container}`}>
           <Row>
             <Col>
               <div className="d-flex justify-content-center align-items-center">
@@ -31,6 +31,11 @@ export const Footer: React.FC = () => {
                   <FontAwesomeIcon icon={faLinkedin} />
                 </a>
               </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col className={`${styles.copyright}`}>
+              <p>Copyright @ Maciej Kusztal</p>
             </Col>
           </Row>
         </Container>

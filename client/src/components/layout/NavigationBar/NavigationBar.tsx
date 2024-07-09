@@ -27,8 +27,8 @@ export const NavigationBar: React.FC = () => {
               </Navbar.Brand>
             </Col>
           </Row>
-          <Row className="w-100">
-            <Col className="text-center d-flex flex-column justify-content-center align-items-end">
+          <Row className={`${styles.second_row}`}>
+            <Col className={`${styles.first_column}`}>
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
@@ -49,7 +49,7 @@ export const NavigationBar: React.FC = () => {
                 </Nav>
               </Navbar.Collapse>
             </Col>
-            <Col className="d-flex flex-column justify-content-center align-items-end">
+            <Col className={`${styles.second_column}`}>
               {localStoreUsers === null && (
                 <Nav.Link href="/login" rel="stylesheet">
                   Login
