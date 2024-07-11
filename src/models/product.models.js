@@ -29,7 +29,7 @@ const getOneProduct = async (id) => {
   try {
     const [row] = await db
       .promise()
-      .query(`SELECT * FROM yerbamate WHERE id = ?`, [id]); //${id}`); //, []);
+      .query(`SELECT * FROM yerbamate WHERE id = ?`, [id]);
 
     if (row.length === 0) {
       throw new Error("Database is empty!");
