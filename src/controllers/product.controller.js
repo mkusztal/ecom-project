@@ -1,13 +1,26 @@
 const {
   findAllYerbamate,
   addProductToDatabase,
-} = require("../models/yerbamate.models");
+  getOneProduct,
+} = require("../models/product.models");
 const { uuidv7 } = require("uuidv7");
 
 const getAllYerbamate = async (req, res) => {
   try {
     const yerbamate = await findAllYerbamate();
     res.status(200).json(yerbamate);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+const getProductByID = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const product = await getOneProduct(id);
+    console.log(`Product: `, product);
+    res.status(200).json(product);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -40,4 +53,4 @@ const postProduct = async (req, res) => {
   }
 };
 
-module.exports = { getAllYerbamate, postProduct };
+module.exports = { getAllYerbamate, postProduct, getProductByID };
