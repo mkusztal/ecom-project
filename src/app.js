@@ -7,7 +7,7 @@ const session = require("express-session");
 const crypto = require("crypto");
 // const https = require("https");
 // const fs = require("fs");
-const yerbamate = require("./routes/yerbamate.routes");
+const yerbamate = require("./routes/product.routes");
 const registration = require("./routes/users.routes");
 const { errorHandler, notFoundHandler } = require("./utils/errorHandlers");
 dotenv.config({ path: "./.env" });

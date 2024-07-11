@@ -9,7 +9,7 @@ const findAllYerbamate = async () => {
   try {
     const [rows] = await db.promise().query(`SELECT * FROM yerbamate`);
 
-    if (rows.lenth < 0) {
+    if (rows.lenth === 0) {
       throw new Error("Database is empty!");
     }
 
@@ -22,6 +22,23 @@ const findAllYerbamate = async () => {
   } catch (err) {
     console.error("Error fetching yerba mate:", err);
     throw new Error("Failed to fetch yerba mate");
+  }
+};
+
+const getOneProduct = async (id) => {
+  try {
+    const [row] = await db
+      .promise()
+      .query(`SELECT * FROM yerbamate WHERE id = ?`, [id]);
+
+    if (row.length === 0) {
+      throw new Error("Database is empty!");
+    }
+
+    return row[0];
+  } catch (err) {
+    console.error("Error fetching product: ", err);
+    throw new Error("Failed to fetch product");
   }
 };
 
@@ -78,4 +95,4 @@ const addProductToDatabase = async (
   }
 };
 
-module.exports = { findAllYerbamate, addProductToDatabase };
+module.exports = { findAllYerbamate, getOneProduct, addProductToDatabase };
