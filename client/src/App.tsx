@@ -12,7 +12,7 @@ import { RegisterPage } from "./components/pages/Register/RegisterPage";
 import { LoginPage } from "./components/pages/Login/LoginPage";
 import { Logout } from "./components/features/Logout/Logout";
 import { YerbamatePage } from "./components/pages/Products/YerbamatePage";
-import { ContactPage } from "./components/pages/ContactPage/ContactPage";
+import { ProductPage } from "./components/pages/ProductPage/ProductPage";
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -28,16 +28,14 @@ const App: React.FC = () => {
   return (
     <div className={styles.root}>
       <NavigationBar />
-      <div className={`${styles.routes}`}>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/yerbamate" element={<YerbamatePage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/logout" element={<Logout />} />
-          <Route path="/contact" element={<ContactPage />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/yerbamate" element={<YerbamatePage />} />
+        <Route path="/yerbamate/:id" element={<ProductPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/logout" element={<Logout />} />
+      </Routes>
       <Footer />
     </div>
   );
