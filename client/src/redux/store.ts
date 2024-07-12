@@ -31,3 +31,5 @@ export const store: Store<RootState> = configureStore({
     }).concat(thunk as ThunkMiddleware<RootState>),
   devTools: true, // or DevToolsOptions
 });
+
+export type AppDispatch = typeof store.dispatch;
