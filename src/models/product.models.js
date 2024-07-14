@@ -35,7 +35,12 @@ const getOneProduct = async (id) => {
       throw new Error("Database is empty!");
     }
 
-    return row[0];
+    const yerbamateData = {
+      ...row[0],
+      image: Buffer.from(row[0].image).toString("base64"),
+    };
+
+    return yerbamateData;
   } catch (err) {
     console.error("Error fetching product: ", err);
     throw new Error("Failed to fetch product");

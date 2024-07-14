@@ -9,34 +9,44 @@ import {
   getSingleYerbamate,
 } from "../../../redux/yerbamateReducer";
 import { IYerbamate } from "../../../interfaces/IYerbamate";
+import { AppDispatch } from "../../../redux/store";
+import styles from "./ProductPage.module.scss";
+import { ProductsSlider } from "../../features/ProductsSlider/ProductsSlider";
 
 export const ProductPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const product: IYerbamate = useSelector(getSingleYerbamate);
-  const dispatch = useDispatch();
-
-  if (typeof id !== "string" || id === "") {
-    console.error("Invalid id");
-    return null;
-  }
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     if (id) {
-      // dispatch(fetchOneYerbamate(id));
+      dispatch(fetchOneYerbamate(id));
     } else {
       console.error("Invalid id");
     }
   }, [dispatch, id]);
+
+  if (!product) {
+    return <div>Not Found any product</div>;
+  }
   return (
-    <div>
+    <div className={`mx-4 ${styles.root}`}>
       <Container>
         <Row>
           <Col>
-            <ProductImages />
+            <ProductImages image={product.image} />
           </Col>
           <Col>
-            <ProductDetails />
+            <ProductDetails
+              title={product.name}
+              price={product.price}
+              size={product.size}
+              type={product.type}
+            />
           </Col>
+        </Row>
+        <Row>
+          <ProductsSlider image={product.image} />
         </Row>
       </Container>
     </div>

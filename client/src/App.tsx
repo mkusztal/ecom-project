@@ -16,6 +16,7 @@ import { ProductPage } from "./components/pages/ProductPage/ProductPage";
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
+  // const location = useLocation();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -24,6 +25,9 @@ const App: React.FC = () => {
       dispatch(logIn({ email: decodedToken.email, token }));
     }
   }, [dispatch]);
+
+  // const noNavbarFooterRoutes = ["/yerbamate/:id"];
+  // const showNavbarFooter = !noNavbarFooterRoutes.includes(location.pathname);
 
   return (
     <div className={styles.root}>

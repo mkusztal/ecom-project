@@ -2,6 +2,7 @@ import { initialState } from "./initialState";
 import { API_URL } from "../config/urls";
 import { IYerbamate } from "../interfaces/IYerbamate";
 import { Dispatch } from "redux";
+import { UnknownAction } from "redux";
 export const getYerbamate = ({ yerbamate }: any): IYerbamate[] => yerbamate;
 export const getSingleYerbamate = ({ yerbamate }: any): IYerbamate => yerbamate;
 
@@ -25,35 +26,50 @@ export const fetchYerbamate = (): any => {
   };
 };
 
+// export const fetchOneYerbamate = (id: string) => {
+//   // if (typeof id !== "string" || id === "") {
+//   //   console.log("Invalid id");
+//   //   return;
+//   // }
+//   return (dispatch: Dispatch) => {
+//     fetch(API_URL + `api/yerbamate/${id}`)
+//       .then((res) => res.json())
+//       .then((data) => {
+//         dispatch({
+//           type: GET_ONE_YERBAMATE,
+//           payload: data,
+//         });
+//       })
+//       .catch((err) => {
+//         console.log("Error fetching single product: ", err);
+//       });
+//   };
+// };
+
 export const fetchOneYerbamate = (id: string) => {
-  if (typeof id !== "string" || id === "") {
-    console.log("Invalid id");
-    return;
-  }
-  return (dispatch: Dispatch) => {
-    fetch(API_URL + `api/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch({
-          type: GET_ONE_YERBAMATE,
-          payload: data,
-        });
-      })
-      .catch((err) => {
-        console.log("Error fetching single product: ", err);
+  return async (dispatch: any) => {
+    try {
+      const res = await fetch(API_URL + `api/yerbamate/${id}`);
+      const data = await res.json();
+      dispatch({
+        type: GET_ONE_YERBAMATE,
+        payload: data,
       });
+    } catch (err) {
+      console.log("Error fetching single product: ", err);
+    }
   };
 };
 
-export const yerbamateReducer = (state = initialState, action: any) => {
+export const yerbamateReducer = (
+  state = initialState,
+  action: UnknownAction,
+) => {
   switch (action.type) {
     case GET_ALL_YERBAMATE:
       return action.payload;
     case GET_ONE_YERBAMATE:
-      return [
-        ...state.filter((item: IYerbamate) => item.id !== action.payload.id),
-        action.payload,
-      ];
+      return action.payload;
     default:
       return state;
   }
