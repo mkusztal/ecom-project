@@ -6,12 +6,16 @@ import {
   Nav,
   Navbar,
   NavDropdown,
+  Dropdown,
   Row,
 } from "react-bootstrap";
 import { IUser } from "../../../interfaces/IUser";
 import { useSelector } from "react-redux";
 import { getUser } from "../../../redux/userReduces";
 import styles from "./NavigationBar.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCreativeCommons } from "@fortawesome/free-brands-svg-icons";
+import { SmallCart } from "../../features/SmallCart/SmallCart";
 
 export const NavigationBar: React.FC = () => {
   const localStoreUsers: IUser = useSelector(getUser);
@@ -50,19 +54,30 @@ export const NavigationBar: React.FC = () => {
               </Navbar.Collapse>
             </Col>
             <Col className={`${styles.second_column}`}>
-              {localStoreUsers === null && (
-                <Nav.Link href="/login" rel="stylesheet">
-                  Login
+              <Dropdown>
+                <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                  <FontAwesomeIcon icon={faCreativeCommons} />
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <SmallCart />
+                </Dropdown.Menu>
+              </Dropdown>
+              <div className={`${styles.login_system}`}>
+                {localStoreUsers === null && (
+                  <Nav.Link href="/login" rel="stylesheet">
+                    Login
+                  </Nav.Link>
+                )}
+                {localStoreUsers !== null && (
+                  <Nav.Link href="/logout" rel="stylesheet">
+                    Logout
+                  </Nav.Link>
+                )}
+                <Nav.Link href="/register" rel="stylesheet">
+                  Register
                 </Nav.Link>
-              )}
-              {localStoreUsers !== null && (
-                <Nav.Link href="/logout" rel="stylesheet">
-                  Logout
-                </Nav.Link>
-              )}
-              <Nav.Link href="/register" rel="stylesheet">
-                Register
-              </Nav.Link>
+              </div>
             </Col>
           </Row>
         </Container>

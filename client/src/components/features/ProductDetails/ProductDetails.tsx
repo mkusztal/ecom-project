@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Container, Form } from "react-bootstrap";
+import { Container, Form } from "react-bootstrap";
 
 type TProductDetails = {
   title: string;
@@ -10,6 +10,7 @@ type TProductDetails = {
 
 export const ProductDetails: React.FC<TProductDetails> = (props) => {
   const { title, price, size, type } = props;
+
   return (
     <div>
       <Container>
@@ -22,7 +23,6 @@ export const ProductDetails: React.FC<TProductDetails> = (props) => {
             <option value={1}>{size} kg</option>
           </Form.Select>
         </div>
-        <Button className={`w-100`}>Add to cart</Button>
       </Container>
     </div>
   );

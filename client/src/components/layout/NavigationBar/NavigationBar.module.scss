@@ -22,8 +22,13 @@
 
     .second_column {
       display: flex;
-      flex-direction: column;
-      align-items: flex-end;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .login_system {
+      margin-left: 2rem;
     }
   }
 }

@@ -10,7 +10,7 @@ export const ProductsSlider: React.FC<TProductsSlider> = (props) => {
   const { image } = props;
   return (
     <div className={`${styles.root}`}>
-      <Carousel interval={5000}>
+      <Carousel interval={5000} className={`${styles.carousel}`}>
         <Carousel.Item>
           {image && <Image src={`data:image/png;base64,${image}`} alt="1" />}
         </Carousel.Item>

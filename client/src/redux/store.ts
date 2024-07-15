@@ -4,6 +4,7 @@ import { initialState } from "./initialState";
 import { yerbamateReducer } from "./yerbamateReducer";
 import { configureStore } from "@reduxjs/toolkit";
 import { userReducer } from "./userReduces";
+import { cartReducer } from "./cartReducer";
 
 /**
  * A friendly abstraction over the standard Redux `createStore()` function.
@@ -19,6 +20,7 @@ import { userReducer } from "./userReduces";
 const subreducers = {
   yerbamate: yerbamateReducer,
   user: userReducer,
+  cart: cartReducer,
 };
 
 const reducer = combineReducers(subreducers);
