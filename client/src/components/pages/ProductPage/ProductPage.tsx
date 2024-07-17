@@ -36,11 +36,11 @@ export const ProductPage: React.FC = () => {
     const checkProduct = cartProduct.some(
       (item: IYerbamate) => item.id === product.id,
     );
-    if (!checkProduct) {
-      return () => {
+    return () => {
+      if (!checkProduct) {
         dispatch(addToCart(product));
-      };
-    }
+      }
+    };
   };
 
   return (
@@ -51,15 +51,15 @@ export const ProductPage: React.FC = () => {
             <ProductImages image={product.image} />
           </Col>
           <Col>
-            <ProductDetails
-              title={product.name}
-              price={product.price}
-              size={product.size}
-              type={product.type}
-            />
-            <Button className={`w-100`} onClick={handleAddToCart(product)}>
-              Add to cart
-            </Button>
+            {product && (
+              <ProductDetails
+                title={product.name}
+                price={product.price}
+                size={product.size}
+                type={product.type}
+                handleClick={handleAddToCart(product)}
+              />
+            )}
           </Col>
         </Row>
         <Row>

@@ -1,9 +1,16 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getCartItems, removeFromCart } from "../../../redux/cartReducer";
+import {
+  decreaseQuantity,
+  getCartItems,
+  increaseQuantity,
+  removeFromCart,
+} from "../../../redux/cartReducer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquareXing } from "@fortawesome/free-brands-svg-icons";
 import { IYerbamate } from "../../../interfaces/IYerbamate";
+import styles from "./SmallCart.module.scss";
+import { Container, Button, ListGroup } from "react-bootstrap";
 
 export const SmallCart: React.FC = () => {
   const cartItems = useSelector(getCartItems);
@@ -13,24 +20,54 @@ export const SmallCart: React.FC = () => {
     dispatch(removeFromCart(itemId));
   };
 
+  const handleIncrease = (itemId: string) => {
+    dispatch(increaseQuantity(itemId));
+  };
+
+  const handleDecrease = (itemId: string) => {
+    dispatch(decreaseQuantity(itemId));
+  };
+
   console.log(cartItems);
 
   return (
-    <div className="small-cart">
+    <Container className={`${styles.root}`}>
       {cartItems.length === 0 ? (
         <p>Your cart is empty</p>
       ) : (
-        <ul>
+        <ListGroup className={`${styles.list}`}>
           {cartItems.map((item: IYerbamate) => (
-            <li key={item.id}>
-              {item.name} - ${item.price}
-              <button onClick={() => handleRemove(item.id)}>
+            <ListGroup.Item key={item.id} className={`${styles.items}`}>
+              {item.name} - ${item.price * item.quantity}
+              <Button
+                variant="outline-primary"
+                size="sm"
+                onClick={() => handleIncrease(item.id)}
+                className="mx-2"
+              >
+                +
+              </Button>
+              <p>{item.quantity}</p>
+              <Button
+                variant="outline-primary"
+                size="sm"
+                onClick={() => handleDecrease(item.id)}
+                className="mx-2"
+              >
+                -
+              </Button>
+              <Button
+                variant="outline-danger"
+                size="sm"
+                onClick={() => handleRemove(item.id)}
+                className="mx-2"
+              >
                 <FontAwesomeIcon icon={faSquareXing} />
-              </button>
-            </li>
+              </Button>
+            </ListGroup.Item>
           ))}
-        </ul>
+        </ListGroup>
       )}
-    </div>
+    </Container>
   );
 };

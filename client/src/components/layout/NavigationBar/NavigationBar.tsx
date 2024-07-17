@@ -59,7 +59,7 @@ export const NavigationBar: React.FC = () => {
                   <FontAwesomeIcon icon={faCreativeCommons} />
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu>
+                <Dropdown.Menu className={`${styles.dropdown_menu}`}>
                   <SmallCart />
                 </Dropdown.Menu>
               </Dropdown>
