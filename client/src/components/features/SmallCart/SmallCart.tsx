@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquareXing } from "@fortawesome/free-brands-svg-icons";
 import { IYerbamate } from "../../../interfaces/IYerbamate";
 import styles from "./SmallCart.module.scss";
-import { Container, Button, ListGroup } from "react-bootstrap";
+import { Container, Button, ListGroup, Image } from "react-bootstrap";
 
 export const SmallCart: React.FC = () => {
   const cartItems = useSelector(getCartItems);
@@ -33,37 +33,47 @@ export const SmallCart: React.FC = () => {
   return (
     <Container className={`${styles.root}`}>
       {cartItems.length === 0 ? (
-        <p>Your cart is empty</p>
+        <p className={`${styles.empty_text}`}>Your cart is empty</p>
       ) : (
         <ListGroup className={`${styles.list}`}>
           {cartItems.map((item: IYerbamate) => (
             <ListGroup.Item key={item.id} className={`${styles.items}`}>
-              {item.name} - ${item.price * item.quantity}
-              <Button
-                variant="outline-primary"
-                size="sm"
-                onClick={() => handleIncrease(item.id)}
-                className="mx-2"
-              >
-                +
-              </Button>
-              <p>{item.quantity}</p>
-              <Button
-                variant="outline-primary"
-                size="sm"
-                onClick={() => handleDecrease(item.id)}
-                className="mx-2"
-              >
-                -
-              </Button>
-              <Button
-                variant="outline-danger"
-                size="sm"
-                onClick={() => handleRemove(item.id)}
-                className="mx-2"
-              >
-                <FontAwesomeIcon icon={faSquareXing} />
-              </Button>
+              <Image
+                src={`data:image/png;base64,${item.image}`}
+                alt="small_product"
+                className={`${styles.image_prodiuct}`}
+              />
+              <div>
+                <p>{item.name}</p>
+                <p>Total price: ${item.price * item.quantity}</p>
+              </div>
+              <div className={`${styles.div_buttons}`}>
+                <Button
+                  variant="outline-primary"
+                  size="sm"
+                  onClick={() => handleIncrease(item.id)}
+                  className={`mx-2 ${styles.buttons}`}
+                >
+                  +
+                </Button>
+                <p>{item.quantity}</p>
+                <Button
+                  variant="outline-primary"
+                  size="sm"
+                  onClick={() => handleDecrease(item.id)}
+                  className={`mx-2 ${styles.buttons}`}
+                >
+                  -
+                </Button>
+                <Button
+                  variant="outline-danger"
+                  size="sm"
+                  onClick={() => handleRemove(item.id)}
+                  className={`mx-2 ${styles.buttons}`}
+                >
+                  <FontAwesomeIcon icon={faSquareXing} />
+                </Button>
+              </div>
             </ListGroup.Item>
           ))}
         </ListGroup>

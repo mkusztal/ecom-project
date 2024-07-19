@@ -27,8 +27,11 @@
       justify-content: flex-end;
     }
 
-    .dropdown_menu {
-      left: -12rem;
+    .dropdown_menu_empty {
+      left: -6.5rem;
+    }
+    .dropdown_menu_with_items {
+      left: -28rem;
     }
 
     .login_system {

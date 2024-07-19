@@ -16,9 +16,11 @@ import styles from "./NavigationBar.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCreativeCommons } from "@fortawesome/free-brands-svg-icons";
 import { SmallCart } from "../../features/SmallCart/SmallCart";
+import { getCartItems } from "../../../redux/cartReducer";
 
 export const NavigationBar: React.FC = () => {
   const localStoreUsers: IUser = useSelector(getUser);
+  const cartItems = useSelector(getCartItems);
 
   return (
     <div>
@@ -59,7 +61,13 @@ export const NavigationBar: React.FC = () => {
                   <FontAwesomeIcon icon={faCreativeCommons} />
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu className={`${styles.dropdown_menu}`}>
+                <Dropdown.Menu
+                  className={
+                    cartItems.length > 0
+                      ? `${styles.dropdown_menu_with_items}`
+                      : `${styles.dropdown_menu_empty}`
+                  }
+                >
                   <SmallCart />
                 </Dropdown.Menu>
               </Dropdown>
