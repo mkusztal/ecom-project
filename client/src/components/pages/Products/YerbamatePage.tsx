@@ -20,7 +20,7 @@ export const YerbamatePage: React.FC = () => {
     <div className={`${styles.root}`}>
       <Container>
         <Row className={`${styles.row}`}>
-          {yerbamateData ? (
+          {yerbamateData.length > 0 ? (
             yerbamateData.map((e) => {
               return (
                 <Col key={e.id} xs={12} sm={6} md={4} lg={3} className="mb-4">

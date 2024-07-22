@@ -6,7 +6,7 @@ const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 const INCREASE_QUANTITY = "INCREASE_QUANTITY";
 const DECREASE_QUANTITY = "DECREASE_QUANTITY";
 
-export const getCartItems = ({ cart }: any): IYerbamate[] => cart;
+export const getCartItems = ({ cart }: any): IYerbamate[] | [] => cart;
 
 export const addToCart = (item: IYerbamate) => ({
   type: ADD_TO_CART,

@@ -1,3 +1,5 @@
+@import "../../../styles/variables.module.scss";
+// @import "../../../index.tsx/bootstrap";
 .navbar {
   border-bottom: solid 2px black;
   margin-bottom: 2rem;
@@ -36,6 +38,43 @@
 
     .login_system {
       margin-left: 2rem;
+    }
+  }
+
+  .div_basket_link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  // .basket_link {
+  //   text-decoration: none;
+  //   color: black;
+  //   border: solid 5px $button_color;
+  //   background-color: $button_color;
+  //   padding: 5px;
+  // }
+
+  .basket_link {
+    // @extend .btn; // Extend the Bootstrap button class
+    background-color: $button_color;
+    color: white; // Ensure the text color is white
+    border: solid 5px $button_color;
+    padding: 5px 10px; // Adjust padding for better appearance
+    text-decoration: none;
+
+    &:hover {
+      background-color: darken(
+        $button_color,
+        10%
+      ); // Darken on hover for effect
+      border-color: darken($button_color, 10%);
+      text-decoration: none; // Ensure no underline on hover
+    }
+
+    &:focus {
+      outline: none; // Remove default outline
+      box-shadow: 0 0 0 0.2rem rgba($button_color, 0.5); // Bootstrap focus shadow
     }
   }
 }

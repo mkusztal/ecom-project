@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Col,
   Container,
@@ -17,10 +17,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCreativeCommons } from "@fortawesome/free-brands-svg-icons";
 import { SmallCart } from "../../features/SmallCart/SmallCart";
 import { getCartItems } from "../../../redux/cartReducer";
+import { Link } from "react-router-dom";
 
 export const NavigationBar: React.FC = () => {
+  const [show, setShow] = useState(false);
   const localStoreUsers: IUser = useSelector(getUser);
   const cartItems = useSelector(getCartItems);
+
+  const handleToggle = () => setShow(!show);
+  const handleClose = () => setShow(false);
 
   return (
     <div>
@@ -56,7 +61,7 @@ export const NavigationBar: React.FC = () => {
               </Navbar.Collapse>
             </Col>
             <Col className={`${styles.second_column}`}>
-              <Dropdown>
+              <Dropdown show={show} onToggle={handleToggle}>
                 <Dropdown.Toggle variant="secondary" id="dropdown-basic">
                   <FontAwesomeIcon icon={faCreativeCommons} />
                 </Dropdown.Toggle>
@@ -69,6 +74,16 @@ export const NavigationBar: React.FC = () => {
                   }
                 >
                   <SmallCart />
+                  <Dropdown.Divider />
+                  <div className={`${styles.div_basket_link}`}>
+                    <Link
+                      to={`/basket`}
+                      className={`${styles.basket_link}`}
+                      onClick={handleClose}
+                    >
+                      Open basket
+                    </Link>
+                  </div>
                 </Dropdown.Menu>
               </Dropdown>
               <div className={`${styles.login_system}`}>
@@ -84,6 +99,9 @@ export const NavigationBar: React.FC = () => {
                 )}
                 <Nav.Link href="/register" rel="stylesheet">
                   Register
+                </Nav.Link>
+                <Nav.Link href="/basket" rel="stylesheet">
+                  Basket
                 </Nav.Link>
               </div>
             </Col>

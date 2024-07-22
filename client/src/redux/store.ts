@@ -5,6 +5,7 @@ import { yerbamateReducer } from "./yerbamateReducer";
 import { configureStore } from "@reduxjs/toolkit";
 import { userReducer } from "./userReduces";
 import { cartReducer } from "./cartReducer";
+import { loadState, saveState } from "../utils/localstore";
 
 /**
  * A friendly abstraction over the standard Redux `createStore()` function.
@@ -24,6 +25,7 @@ const subreducers = {
 };
 
 const reducer = combineReducers(subreducers);
+const preloadedState = loadState();
 
 // export const store: Store<RootState> = configureStore({
 //   reducer,
@@ -37,12 +39,16 @@ const reducer = combineReducers(subreducers);
 
 export const store = configureStore({
   reducer,
-  preloadedState: initialState,
+  preloadedState, //: initialState,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
     }),
   devTools: true,
+});
+
+store.subscribe(() => {
+  saveState(store.getState());
 });
 
 export type AppDispatch = typeof store.dispatch;
