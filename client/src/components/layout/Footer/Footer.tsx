@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 export const Footer: React.FC = () => {
   return (
     <div className={`${styles.root}`}>
-      <Image src="images/tree.jpg" className={`${styles.tree_image}`} />
+      <Image src={`images/tree.jpg`} className={`${styles.tree_image}`} />
       <footer className={`${styles.footer} text-dark mt-auto`}>
         <Container className={`${styles.container}`}>
           <Row>

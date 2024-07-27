@@ -110,7 +110,7 @@ export const NavigationBar: React.FC = () => {
       </Navbar>
 
       <Image
-        src="images/grass.jpg"
+        src={`images/grass.jpg`}
         alt="grass"
         className={`${styles.grass_image}`}
       />

@@ -1,0 +1,10 @@
+@import "../../../styles/variables.module.scss";
+
+.root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .search_bar {
+    border: solid 2px $bg-brown;
+  }
+}
