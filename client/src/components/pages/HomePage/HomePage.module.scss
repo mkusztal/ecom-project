@@ -1,8 +1,4 @@
 .root {
-  display: flex;
-  align-items: start;
-  width: 100%;
-
   .p,
   .li {
     font-weight: 400;
@@ -11,19 +7,10 @@
   }
 
   .row {
-    margin: 2rem 0 7rem 0;
+    margin: 2rem 0 10rem 0;
     display: flex;
     justify-content: end;
     align-items: center;
-  }
-
-  .background {
-    position: absolute;
-    width: 100%;
-    height: 25%;
-    margin: 0;
-    left: 0;
-    object-fit: cover;
   }
 
   .first_row_colum {

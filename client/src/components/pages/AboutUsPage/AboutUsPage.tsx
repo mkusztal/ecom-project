@@ -1,80 +1,38 @@
-import React, { useEffect } from "react";
-import { Container, Row, Image, Col } from "react-bootstrap";
+import React from "react";
+import { Container, Row, Image } from "react-bootstrap";
 import styles from "./AboutUsPage.module.scss";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 const AboutUsPage: React.FC = () => {
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const scaleFactor = Math.max(0.2, 1 - scrollY / 1000);
-
-      document
-        .querySelectorAll<HTMLElement>(".verticalLine, .horizontalLine")
-        .forEach((line) => {
-          if (line.classList.contains("horizontalLine")) {
-            line.style.height = `${scaleFactor * 100}%`;
-          } else {
-            line.style.width = `${scaleFactor * 100}%`;
-          }
-        });
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
     <div className={`${styles.root}`}>
       <Container className={`${styles.container}`}>
         <Row className={`${styles.rows}`}>
-          <Col className={`${styles.col}`}>
-            <Image
-              src={`images/yerba2.jpg`}
-              alt="YerbaOfficial"
-              className={`${styles.images}`}
+          <Image
+            src="images/yerba_slider_homepage3.jpg"
+            alt="YerbaOfficial"
+            className={`${styles.background}`}
+          />
+          <div>
+            Something went wrong! That's not me!
+            <FontAwesomeIcon
+              icon={faArrowUp}
+              className={`${styles.arrow_icon}`}
             />
-          </Col>
-          <Col className={`${styles.col}`}>
-            <Image
-              src={`images/yerba2.jpg`}
-              alt="YerbaOfficial"
-              className={`${styles.images}`}
-            />
-          </Col>
-        </Row>
-
-        <Row className={`${styles.rows} ${styles.square_row}`}>
-          <Col xs={6} className={`${styles.col} mb-5`}>
-            <h3>Contact with us</h3>
-            <Link to={"/contact"} target="_blank" rel="noreferrer">
-              Contact us
+          </div>
+          <div className={`${styles.contact_info}`}>
+            <h3>Would you like to get more information?</h3>
+            <Link
+              to={"/contact"}
+              target="_blank"
+              rel="noreferrer"
+              className={`${styles.slide__link}`}
+            >
+              Contact us!
             </Link>
-          </Col>
-          <Col xs={6} className={`${styles.col} mb-5`}>
-            <h3>Contact with us</h3>
-            <Link to={"/contact"} target="_blank" rel="noreferrer">
-              Contact us
-            </Link>
-          </Col>
-          {/* Add two lines verical and horizontal */}
-          <div className={`${styles.verticalLine}`}></div>
-          <div className={`${styles.horizontalLine}`}></div>
-          <Col xs={6} className={`${styles.col}`}>
-            <h3>Contact with us</h3>
-            <Link to={"/contact"} target="_blank" rel="noreferrer">
-              Contact us
-            </Link>
-          </Col>
-          <Col xs={6} className={`${styles.col}`}>
-            <h3>Contact with us</h3>
-            <Link to={"/contact"} target="_blank" rel="noreferrer">
-              Contact us
-            </Link>
-          </Col>
+          </div>
         </Row>
       </Container>
     </div>

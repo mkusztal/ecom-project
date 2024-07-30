@@ -1,47 +1,64 @@
 import React from "react";
-import { Carousel, Image, Button } from "react-bootstrap";
+import { Carousel, Image } from "react-bootstrap";
 import styles from "./HomePageSlider.module.scss";
+import { Link } from "react-router-dom";
 
 export const HomePageSlider: React.FC = () => {
   return (
     <div className={`${styles.root}`}>
-      <Carousel interval={5000}>
-        <Carousel.Item>
-          {/* <ExampleCarouselImage text="First slide" /> */}
+      <Carousel interval={4000}>
+        <Carousel.Item className={`${styles.items}`}>
           <Image
-            src="images/yerba2.jpg"
+            src="images/yerba_slider_homepage1.jpg"
             alt="YerbaOfficial"
             className={styles.background}
           />
           <Carousel.Caption>
-            {/* <Col xs={6} md={6} className={styles.first_row_colum}> */}
-            <h2>Hello! I will help you to find your favourite yerba mate...</h2>
-            <Button className={styles.first_slide_button}>Read more</Button>
-            {/* </Col> */}
+            <h3>Let's see our products!</h3>
+            <Link
+              to={"/yerbamate"}
+              target="_blank"
+              rel="noreferrer"
+              className={`${styles.slide__link}`}
+            >
+              Open products page
+            </Link>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item>
+        <Carousel.Item className={`${styles.items}`}>
           <Image
-            src="images/yerba2.jpg"
+            src="images/yerba_slider_homepage3.jpg"
             alt="YerbaOfficial"
-            className={styles.background}
+            className={`${styles.background}`}
           />
           <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h3>Our culture</h3>
+            <Link
+              to={"/aboutus"}
+              target="_blank"
+              rel="noreferrer"
+              className={`${styles.slide__link}`}
+            >
+              About us!
+            </Link>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item>
+        <Carousel.Item className={`${styles.items}`}>
           <Image
-            src="images/yerba2.jpg"
+            src="images/contact_info.jpg"
             alt="YerbaOfficial"
-            className={styles.background}
+            className={`${styles.background}`}
           />
           <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
+            <h3>Would you like to get more information?</h3>
+            <Link
+              to={"/contact"}
+              target="_blank"
+              rel="noreferrer"
+              className={`${styles.slide__link}`}
+            >
+              Contact us!
+            </Link>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

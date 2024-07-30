@@ -1,8 +1,5 @@
-import React, { useEffect } from "react";
-import { IYerbamate } from "../../../interfaces/IYerbamate";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchYerbamate, getYerbamate } from "../../../redux/yerbamateReducer";
-import { Button, Col, Container, Image, Row } from "react-bootstrap";
+import React from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import styles from "./HomePage.module.scss";
 import { HomePageSlider } from "../../features/HomePageSlider/HomePageSlider";
 
@@ -35,6 +32,9 @@ export const HomePage: React.FC = () => {
         <Row className={`${styles.row}`}>
           <HomePageSlider />
         </Row>
+        {/* <Row className={`${styles.row}`}>
+          <ContactInfo />
+        </Row> */}
       </Container>
     </div>
   );
