@@ -1,0 +1,66 @@
+.root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .background {
+    width: 70%;
+    height: 300px;
+    object-fit: cover;
+    position: absolute;
+    opacity: 0.6;
+  }
+
+  .div_elements {
+    display: flex;
+    justify-content: center;
+  }
+
+  p {
+    z-index: 1;
+    padding: 0 50px 0 50px;
+    font-weight: 700;
+    font-style: italic;
+    color: red;
+  }
+
+  .first_slide__link {
+    z-index: 1;
+    background-color: #27ae60 !important;
+    margin-top: 2rem;
+    position: absolute;
+
+    color: white; // Ensure the text color is white
+    border: solid 1px #27ae60 !important;
+
+    padding: 5px 10px; // Adjust padding for better appearance
+    text-decoration: none;
+
+    &:hover {
+      background-color: darken(#27ae60, 10%); // Darken on hover for effect
+      border-color: darken(#27ae60, 10%);
+      text-decoration: none; // Ensure no underline on hover
+    }
+
+    &:focus {
+      outline: none; // Remove default outline
+      box-shadow: 0 0 0 0.2rem rgba(#27ae60, 0.5); // Bootstrap focus shadow
+    }
+  }
+}
+
+@media (min-width: 2560px) {
+  .root {
+    .background {
+      width: 50%;
+    }
+  }
+}
+
+@media (max-width: 1440px) {
+  .root {
+    .background {
+      width: 89%;
+    }
+  }
+}
