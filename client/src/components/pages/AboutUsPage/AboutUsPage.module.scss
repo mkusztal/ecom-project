@@ -1,0 +1,56 @@
+@import "../../../styles/variables.module.scss";
+
+.root {
+  height: 80vh;
+
+  .images {
+    width: 200px;
+    height: 150px;
+  }
+
+  .rows {
+    margin: 1rem 0 3rem 0;
+  }
+
+  .square_row {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    height: 200px;
+  }
+
+  .col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .verticalLine,
+  .horizontalLine {
+    position: absolute;
+    left: 50%;
+    border-radius: 50px;
+    width: 2px;
+    background-color: $bg-brown;
+    opacity: 0.8;
+    z-index: 1;
+    transition: all 0.5s ease;
+  }
+
+  .verticalLine {
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    transform-origin: center;
+  }
+
+  .horizontalLine {
+    left: 50%;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    transform: rotate(90deg);
+    transform-origin: center;
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { IYerbamate } from "../../../interfaces/IYerbamate";
 import { fetchYerbamate, getYerbamate } from "../../../redux/yerbamateReducer";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,22 +7,52 @@ import { Col, Container, Row } from "react-bootstrap";
 import { NotFound } from "../../features/NotFound/NotFound";
 import styles from "./YerbaPage.module.scss";
 import { PaginationComponent } from "../../features/Pagination/PaginationComponent";
+import { SearchBar } from "../../features/SearchBar/SearchBar";
 
 export const YerbamatePage: React.FC = () => {
   const yerbamateData: IYerbamate[] = useSelector(getYerbamate);
   const dispatch = useDispatch();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [inputSearchText, setInputSearchText] = useState("");
+
+  const itemsPerPage = 8;
 
   useEffect(() => {
     dispatch(fetchYerbamate());
   }, [dispatch]);
 
-  console.log("yerbamateData: ", yerbamateData);
+  if (yerbamateData.length < 0) {
+    throw new Error("Invalid yerbamateData");
+  }
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = yerbamateData.slice(indexOfFirstItem, indexOfLastItem);
+
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const filteredItems = yerbamateData.filter((product) =>
+    product.name.toLowerCase().includes(inputSearchText.toLowerCase()),
+  );
+
+  const itemsToDisplay = inputSearchText ? filteredItems : currentItems;
+
   return (
     <div className={`${styles.root}`}>
       <Container>
+        <Row>
+          <SearchBar
+            yerbamateData={yerbamateData}
+            inputText={inputSearchText}
+            setInputText={setInputSearchText}
+          />
+        </Row>
+
         <Row className={`${styles.row}`}>
-          {yerbamateData ? (
-            yerbamateData.map((e) => {
+          {itemsToDisplay.length > 0 ? (
+            itemsToDisplay.map((e) => {
               return (
                 <Col key={e.id} xs={12} sm={6} md={4} lg={3} className="mb-4">
                   <ProductCards
@@ -40,7 +70,14 @@ export const YerbamatePage: React.FC = () => {
           )}
         </Row>
         <Row>
-          <PaginationComponent />
+          {!inputSearchText && (
+            <PaginationComponent
+              totalItems={yerbamateData.length}
+              itemsPerPage={itemsPerPage}
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+            />
+          )}
         </Row>
       </Container>
     </div>

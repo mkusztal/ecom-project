@@ -1,0 +1,29 @@
+@import "../../../styles/variables.module.scss";
+
+.root {
+  position: relative;
+
+  .footer {
+    border-top: solid 2px black;
+
+    .links {
+      margin-right: 1rem;
+      font-size: 2rem;
+      color: $button-color;
+    }
+
+    .copyright {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .tree_image {
+    position: absolute;
+    opacity: 0.4;
+    z-index: -1;
+    bottom: 0;
+    right: 0;
+  }
+}

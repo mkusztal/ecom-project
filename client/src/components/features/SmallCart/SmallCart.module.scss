@@ -1,0 +1,39 @@
+.root {
+  .list {
+    width: 30rem !important;
+  }
+
+  .image_prodiuct {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .empty_text {
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+  }
+
+  .items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .buttons {
+    height: 2rem;
+    width: 3rem;
+  }
+
+  .div_buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .div_buttons p {
+    margin: 0;
+  }
+}

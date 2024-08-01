@@ -6,4 +6,5 @@ export interface IYerbamate {
   commission: number;
   type: string;
   image: string;
+  quantity: number;
 }

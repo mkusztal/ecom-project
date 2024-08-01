@@ -1,35 +1,54 @@
-import { combineReducers, Store } from "redux";
-import { thunk, ThunkMiddleware } from "redux-thunk";
+import { combineReducers } from "redux";
+// import { thunk, ThunkMiddleware } from "redux-thunk";
 import { initialState } from "./initialState";
 import { yerbamateReducer } from "./yerbamateReducer";
 import { configureStore } from "@reduxjs/toolkit";
 import { userReducer } from "./userReduces";
+import { cartReducer } from "./cartReducer";
+import { loadState, saveState } from "../utils/localstore";
 
 /**
  * A friendly abstraction over the standard Redux `createStore()` function.
  *
  * @param options The store configuration.
- * @devTools {boolean | DevToolsOptions} true - instead of using composeWithDevTools function
+ * @param devTools {boolean | DevToolsOptions} true - instead of using composeWithDevTools function
  *
  */
 
-type RootState = ReturnType<typeof reducer>;
+// it generate issue Dispatch -> redux-thunk
+// type RootState = ReturnType<typeof reducer>;
 
 const subreducers = {
   yerbamate: yerbamateReducer,
   user: userReducer,
+  cart: cartReducer,
 };
 
 const reducer = combineReducers(subreducers);
+const preloadedState = loadState();
 
-export const store: Store<RootState> = configureStore({
+// export const store: Store<RootState> = configureStore({
+//   reducer,
+//   preloadedState: initialState,
+//   middleware: (getDefaultMiddleware) =>
+//     getDefaultMiddleware({
+//       serializableCheck: false,
+//     }).concat(thunk as ThunkMiddleware<RootState>),
+//   devTools: true, // or DevToolsOptions
+// });
+
+export const store = configureStore({
   reducer,
-  preloadedState: initialState,
+  preloadedState, //: initialState,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
-    }).concat(thunk as ThunkMiddleware<RootState>),
-  devTools: true, // or DevToolsOptions
+    }),
+  devTools: true,
+});
+
+store.subscribe(() => {
+  saveState(store.getState());
 });
 
 export type AppDispatch = typeof store.dispatch;

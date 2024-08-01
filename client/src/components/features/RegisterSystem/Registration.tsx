@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Alert } from "react-bootstrap";
 import { registerValidation } from "../../../utils/validation";
 import { API_URL } from "../../../config/urls";
+import styles from "./Registration.module.scss";
+import { statuses } from "../../../utils/statuses";
 
 export const Registration: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -32,13 +34,13 @@ export const Registration: React.FC = () => {
     fetch(`${API_URL}api/registration`, options)
       .then((res) => {
         if (res.status === 200) {
-          setStatus("Success");
+          setStatus(statuses.SUCCESS);
         } else if (res.status === 400) {
-          setStatus("ClientError");
+          setStatus(statuses.CLIENT_ERROR);
         } else if (res.status === 409) {
-          setStatus("LoginEmailError");
+          setStatus(statuses.INPUT_ERROR);
         } else {
-          setStatus("ServerError");
+          setStatus(statuses.SERVER_ERROR);
         }
 
         setEmail("");
@@ -50,10 +52,29 @@ export const Registration: React.FC = () => {
   };
 
   return (
-    <div>
-      <Form className="w-25" onSubmit={handleSubmit}>
+    <div className={`${styles.root}`}>
+      <h2 className="text-center">Sign up</h2>
+      <br></br>
+      <Form onSubmit={handleSubmit}>
+        {status === "Success" && (
+          <Alert key="success" variant="success">
+            Welcome!
+          </Alert>
+        )}
+
+        {status === "ClientError" && (
+          <Alert key="warning" variant="warning">
+            Something went wrong!
+          </Alert>
+        )}
+
+        {status === "ServerError" && (
+          <Alert key="danger" variant="danger">
+            Technical issue!
+          </Alert>
+        )}
         <Form.Group className="mb-3" controlId="formGroupEmail">
-          <Form.Label>Email address</Form.Label>
+          <Form.Label className={`${styles.label}`}>Email address</Form.Label>
           <Form.Control
             type="email"
             placeholder="Enter email"
@@ -62,7 +83,7 @@ export const Registration: React.FC = () => {
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formGroupPassword">
-          <Form.Label>Password</Form.Label>
+          <Form.Label className={`${styles.label}`}>Password</Form.Label>
           <Form.Control
             type="password"
             placeholder="Password"
@@ -71,7 +92,7 @@ export const Registration: React.FC = () => {
           />
         </Form.Group>
         <Button
-          variant="primary"
+          className={`${styles.main_button}`}
           type="submit"
           disabled={!validateUserData}
           onClick={handleSubmit}

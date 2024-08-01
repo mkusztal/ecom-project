@@ -1,0 +1,21 @@
+@import "../../../styles/variables.module.scss";
+/* PaginationComponent.module.scss */
+.custom-pagination {
+  .page-item.active .page-link {
+    background-color: $bg-brown; /* Active page background color */
+    border-color: $bg-brown; /* Active page border color */
+  }
+
+  .page-link {
+    color: $bg-brown; /* Page link color */
+  }
+
+  .page-link:hover {
+    background-color: $bg-brown; /* Hover background color */
+    border-color: $bg-brown; /* Hover border color */
+  }
+
+  .page-item.disabled .page-link {
+    color: #6c757d; /* Disabled link color */
+  }
+}
