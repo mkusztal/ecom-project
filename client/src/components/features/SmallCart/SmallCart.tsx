@@ -32,9 +32,7 @@ export const SmallCart: React.FC = () => {
 
   return (
     <Container className={`${styles.root}`}>
-      {cartItems.length === 0 ? (
-        <p className={`${styles.empty_text}`}>Your cart is empty</p>
-      ) : (
+      {cartItems.length > 0 ? (
         <ListGroup className={`${styles.list}`}>
           {cartItems.map((item: IYerbamate) => (
             <ListGroup.Item key={item.id} className={`${styles.items}`}>
@@ -77,6 +75,8 @@ export const SmallCart: React.FC = () => {
             </ListGroup.Item>
           ))}
         </ListGroup>
+      ) : (
+        <p className={`${styles.empty_text}`}>Your cart is empty</p>
       )}
     </Container>
   );

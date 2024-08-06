@@ -7,6 +7,7 @@ export const getUser = (state: any): IUser => state.user;
 const createActionName = (actionName: string) => `app/users/${actionName}`;
 const LOG_IN = createActionName("LOG_IN");
 const LOG_OUT = createActionName("LOG_OUT");
+export const CLEAR_USER_STORE = createActionName("CLEAR_USER_STORE");
 
 export const logIn = (payload: any) => ({
   type: LOG_IN,
@@ -25,6 +26,8 @@ export const userReducer = (state = initialState, action: any) => {
       };
     case LOG_OUT:
       return null;
+    case CLEAR_USER_STORE:
+      return initialState.user;
     default:
       return state;
   }

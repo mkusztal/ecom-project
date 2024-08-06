@@ -11,7 +11,7 @@ import {
 } from "react-bootstrap";
 import { IUser } from "../../../interfaces/IUser";
 import { useSelector } from "react-redux";
-import { getUser } from "../../../redux/userReduces";
+import { getUser } from "../../../redux/userReducer";
 import styles from "./NavigationBar.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCreativeCommons } from "@fortawesome/free-brands-svg-icons";

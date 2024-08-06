@@ -2,6 +2,7 @@ import React from "react";
 import { IYerbamate } from "../../../interfaces/IYerbamate";
 import { Container, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { totalmem } from "os";
 
 type BasketSummaryProps = {
   cartItems: IYerbamate[];
@@ -13,10 +14,10 @@ export const BasketSummary: React.FC<BasketSummaryProps> = (props) => {
   // sum all products price
   // Add button navigate to payment
 
-  const totalPrice = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0,
-  );
+  const totalPrice =
+    cartItems.length > 0
+      ? cartItems.reduce((total, item) => total + item.price * item.quantity, 0)
+      : 0;
 
   return (
     <div>

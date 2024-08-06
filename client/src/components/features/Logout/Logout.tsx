@@ -1,7 +1,7 @@
 import { API_URL } from "../../../config/urls";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { logOut } from "../../../redux/userReduces";
+import { logOut } from "../../../redux/userReducer";
 import React, { useEffect } from "react";
 
 export const Logout: React.FC = () => {

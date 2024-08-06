@@ -34,9 +34,7 @@ export const BasketProducts: React.FC<BasketProductsProps> = (props) => {
 
   return (
     <div className={`${styles.root}`}>
-      {cartItems.length === 0 ? (
-        <p className={`${styles.empty_text}`}>Promotion</p>
-      ) : (
+      {cartItems && cartItems.length > 0 ? (
         <ListGroup className={`${styles.list}`}>
           {cartItems.map((item: IYerbamate) => (
             <ListGroup.Item key={item.id} className={`${styles.items}`}>
@@ -79,6 +77,8 @@ export const BasketProducts: React.FC<BasketProductsProps> = (props) => {
             </ListGroup.Item>
           ))}
         </ListGroup>
+      ) : (
+        <p className={`${styles.empty_text}`}>Empty</p>
       )}
     </div>
   );

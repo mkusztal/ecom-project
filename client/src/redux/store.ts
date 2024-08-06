@@ -3,7 +3,7 @@ import { combineReducers } from "redux";
 import { initialState } from "./initialState";
 import { yerbamateReducer } from "./yerbamateReducer";
 import { configureStore } from "@reduxjs/toolkit";
-import { userReducer } from "./userReduces";
+import { userReducer } from "./userReducer";
 import { cartReducer } from "./cartReducer";
 import { loadState, saveState } from "../utils/localstore";
 

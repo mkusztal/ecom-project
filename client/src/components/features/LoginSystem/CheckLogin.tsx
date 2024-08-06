@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { logIn } from "../../../redux/userReduces";
+import { logIn } from "../../../redux/userReducer";
 import { jwtDecode, JwtPayload } from "jwt-decode";
 
 export const CheckLogin: React.FC = () => {

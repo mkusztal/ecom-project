@@ -21,21 +21,27 @@ export const YerbamatePage: React.FC = () => {
     dispatch(fetchYerbamate());
   }, [dispatch]);
 
-  if (yerbamateData.length < 0) {
+  if (yerbamateData.length === 0) {
     throw new Error("Invalid yerbamateData");
   }
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = yerbamateData.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems =
+    yerbamateData.length > 0
+      ? yerbamateData.slice(indexOfFirstItem, indexOfLastItem)
+      : 0;
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
 
-  const filteredItems = yerbamateData.filter((product) =>
-    product.name.toLowerCase().includes(inputSearchText.toLowerCase()),
-  );
+  const filteredItems =
+    yerbamateData.length > 0
+      ? yerbamateData.filter((product) =>
+          product.name.toLowerCase().includes(inputSearchText.toLowerCase()),
+        )
+      : 0;
 
   const itemsToDisplay = inputSearchText ? filteredItems : currentItems;
 
@@ -51,7 +57,7 @@ export const YerbamatePage: React.FC = () => {
         </Row>
 
         <Row className={`${styles.row}`}>
-          {itemsToDisplay.length > 0 ? (
+          {itemsToDisplay && itemsToDisplay.length > 0 ? (
             itemsToDisplay.map((e) => {
               return (
                 <Col key={e.id} xs={12} sm={6} md={4} lg={3} className="mb-4">
