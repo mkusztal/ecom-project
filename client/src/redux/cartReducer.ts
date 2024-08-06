@@ -31,6 +31,9 @@ export const decreaseQuantity = (itemId: string) => ({
 export const cartReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case ADD_TO_CART:
+      if (!Array.isArray(state)) {
+        state = [];
+      }
       const itemInCart = state.find(
         (item: IYerbamate) => item.id === action.payload.id,
       );

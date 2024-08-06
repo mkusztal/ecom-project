@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { registerValidation } from "../../../utils/validation";
-import { logIn } from "../../../redux/userReduces";
+import { logIn } from "../../../redux/userReducer";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../../../config/urls";

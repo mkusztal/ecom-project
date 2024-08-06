@@ -9,6 +9,7 @@ export const loadState = () => {
     return JSON.parse(serializedState);
   } catch (err) {
     console.error("Error: ", err);
+    localStorage.removeItem("state");
     return undefined;
   }
 };

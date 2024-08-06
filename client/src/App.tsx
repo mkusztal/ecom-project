@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styles from "./App.module.scss";
 import { useDispatch } from "react-redux";
-import { logIn } from "../src/redux/userReduces";
+import { logIn } from "./redux/userReducer";
 import { jwtDecode } from "jwt-decode";
 import { IDecodedToken } from "./interfaces/IDecodedToken";
 import { HomePage } from "./components/pages/HomePage/HomePage";

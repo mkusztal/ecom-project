@@ -33,9 +33,10 @@ export const ProductPage: React.FC = () => {
   }
 
   const handleAddToCart = (product: IYerbamate) => {
-    const checkProduct = cartProduct.some(
-      (item: IYerbamate) => item.id === product.id,
-    );
+    const checkProduct =
+      cartProduct.length > 0
+        ? cartProduct.some((item: IYerbamate) => item.id === product.id)
+        : false;
     return () => {
       if (!checkProduct) {
         dispatch(addToCart(product));
