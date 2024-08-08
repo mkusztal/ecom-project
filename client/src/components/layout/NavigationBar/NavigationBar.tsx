@@ -51,9 +51,9 @@ export const NavigationBar: React.FC = () => {
                       Accessories
                     </NavDropdown.Item>
                   </NavDropdown>
-                  <Nav.Link href="/aboutus" rel="stylesheet">
+                  {/* <Nav.Link href="/aboutus" rel="stylesheet">
                     About us
-                  </Nav.Link>
+                  </Nav.Link> */}
                   <Nav.Link href="/contact" rel="stylesheet">
                     Contact
                   </Nav.Link>

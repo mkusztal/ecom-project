@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 // import { thunk, ThunkMiddleware } from "redux-thunk";
-import { initialState } from "./initialState";
+// import { initialState } from "./initialState";
 import { yerbamateReducer } from "./yerbamateReducer";
 import { configureStore } from "@reduxjs/toolkit";
 import { userReducer } from "./userReducer";

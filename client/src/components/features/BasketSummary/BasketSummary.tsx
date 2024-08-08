@@ -2,7 +2,6 @@ import React from "react";
 import { IYerbamate } from "../../../interfaces/IYerbamate";
 import { Container, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { totalmem } from "os";
 
 type BasketSummaryProps = {
   cartItems: IYerbamate[];
