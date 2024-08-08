@@ -14,7 +14,7 @@ import { Logout } from "./components/features/Logout/Logout";
 import { YerbamatePage } from "./components/pages/Products/YerbamatePage";
 import { ProductPage } from "./components/pages/ProductPage/ProductPage";
 import { BasketPage } from "./components/pages/BasketPage/BasketPage";
-import AboutUsPage from "./components/pages/AboutUsPage/AboutUsPage";
+// import AboutUsPage from "./components/pages/AboutUsPage/AboutUsPage";
 import { ContactPage } from "./components/pages/ContactPage/ContactPage";
 
 const App: React.FC = () => {
@@ -39,7 +39,7 @@ const App: React.FC = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/yerbamate" element={<YerbamatePage />} />
         <Route path="/yerbamate/:id" element={<ProductPage />} />
-        <Route path="/aboutus" element={<AboutUsPage />} />
+        {/* <Route path="/aboutus" element={<AboutUsPage />} /> */}
         <Route path="/basket" element={<BasketPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />

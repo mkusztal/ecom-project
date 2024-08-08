@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Col, Row, Container, Button } from "react-bootstrap";
+import { Col, Row, Container } from "react-bootstrap";
 import { ProductDetails } from "../../features/ProductDetails/ProductDetails";
 import { ProductImages } from "../../features/ProductImages/ProductImages";
 import { useParams } from "react-router-dom";
