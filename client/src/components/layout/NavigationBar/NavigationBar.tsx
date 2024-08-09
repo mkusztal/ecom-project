@@ -29,7 +29,8 @@ export const NavigationBar: React.FC = () => {
 
   return (
     <div>
-      <Navbar collapseOnSelect expand="lg" className={`${styles.navbar} wrap`}>
+      {/* expand="lg"  */}
+      <Navbar collapseOnSelect className={`${styles.navbar} wrap`}>
         <Container fluid className="d-flex flex-column">
           <Row className="w-100">
             <Col className="text-center">

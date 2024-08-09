@@ -56,25 +56,21 @@
   // }
 
   .basket_link {
-    // @extend .btn; // Extend the Bootstrap button class
     background-color: $button_color;
-    color: white; // Ensure the text color is white
+    color: white;
     border: solid 5px $button_color;
-    padding: 5px 10px; // Adjust padding for better appearance
+    padding: 5px 10px;
     text-decoration: none;
 
     &:hover {
-      background-color: darken(
-        $button_color,
-        10%
-      ); // Darken on hover for effect
+      background-color: darken($button_color, 10%);
       border-color: darken($button_color, 10%);
-      text-decoration: none; // Ensure no underline on hover
+      text-decoration: none;
     }
 
     &:focus {
-      outline: none; // Remove default outline
-      box-shadow: 0 0 0 0.2rem rgba($button_color, 0.5); // Bootstrap focus shadow
+      outline: none;
+      box-shadow: 0 0 0 0.2rem rgba($button_color, 0.5);
     }
   }
 }
@@ -85,4 +81,110 @@
   z-index: -1;
   left: 0;
   top: 0;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    font-size: 14px;
+
+    .navbar-toggler {
+      padding: 0.5rem 1rem;
+      font-size: 1.5rem;
+      margin-right: 1rem;
+    }
+
+    .title {
+      font-size: 1.5rem;
+    }
+
+    .second_row {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .first_column {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .second_column {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 1rem;
+      }
+
+      .login_system {
+        margin-left: 0;
+      }
+    }
+
+    .dropdown-menu {
+      font-size: 0.9rem;
+    }
+  }
+
+  .basket_link {
+    padding: 8px 12px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .navbar {
+    font-size: 16px;
+
+    .navbar-toggler {
+      padding: 0.4rem 0.75rem;
+      font-size: 1.25rem;
+      margin-right: 1rem;
+    }
+
+    .title {
+      font-size: 1.75rem;
+    }
+
+    .second_row {
+      flex-direction: row;
+      align-items: center;
+
+      .dropdown_menu_empty,
+      .dropdown_menu_with_items {
+        position: absolute;
+        left: -5rem;
+      }
+    }
+
+    .dropdown-menu {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (max-width: 430px) {
+  .navbar {
+    font-size: 12px;
+
+    .navbar-toggler {
+      padding: 0.4rem 0.75rem;
+      font-size: 1.25rem;
+      margin-right: 1rem;
+    }
+
+    .title {
+      font-size: 1.75rem;
+    }
+
+    .second_row {
+      flex-direction: row;
+      align-items: center;
+
+      .dropdown_menu_empty,
+      .dropdown_menu_with_items {
+        position: absolute;
+        left: -5rem;
+      }
+    }
+
+    .basket_link {
+      font-size: 14px;
+    }
+  }
 }
