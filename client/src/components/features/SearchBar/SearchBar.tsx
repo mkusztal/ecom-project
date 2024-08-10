@@ -14,7 +14,7 @@ export const SearchBar: React.FC<SearchBarProps> = (props) => {
 
   return (
     <div className={`${styles.root}`}>
-      <InputGroup className={`mb-3 w-25 ${styles.search_bar}`}>
+      <InputGroup className={`mb-3 ${styles.search_bar}`}>
         <Form.Control
           placeholder="Find your product by name"
           aria-label="Recipient's username"

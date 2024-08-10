@@ -53,7 +53,8 @@ export const Registration: React.FC = () => {
 
   return (
     <div className={`${styles.root}`}>
-      <h2 className="text-center">Sign up</h2>
+      <p className={`${styles.title} text-center`}>Sign up</p>
+
       <br></br>
       <Form onSubmit={handleSubmit}>
         {status === "Success" && (

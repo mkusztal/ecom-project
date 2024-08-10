@@ -63,7 +63,8 @@ export const LoginSystem: React.FC = () => {
 
   return (
     <div className={`${styles.root}`}>
-      <h2 className="text-center">Sign in</h2>
+      <p className={`${styles.title} text-center`}>Sign in</p>
+
       <br></br>
       <Form onSubmit={handleSubmit}>
         {status === "Logged in!" && (

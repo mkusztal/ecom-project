@@ -2,6 +2,12 @@
 
 .root {
   width: 40%;
+
+  .title {
+    font-size: 2.5rem;
+    font-weight: 500;
+  }
+
   .form {
     .form_label {
       font-size: 1.5rem;
@@ -16,5 +22,21 @@
   .main_button {
     background-color: $button_color !important;
     border-color: $button_color !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .root {
+    width: 40%;
+
+    .title {
+      font-size: 1.5rem;
+    }
+
+    .form {
+      .form_label {
+        font-size: 1rem;
+      }
+    }
   }
 }

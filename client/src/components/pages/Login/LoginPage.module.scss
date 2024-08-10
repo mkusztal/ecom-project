@@ -1,5 +1,11 @@
 .root {
+  height: 70vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+}
+
+@media (max-width: 430px) {
+  .root {
+    height: 100vh;
+  }
 }

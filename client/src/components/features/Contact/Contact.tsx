@@ -123,7 +123,7 @@ export const Contact: React.FC = () => {
 
   return (
     <div className={`${styles.root}`}>
-      <h2 className="text-center">Contact with us</h2>
+      <p className={`${styles.title} text-center`}>Contact with us</p>
       <br></br>
       <Form className={`${styles.form}`} onSubmit={sendEmailHandler}>
         {statusMessage && (
