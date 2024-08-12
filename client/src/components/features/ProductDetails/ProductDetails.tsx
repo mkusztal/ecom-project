@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
+import styles from "./ProductDetails.module.scss";
 
 type TProductDetails = {
   title: string;
@@ -19,20 +20,23 @@ export const ProductDetails: React.FC<TProductDetails> = (props) => {
     setSelectedSize(event.target.value);
   };
   return (
-    <div>
+    <div className={`${styles.root}`}>
       <Container>
-        <div>
-          <h2 className={`mb-4`}>{title}</h2>
-          <h4 className={`mb-4`}>${price}</h4>
-          <h6 className={`mb-5`}>Type: {type}</h6>
-          <Form.Select className={`mb-5`} onChange={handleChangeSize}>
+        <div className={`${styles.product_details}`}>
+          <p className={`${styles.title}`}>{title}</p>
+          <p className={`${styles.price}`}>${price}</p>
+          <p className={`${styles.type}`}>Type: {type}</p>
+          <Form.Select
+            className={`${styles.select_options}`}
+            onChange={handleChangeSize}
+          >
             <option>Choose size of the yerbamate</option>
             <option value={1}>{size} kg</option>
           </Form.Select>
         </div>
       </Container>
       <Button
-        className={`w-100`}
+        className={`${styles.add_cart_button}`}
         onClick={handleClick}
         disabled={!selectedSize}
       >

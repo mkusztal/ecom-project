@@ -11,15 +11,15 @@ export const ProductsSlider: React.FC<TProductsSlider> = (props) => {
   return (
     <div className={`${styles.root}`}>
       <Carousel interval={5000} className={`${styles.carousel}`}>
-        <Carousel.Item>
+        <Carousel.Item className={`${styles.carousel_item}`}>
           {image && <Image src={`data:image/png;base64,${image}`} alt="1" />}
         </Carousel.Item>
 
-        <Carousel.Item>
+        <Carousel.Item className={`${styles.carousel_item}`}>
           {image && <Image src={`data:image/png;base64,${image}`} alt="2" />}
         </Carousel.Item>
 
-        <Carousel.Item>
+        <Carousel.Item className={`${styles.carousel_item}`}>
           {image && <Image src={`data:image/png;base64,${image}`} alt="3" />}
         </Carousel.Item>
       </Carousel>

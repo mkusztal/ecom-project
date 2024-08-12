@@ -1,0 +1,11 @@
+@media (max-width: 430px) {
+  .root {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 75%;
+      height: 75%;
+    }
+  }
+}

@@ -2,3 +2,13 @@
   max-width: 100%;
   min-height: 80vh;
 }
+
+@media (max-width: 430px) {
+  .root {
+    min-height: 70vh;
+
+    .first_row {
+      flex-direction: column;
+    }
+  }
+}

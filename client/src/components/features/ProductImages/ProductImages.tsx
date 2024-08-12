@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Image } from "react-bootstrap";
+import styles from "./ProductImages.module.scss";
 
 type TProductImages = {
   image: string;
@@ -8,12 +9,10 @@ type TProductImages = {
 export const ProductImages: React.FC<TProductImages> = (props) => {
   const { image } = props;
   return (
-    <div>
-      <Container>
-        {image && (
-          <Image src={`data:image/png;base64,${image}`} alt="defaultImage" />
-        )}
-      </Container>
+    <div className={`${styles.root}`}>
+      {image && (
+        <Image src={`data:image/png;base64,${image}`} alt="defaultImage" />
+      )}
     </div>
   );
 };
