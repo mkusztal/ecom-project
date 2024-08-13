@@ -1,0 +1,37 @@
+.root {
+  .submit_button {
+    background-color: #268c51; // Default background
+    border: 1px solid #268c51;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
+    color: #fff;
+    cursor: pointer;
+    font-family:
+      "Akzidenz Grotesk BQ Medium",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 10px 25px;
+    transition:
+      transform 150ms,
+      box-shadow 150ms;
+
+    &:hover,
+    &:active {
+      box-shadow: rgba(0, 0, 0, 0.15) 0 3px 9px 0;
+      transform: translateY(-2px);
+      background-color: #1f6e40 !important; // Default background
+      border: 1px solid #1f6e40 !important;
+    }
+
+    &.disabled {
+      background-color: #94c2a8;
+      border-color: #94c2a8;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+  }
+}

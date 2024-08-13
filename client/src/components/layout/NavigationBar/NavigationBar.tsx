@@ -28,7 +28,7 @@ export const NavigationBar: React.FC = () => {
   const handleClose = () => setShow(false);
 
   return (
-    <div>
+    <div className={`${styles.root}`}>
       {/* expand="lg"  */}
       <Navbar collapseOnSelect className={`${styles.navbar} wrap`}>
         <Container fluid className="d-flex flex-column">
@@ -111,7 +111,7 @@ export const NavigationBar: React.FC = () => {
       </Navbar>
 
       <Image
-        src={`images/grass.jpg`}
+        src={`images/grass.png`}
         alt="grass"
         className={`${styles.grass_image}`}
       />

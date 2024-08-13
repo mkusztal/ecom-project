@@ -63,7 +63,7 @@ export const ProductPage: React.FC = () => {
             )}
           </Col>
         </Row>
-        <Row>
+        <Row className={`${styles.second_row}`}>
           <ProductsSlider image={product.image} />
         </Row>
       </Container>

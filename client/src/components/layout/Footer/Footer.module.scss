@@ -27,3 +27,21 @@
     right: 0;
   }
 }
+
+@media (max-width: 430px) {
+  .root {
+    .footer {
+      .links {
+        font-size: 1.375rem;
+      }
+
+      .copyright {
+        font-size: 0.625rem;
+      }
+    }
+
+    .tree_image {
+      width: 75%;
+    }
+  }
+}

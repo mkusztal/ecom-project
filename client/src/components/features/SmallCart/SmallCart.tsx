@@ -28,8 +28,6 @@ export const SmallCart: React.FC = () => {
     dispatch(decreaseQuantity(itemId));
   };
 
-  console.log(cartItems);
-
   return (
     <Container className={`${styles.root}`}>
       {cartItems.length > 0 ? (
