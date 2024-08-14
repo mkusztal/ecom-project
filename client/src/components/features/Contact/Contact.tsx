@@ -8,8 +8,7 @@ import { registerValidation } from "../../../utils/validation";
 
 export const Contact: React.FC = () => {
   const [message, setMessage] = useState<string>("");
-  const [isWordLimitExceeded, setIsWordLimitExceeded] =
-    useState<boolean>(false);
+  const [isWordLimitExceeded, setIsWordLimitExceeded] = useState<boolean>(true);
   const [email, setEmail] = useState<string>("");
   const [isEmailValid, setIsEmailValid] = useState<boolean>(false);
   const [name, setName] = useState<string>("");
@@ -17,32 +16,16 @@ export const Contact: React.FC = () => {
   const [subject, setSubject] = useState<string>("");
   const [isSubjectValid, setIsSubjectValid] = useState<boolean>(false);
   const [statusMessage, setStatusMessage] = useState<string>("");
+  const [letterCount, setLetterCount] = useState<number>(0);
 
   const checkValidInputData =
     isNameValid && isEmailValid && !isWordLimitExceeded && isSubjectValid;
 
   console.log("checkValidInputData", checkValidInputData);
-  console.log("isNameValid:", isNameValid);
-  console.log("isEmailValid:", isEmailValid);
   console.log("isWordLimitExceeded:", isWordLimitExceeded);
-  console.log("isSubjectValid:", isSubjectValid);
 
   const maxWords = 500;
   const navigate = useNavigate();
-
-  const handleMessageChange = (
-    event: React.ChangeEvent<HTMLTextAreaElement>,
-  ) => {
-    const inputMessage = event.target.value;
-    const letterCount = countLetters(inputMessage);
-
-    if (letterCount <= maxWords || letterCount === 0) {
-      setMessage(inputMessage);
-      setIsWordLimitExceeded(false);
-    } else {
-      setIsWordLimitExceeded(true);
-    }
-  };
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const inputEmail = event.target.value;
@@ -64,6 +47,20 @@ export const Contact: React.FC = () => {
 
   const countLetters = (text: string) => {
     return text.replace(/\s+/g, "").length;
+  };
+
+  const handleMessageChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>,
+  ) => {
+    const inputMessage = event.target.value;
+    setLetterCount(() => countLetters(inputMessage));
+
+    if (letterCount <= maxWords) {
+      setMessage(inputMessage);
+      setIsWordLimitExceeded(false);
+    } else {
+      setIsWordLimitExceeded(true);
+    }
   };
 
   useEffect(() => {
@@ -211,7 +208,7 @@ export const Contact: React.FC = () => {
             max={500}
           />
           <div className="d-flex flex-row justify-content-between mt-1">
-            {isWordLimitExceeded && (
+            {letterCount === maxWords && (
               <p className={styles.custom_error_info}>
                 You have exceeded the maximum word limit of {maxWords} words.
               </p>

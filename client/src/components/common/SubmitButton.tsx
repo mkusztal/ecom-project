@@ -14,7 +14,6 @@ type TSubmitButton = {
 export const SubmitButton: React.FC<TSubmitButton> = (props) => {
   const { text, type, disabled, onClick, size, className } = props;
 
-  console.log("type", type);
   return (
     <div className={`${styles.root}`}>
       <Button
