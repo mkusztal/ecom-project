@@ -64,8 +64,8 @@
       text-decoration: none;
 
       &:hover {
-        background-color: darken($button_color, 10%);
-        border-color: darken($button_color, 10%);
+        background-color: $button_color_hover;
+        border-color: $button_color_hover;
         text-decoration: none;
       }
 
@@ -77,7 +77,7 @@
   }
 
   .grass_image {
-    position: fixed;
+    position: fixed !important;
     opacity: 0.4;
     z-index: -1;
     left: 0;

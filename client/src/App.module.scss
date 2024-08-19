@@ -1,6 +1,6 @@
 html,
 body {
-  height: 100%;
+  height: auto;
   padding: 0;
   margin: 0;
   overflow-x: hidden;
@@ -46,7 +46,6 @@ html::-webkit-scrollbar-thumb:active {
   // background-color: #f8efba;
   background-size: cover;
   background-position: center;
-  min-height: 100vh;
   // set footer
   // display: flex;
   // flex-direction: column;

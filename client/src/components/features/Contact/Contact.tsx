@@ -21,9 +21,6 @@ export const Contact: React.FC = () => {
   const checkValidInputData =
     isNameValid && isEmailValid && !isWordLimitExceeded && isSubjectValid;
 
-  console.log("checkValidInputData", checkValidInputData);
-  console.log("isWordLimitExceeded:", isWordLimitExceeded);
-
   const maxWords = 500;
   const navigate = useNavigate();
 
@@ -69,12 +66,18 @@ export const Contact: React.FC = () => {
     } else {
       setStatusMessage("");
     }
-  }, [isNameValid, isEmailValid, isWordLimitExceeded, isSubjectValid, message]);
+  }, [
+    isNameValid,
+    isEmailValid,
+    isWordLimitExceeded,
+    isSubjectValid,
+    message,
+    checkValidInputData,
+  ]);
 
   const sendEmailHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    console.log("Form submitted");
     setIsNameValid(isNameValid);
     setIsEmailValid(isEmailValid);
     setIsWordLimitExceeded(isWordLimitExceeded);
@@ -85,8 +88,6 @@ export const Contact: React.FC = () => {
       subject: subject,
       message: message,
     };
-
-    console.log("emailBody", emailBody);
 
     const fetchEmailOption = {
       method: "POST",

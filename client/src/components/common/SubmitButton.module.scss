@@ -1,7 +1,8 @@
+@import "../../styles/variables.module.scss";
 .root {
   .submit_button {
-    background-color: #268c51; // Default background
-    border: 1px solid #268c51;
+    background-color: $button_color; // Default background
+    border: 1px solid $button_color;
     border-radius: 4px;
     box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
     color: #fff;
@@ -22,8 +23,8 @@
     &:active {
       box-shadow: rgba(0, 0, 0, 0.15) 0 3px 9px 0;
       transform: translateY(-2px);
-      background-color: #1f6e40 !important; // Default background
-      border: 1px solid #1f6e40 !important;
+      background-color: $button_color_hover !important; // Default background
+      border: 1px solid $button_color_hover !important;
     }
 
     &.disabled {
