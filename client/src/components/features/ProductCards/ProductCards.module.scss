@@ -13,3 +13,22 @@
     color: black;
   }
 }
+
+@media (max-width: 430px) {
+  .card {
+    margin: 7px;
+    width: 10rem;
+
+    .image {
+      height: 100px;
+    }
+
+    .card_title {
+      font-size: 16px;
+    }
+
+    .card_text {
+      font-size: 14px;
+    }
+  }
+}

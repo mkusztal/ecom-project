@@ -7,7 +7,6 @@ export const HomePageSlider: React.FC = () => {
     <div className={`${styles.root}`}>
       <Carousel interval={5000}>
         <Carousel.Item>
-          {/* <ExampleCarouselImage text="First slide" /> */}
           <Image
             src="images/yerba2.jpg"
             alt="YerbaOfficial"

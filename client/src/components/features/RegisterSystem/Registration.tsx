@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Form, Button, Alert } from "react-bootstrap";
+import { Form, Alert } from "react-bootstrap";
 import { registerValidation } from "../../../utils/validation";
 import { API_URL } from "../../../config/urls";
 import styles from "./Registration.module.scss";
 import { statuses } from "../../../utils/statuses";
+import { SubmitButton } from "../../common/SubmitButton";
 
 export const Registration: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -53,7 +54,8 @@ export const Registration: React.FC = () => {
 
   return (
     <div className={`${styles.root}`}>
-      <h2 className="text-center">Sign up</h2>
+      <p className={`${styles.title} text-center`}>Sign up</p>
+
       <br></br>
       <Form onSubmit={handleSubmit}>
         {status === "Success" && (
@@ -91,14 +93,11 @@ export const Registration: React.FC = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <Button
-          className={`${styles.main_button}`}
-          type="submit"
+        <SubmitButton
+          type={"submit"}
           disabled={!validateUserData}
-          onClick={handleSubmit}
-        >
-          Submit
-        </Button>
+          text={"Submit"}
+        />
       </Form>
     </div>
   );

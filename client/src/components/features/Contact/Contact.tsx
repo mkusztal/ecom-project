@@ -1,48 +1,33 @@
-import React, { useState } from "react";
-import { Form, Button, Alert } from "react-bootstrap";
-import styles from "./contact.module.scss";
+import React, { useEffect, useState } from "react";
+import { Form, Alert } from "react-bootstrap";
+import styles from "./Contact.module.scss";
 import { API_URL } from "../../../config/urls";
 import { useNavigate } from "react-router-dom";
+import { SubmitButton } from "../../common/SubmitButton";
+import { registerValidation } from "../../../utils/validation";
 
 export const Contact: React.FC = () => {
-  const [message, setMessage] = useState("");
-  const [isWordLimitExceeded, setIsWordLimitExceeded] = useState(false);
-  const [email, setEmail] = useState("");
-  const [isEmailValid, setIsEmailValid] = useState(true);
-  const [name, setName] = useState("");
-  const [isNameValid, setIsNameValid] = useState(true);
-  const [subject, setSubject] = useState("");
-  const [isSubjectValid, setIsSubjectValid] = useState(true);
-  const [statusMessage, setStatusMessage] = useState("");
+  const [message, setMessage] = useState<string>("");
+  const [isWordLimitExceeded, setIsWordLimitExceeded] = useState<boolean>(true);
+  const [email, setEmail] = useState<string>("");
+  const [isEmailValid, setIsEmailValid] = useState<boolean>(false);
+  const [name, setName] = useState<string>("");
+  const [isNameValid, setIsNameValid] = useState<boolean>(false);
+  const [subject, setSubject] = useState<string>("");
+  const [isSubjectValid, setIsSubjectValid] = useState<boolean>(false);
+  const [statusMessage, setStatusMessage] = useState<string>("");
+  const [letterCount, setLetterCount] = useState<number>(0);
+
+  const checkValidInputData =
+    isNameValid && isEmailValid && !isWordLimitExceeded && isSubjectValid;
 
   const maxWords = 500;
   const navigate = useNavigate();
 
-  console.log("statusMessage: ", statusMessage);
-
-  const handleMessageChange = (
-    event: React.ChangeEvent<HTMLTextAreaElement>,
-  ) => {
-    const inputMessage = event.target.value;
-    const wordCount = countWords(inputMessage);
-
-    if (wordCount <= maxWords) {
-      setMessage(inputMessage);
-      setIsWordLimitExceeded(false);
-    } else {
-      setIsWordLimitExceeded(true);
-    }
-  };
-
   const handleEmailChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const inputEmail = event.target.value;
     setEmail(inputEmail);
-    setIsEmailValid(validateEmail(inputEmail));
-  };
-
-  const validateEmail = (email: string) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-    return regex.test(email);
+    setIsEmailValid(registerValidation.email.test(inputEmail));
   };
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,34 +42,45 @@ export const Contact: React.FC = () => {
     setIsSubjectValid(inputName.trim().length > 0);
   };
 
-  const countWords = (text: string) => {
-    return text
-      .trim()
-      .split(/\s+/)
-      .filter((word) => word.length > 0).length;
+  const countLetters = (text: string) => {
+    return text.replace(/\s+/g, "").length;
   };
+
+  const handleMessageChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>,
+  ) => {
+    const inputMessage = event.target.value;
+    setLetterCount(() => countLetters(inputMessage));
+
+    if (letterCount <= maxWords) {
+      setMessage(inputMessage);
+      setIsWordLimitExceeded(false);
+    } else {
+      setIsWordLimitExceeded(true);
+    }
+  };
+
+  useEffect(() => {
+    if (!checkValidInputData) {
+      setStatusMessage("Please fill out the form correctly.");
+    } else {
+      setStatusMessage("");
+    }
+  }, [
+    isNameValid,
+    isEmailValid,
+    isWordLimitExceeded,
+    isSubjectValid,
+    message,
+    checkValidInputData,
+  ]);
 
   const sendEmailHandler = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    // Validate the inputs
-    const isNameValid = name.trim().length > 0;
-    const isEmailValid = validateEmail(email);
-    const isWordLimitExceeded = countWords(message) > maxWords;
-
     setIsNameValid(isNameValid);
     setIsEmailValid(isEmailValid);
     setIsWordLimitExceeded(isWordLimitExceeded);
-
-    if (
-      !isNameValid ||
-      !isEmailValid ||
-      isWordLimitExceeded ||
-      !isSubjectValid
-    ) {
-      setStatusMessage("Please fill out the form correctly.");
-      return;
-    }
 
     const emailBody = {
       name: name,
@@ -123,7 +119,7 @@ export const Contact: React.FC = () => {
 
   return (
     <div className={`${styles.root}`}>
-      <h2 className="text-center">Contact with us</h2>
+      <p className={`${styles.title} text-center`}>Contact with us</p>
       <br></br>
       <Form className={`${styles.form}`} onSubmit={sendEmailHandler}>
         {statusMessage && (
@@ -213,24 +209,22 @@ export const Contact: React.FC = () => {
             max={500}
           />
           <div className="d-flex flex-row justify-content-between mt-1">
-            {isWordLimitExceeded && (
+            {letterCount === maxWords && (
               <p className={styles.custom_error_info}>
                 You have exceeded the maximum word limit of {maxWords} words.
               </p>
             )}
             <p className="text-end ms-auto">
-              {countWords(message)}/{maxWords}
+              {countLetters(message)}/{maxWords}
             </p>
           </div>
         </Form.Group>
+        <SubmitButton
+          type="submit"
+          disabled={!checkValidInputData}
+          text="Submit"
+        />
       </Form>
-      <Button
-        type="submit"
-        disabled={statusMessage === "Please fill out the form correctly."}
-        className={`${styles.main_button}`}
-      >
-        Submit
-      </Button>
     </div>
   );
 };

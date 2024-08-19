@@ -1,3 +1,18 @@
 .root {
   background-color: grey;
 }
+
+@media (max-width: 430px) {
+  .root {
+    margin: 5rem 0 2rem 0 !important;
+
+    .carousel {
+      width: 100%;
+    }
+
+    .carousel_item img {
+      width: 50% !important;
+      height: auto;
+    }
+  }
+}
