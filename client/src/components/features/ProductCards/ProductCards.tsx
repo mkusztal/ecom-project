@@ -20,11 +20,12 @@ export const ProductCards: React.FC<ProductProps> = (props) => {
           src={`data:image/jpeg;base64,${image}`}
           width={30}
           height={200}
+          className={`${styles.image}`}
         />
         <Card.Body>
-          <Card.Title>{name}</Card.Title>
-          <Card.Text>{type}</Card.Text>
-          <Card.Text>{price}$</Card.Text>
+          <Card.Title className={`${styles.card_title}`}>{name}</Card.Title>
+          <Card.Text className={`${styles.card_text}`}>{type}</Card.Text>
+          <Card.Text className={`${styles.card_text}`}>{price}$</Card.Text>
         </Card.Body>
       </Card.Link>
     </Card>

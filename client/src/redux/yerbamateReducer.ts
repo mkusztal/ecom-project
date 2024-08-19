@@ -26,26 +26,6 @@ export const fetchYerbamate = (): any => {
   };
 };
 
-// export const fetchOneYerbamate = (id: string) => {
-//   // if (typeof id !== "string" || id === "") {
-//   //   console.log("Invalid id");
-//   //   return;
-//   // }
-//   return (dispatch: Dispatch) => {
-//     fetch(API_URL + `api/yerbamate/${id}`)
-//       .then((res) => res.json())
-//       .then((data) => {
-//         dispatch({
-//           type: GET_ONE_YERBAMATE,
-//           payload: data,
-//         });
-//       })
-//       .catch((err) => {
-//         console.log("Error fetching single product: ", err);
-//       });
-//   };
-// };
-
 export const fetchOneYerbamate = (id: string) => {
   return async (dispatch: any) => {
     try {
@@ -56,7 +36,7 @@ export const fetchOneYerbamate = (id: string) => {
         payload: data,
       });
     } catch (err) {
-      console.log("Error fetching single product: ", err);
+      console.error("Error fetching single product: ", err);
     }
   };
 };

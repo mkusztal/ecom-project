@@ -60,7 +60,7 @@ export const YerbamatePage: React.FC = () => {
           {itemsToDisplay && itemsToDisplay.length > 0 ? (
             itemsToDisplay.map((e) => {
               return (
-                <Col key={e.id} xs={12} sm={6} md={4} lg={3} className="mb-4">
+                <Col key={e.id} xs={6} sm={4} lg={3} className="mb-4">
                   <ProductCards
                     id={e.id}
                     name={e.name}
@@ -75,7 +75,7 @@ export const YerbamatePage: React.FC = () => {
             <NotFound />
           )}
         </Row>
-        <Row>
+        <Row className={`${styles.row}`}>
           {!inputSearchText && (
             <PaginationComponent
               totalItems={yerbamateData.length}

@@ -6,3 +6,12 @@
     // width: 50%;
   }
 }
+
+@media (max-width: 430px) {
+  .root {
+    .row {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

@@ -1,17 +1,21 @@
-import React, { useState } from "react";
-import { Form, Button, Alert } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Form, Alert } from "react-bootstrap";
 import { registerValidation } from "../../../utils/validation";
 import { logIn } from "../../../redux/userReducer";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../../../config/urls";
-import { initialState } from "../../../redux/initialState";
 import styles from "./LoginSystem.module.scss";
+import { SubmitButton } from "../../common/SubmitButton";
 
 export const LoginSystem: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [status, setStatus] = useState<string>("");
+  const [countFailLogin, setCountFailLogin] = useState<number>(0);
+  const [isLockedOut, setIsLockedOut] = useState<boolean>(false);
+
+  const failsLoginStatus = "You type 3 times wrong credentials wait 30s";
 
   const validateUserData =
     registerValidation.email.test(email) &&
@@ -20,15 +24,23 @@ export const LoginSystem: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  console.log(initialState.user);
+  useEffect(() => {
+    if (countFailLogin >= 3) {
+      setIsLockedOut(true);
+      setStatus(failsLoginStatus);
+
+      const lockoutTimer = setTimeout(() => {
+        setIsLockedOut(false);
+        setCountFailLogin(0);
+        setStatus("");
+      }, 30000);
+
+      return () => clearTimeout(lockoutTimer);
+    }
+  }, [countFailLogin]);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-
-    if (!email || !password) {
-      setStatus("Please fill in all fields");
-      return;
-    }
 
     const user = {
       email,
@@ -54,6 +66,7 @@ export const LoginSystem: React.FC = () => {
           navigate("/");
         } else {
           setStatus("Login failed!");
+          setCountFailLogin((prev) => prev + 1);
         }
       })
       .catch((err: string) => {
@@ -63,7 +76,8 @@ export const LoginSystem: React.FC = () => {
 
   return (
     <div className={`${styles.root}`}>
-      <h2 className="text-center">Sign in</h2>
+      <p className={`${styles.title} text-center`}>Sign in</p>
+
       <br></br>
       <Form onSubmit={handleSubmit}>
         {status === "Logged in!" && (
@@ -74,13 +88,19 @@ export const LoginSystem: React.FC = () => {
 
         {status === "Login failed!" && (
           <Alert key="warning" variant="warning">
-            Something went wrong!
+            Wrong login or password
           </Alert>
         )}
 
         {status === "ServerError" && (
           <Alert key="danger" variant="danger">
             Technical issue!
+          </Alert>
+        )}
+
+        {status === failsLoginStatus && (
+          <Alert key="danger" variant="danger">
+            {failsLoginStatus}
           </Alert>
         )}
 
@@ -102,13 +122,11 @@ export const LoginSystem: React.FC = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <Button
-          type="submit"
-          disabled={!validateUserData}
-          className={`${styles.main_button}`}
-        >
-          Submit
-        </Button>
+        <SubmitButton
+          type={"submit"}
+          disabled={!validateUserData || isLockedOut}
+          text={"Submit"}
+        />
       </Form>
     </div>
   );

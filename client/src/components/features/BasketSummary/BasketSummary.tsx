@@ -10,7 +10,6 @@ type BasketSummaryProps = {
 export const BasketSummary: React.FC<BasketSummaryProps> = (props) => {
   const { cartItems } = props;
 
-  // sum all products price
   // Add button navigate to payment
 
   const totalPrice =
