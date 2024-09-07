@@ -1,6 +1,7 @@
 import React from "react";
-import { Carousel, Image, Button } from "react-bootstrap";
+import { Carousel, Image } from "react-bootstrap";
 import styles from "./HomePageSlider.module.scss";
+import { CommonButton } from "../../common/CommonButton";
 
 export const HomePageSlider: React.FC = () => {
   return (
@@ -15,7 +16,7 @@ export const HomePageSlider: React.FC = () => {
           <Carousel.Caption>
             {/* <Col xs={6} md={6} className={styles.first_row_colum}> */}
             <h2>Hello! I will help you to find your favourite yerba mate...</h2>
-            <Button className={styles.first_slide_button}>Read more</Button>
+            <CommonButton type="button" text="Read more" />
             {/* </Col> */}
           </Carousel.Caption>
         </Carousel.Item>

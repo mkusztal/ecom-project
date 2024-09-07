@@ -14,10 +14,11 @@ import { useSelector } from "react-redux";
 import { getUser } from "../../../redux/userReducer";
 import styles from "./NavigationBar.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCreativeCommons } from "@fortawesome/free-brands-svg-icons";
 import { SmallCart } from "../../features/SmallCart/SmallCart";
 import { getCartItems } from "../../../redux/cartReducer";
 import { Link } from "react-router-dom";
+import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 export const NavigationBar: React.FC = () => {
   const [show, setShow] = useState(false);
@@ -63,8 +64,11 @@ export const NavigationBar: React.FC = () => {
             </Col>
             <Col className={`${styles.second_column}`}>
               <Dropdown show={show} onToggle={handleToggle}>
-                <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                  <FontAwesomeIcon icon={faCreativeCommons} />
+                <Dropdown.Toggle
+                  className={`${styles.basket_dropdown_button}`}
+                  id="dropdown-basic"
+                >
+                  <FontAwesomeIcon icon={faBasketShopping as IconProp} />
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu

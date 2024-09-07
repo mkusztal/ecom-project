@@ -3,7 +3,7 @@ import { Form, Alert } from "react-bootstrap";
 import styles from "./Contact.module.scss";
 import { API_URL } from "../../../config/urls";
 import { useNavigate } from "react-router-dom";
-import { SubmitButton } from "../../common/SubmitButton";
+import { CommonButton } from "../../common/CommonButton";
 import { registerValidation } from "../../../utils/validation";
 
 export const Contact: React.FC = () => {
@@ -219,7 +219,7 @@ export const Contact: React.FC = () => {
             </p>
           </div>
         </Form.Group>
-        <SubmitButton
+        <CommonButton
           type="submit"
           disabled={!checkValidInputData}
           text="Submit"

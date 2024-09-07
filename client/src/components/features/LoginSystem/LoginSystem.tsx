@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../../../config/urls";
 import styles from "./LoginSystem.module.scss";
-import { SubmitButton } from "../../common/SubmitButton";
+import { CommonButton } from "../../common/CommonButton";
 
 export const LoginSystem: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -122,7 +122,7 @@ export const LoginSystem: React.FC = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <SubmitButton
+        <CommonButton
           type={"submit"}
           disabled={!validateUserData || isLockedOut}
           text={"Submit"}

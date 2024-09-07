@@ -6,7 +6,7 @@ import { BasketProducts } from "../../features/BasketProducts/BasketProducts";
 import { getCartItems } from "../../../redux/cartReducer";
 import { useSelector } from "react-redux";
 import { BasketSummary } from "../../features/BasketSummary/BasketSummary";
-import { TechnologiesCarousel } from "../../features/TechnologiesCarousel/TechnologiesCarousel";
+import { ProductCarousel } from "../../features/ProductCarousel/ProductCarousel";
 
 export const BasketPage: React.FC = (props) => {
   const cartItems = useSelector(getCartItems);
@@ -22,7 +22,7 @@ export const BasketPage: React.FC = (props) => {
         </Col>
       </Row>
       <Row>
-        <TechnologiesCarousel />
+        <ProductCarousel />
       </Row>
     </Container>
   );
