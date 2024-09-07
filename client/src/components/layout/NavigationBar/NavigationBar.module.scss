@@ -17,6 +17,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      font-family: cursive;
+      font-weight: 600;
 
       .first_column {
         display: flex;
@@ -28,6 +30,12 @@
         flex-direction: row;
         align-items: center;
         justify-content: flex-end;
+      }
+
+      .basket_dropdown_button {
+        background-color: $navbar_background_color_dark;
+        border: solid 2px $navbar_background_color_dark;
+        color: black;
       }
 
       .dropdown_menu_empty {
@@ -77,7 +85,7 @@
   }
 
   .grass_image {
-    position: fixed !important;
+    position: absolute;
     opacity: 0.4;
     z-index: -1;
     left: 0;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container, Form } from "react-bootstrap";
 import styles from "./ProductDetails.module.scss";
-import { SubmitButton } from "../../common/SubmitButton";
+import { CommonButton } from "../../common/CommonButton";
 
 type TProductDetails = {
   title: string;
@@ -36,7 +36,7 @@ export const ProductDetails: React.FC<TProductDetails> = (props) => {
           </Form.Select>
         </div>
       </Container>
-      <SubmitButton
+      <CommonButton
         type={"button"}
         text={"Add to cart"}
         onClick={handleClick}

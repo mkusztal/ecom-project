@@ -12,9 +12,7 @@
       color: $button-color;
 
       &:hover {
-        background-color: $button_color_hover;
-        border-color: $button_color_hover;
-        text-decoration: none;
+        color: $button_color_hover;
       }
     }
 

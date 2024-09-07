@@ -1,5 +1,7 @@
+@import "../../../styles/variables.module.scss";
+
 .root {
-  background-color: grey;
+  background-color: $navbar_background_color_dark;
 }
 
 @media (max-width: 430px) {

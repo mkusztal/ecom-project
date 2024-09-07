@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import styles from "./SubmitButton.module.scss";
+import styles from "./CommonButton.module.scss";
 
 type TSubmitButton = {
   text: string;
@@ -11,7 +11,7 @@ type TSubmitButton = {
   className?: string;
 };
 
-export const SubmitButton: React.FC<TSubmitButton> = (props) => {
+export const CommonButton: React.FC<TSubmitButton> = (props) => {
   const { text, type, disabled, onClick, size, className } = props;
 
   return (

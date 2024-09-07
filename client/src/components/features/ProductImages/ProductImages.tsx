@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Image } from "react-bootstrap";
+import { Image } from "react-bootstrap";
 import styles from "./ProductImages.module.scss";
 
 type TProductImages = {

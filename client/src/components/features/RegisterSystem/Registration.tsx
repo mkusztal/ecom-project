@@ -4,7 +4,7 @@ import { registerValidation } from "../../../utils/validation";
 import { API_URL } from "../../../config/urls";
 import styles from "./Registration.module.scss";
 import { statuses } from "../../../utils/statuses";
-import { SubmitButton } from "../../common/SubmitButton";
+import { CommonButton } from "../../common/CommonButton";
 
 export const Registration: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -93,7 +93,7 @@ export const Registration: React.FC = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <SubmitButton
+        <CommonButton
           type={"submit"}
           disabled={!validateUserData}
           text={"Submit"}
