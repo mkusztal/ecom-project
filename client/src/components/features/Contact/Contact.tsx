@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Form, Alert } from "react-bootstrap";
-import styles from "./Contact.module.scss";
+import styles from "./contact.module.scss";
 import { API_URL } from "../../../config/urls";
 import { useNavigate } from "react-router-dom";
 import { CommonButton } from "../../common/CommonButton";

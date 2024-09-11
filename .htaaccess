@@ -1,0 +1,11 @@
+<VirtualHost *:80>
+    ServerName darkgray-pheasant-874819.hostingersite.com
+    DocumentRoot /var/www/darkgray-pheasant-874819.hostingersite.com
+
+    <Directory /var/www/darkgray-pheasant-874819.hostingersite.com>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride All
+        Order allow,deny
+        allow from all
+    </Directory>
+</VirtualHost>
