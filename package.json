@@ -4,7 +4,6 @@
   "description": "The portfolio project to improve my web development skills.\r Project is focus on Typescript technology which is uses with node in backend site of the web application.",
   "main": "app.js",
   "author": "Maciej Kusztal",
-  "homepage": "https://darkgray-pheasant-874819.hostingersite.com/",
   "license": "MIT",
   "scripts": {
     "start": "cross-env NODE_ENV=production nodemon src/app.js",
