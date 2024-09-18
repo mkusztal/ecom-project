@@ -23,7 +23,7 @@ const generateCSRFTToken = () => {
 app.use(
   cors({
     credentials: true,
-    origin: "https://darkgray-pheasant-874819.hostingersite.com",
+    origin: "https://ecom-project-mk-8e79c4754866.herokuapp.com/",
   }),
 );
 app.use(express.json());
