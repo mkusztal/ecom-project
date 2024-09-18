@@ -14,7 +14,8 @@
     "format": "eslint src/**/*.js --fix",
     "prepare": "husky install",
     "start-pm2": "pm2 start src/app.js && pm2 monit",
-    "prettier-fix": "npx prettier --write ."
+    "prettier-fix": "npx prettier --write .",
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
   "husky": {
     "hooks": {
