@@ -20,7 +20,12 @@ const generateCSRFTToken = () => {
 };
 
 // middlewares
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(
+  cors({
+    credentials: true,
+    origin: "https://darkgray-pheasant-874819.hostingersite.com",
+  }),
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "../client/build")));
