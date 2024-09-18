@@ -37,7 +37,7 @@ app.use(
     secret: process.env.ES_SECRET_KEY,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false }, // Set secure: true if using HTTPS
+    cookie: { secure: true }, // Set secure: true if using HTTPS
   }),
 );
 app.use((req, res, next) => {
