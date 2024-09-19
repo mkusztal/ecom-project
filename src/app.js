@@ -28,7 +28,7 @@ app.use(
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "../client/build/index.html")));
+app.use(express.static(path.join(__dirname, "../client/build")));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/images", express.static(path.join(__dirname, "public/images")));
 app.use(helmet());
