@@ -5,8 +5,8 @@ const path = require("path");
 const cors = require("cors");
 const session = require("express-session");
 const crypto = require("crypto");
-// const https = require("https");
-// const fs = require("fs");
+const https = require("https");
+const fs = require("fs");
 const yerbamate = require("./routes/product.routes");
 const registration = require("./routes/users.routes");
 const email = require("./routes/email.routes");
@@ -61,15 +61,13 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
-// const options = {
-//   key: fs.readFileSync(path.join(`./config/cert`, "sslkey.pem")),
-//   cert: fs.readFileSync(path.join(`./config/cert`, "sslcert.pem")),
-//   passphrase: process.env.PASS_PHRASE,
-// };
+const options = {
+  key: fs.readFileSync(path.join(`./config/cert`, "sslkey.pem")),
+  cert: fs.readFileSync(path.join(`./config/cert`, "sslcert.pem")),
+  passphrase: process.env.PASS_PHRASE,
+};
 
-// https.createServer(options, app);
-
-const server = app.listen(port || 8000, () => {
+const server = https.createServer(options, app).listen(port || 8000, () => {
   console.log(`Server is running on port 8000...`);
 });
 
