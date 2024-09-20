@@ -7,7 +7,8 @@
   "homepage": "https://ecom-project-mk-8e79c4754866.herokuapp.com/",
   "license": "MIT",
   "scripts": {
-    "start": "cross-env NODE_ENV=production nodemon src/app.js",
+    "start": "cross-env NODE_ENV=production node src/app.js",
+    "nodemon-start": "cross-env NODE_ENV=production nodemon src/app.js",
     "test": "cross-env NODE_ENV=test mocha --exit",
     "lint": "eslint src/**/*.js",
     "lint-client": "eslint client/src/**/*.js",
