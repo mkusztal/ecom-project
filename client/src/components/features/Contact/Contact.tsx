@@ -61,7 +61,7 @@ export const Contact: React.FC = () => {
   };
 
   useEffect(() => {
-    if (!checkValidInputData) {
+    if (!checkValidInputData && name !== "" && subject !== "" && email !== "") {
       setStatusMessage("Please fill out the form correctly.");
     } else {
       setStatusMessage("");
