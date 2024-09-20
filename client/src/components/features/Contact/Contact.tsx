@@ -73,6 +73,9 @@ export const Contact: React.FC = () => {
     isSubjectValid,
     message,
     checkValidInputData,
+    name,
+    subject,
+    email,
   ]);
 
   const sendEmailHandler = async (event: React.FormEvent<HTMLFormElement>) => {
