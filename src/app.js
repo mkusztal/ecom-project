@@ -23,7 +23,7 @@ const generateCSRFTToken = () => {
 app.use(
   cors({
     credentials: true,
-    origin: "https://ecom-project-mk-8e79c4754866.herokuapp.com/",
+    origin: "http://localhost:3000",
   }),
 );
 app.use(express.json());
