@@ -1,7 +1,7 @@
 {
   "name": "ecom-project",
   "version": "1.0.0",
-  "description": "The portfolio project to improve my web development skills.\r Project is focus on Typescript technology which is uses with node in backend site of the web application.",
+  "description": "The portfolio project to improve my web development skills.\r Project is focus on Typescript technology which is uses with node in back-end site of the web application.",
   "main": "app.js",
   "author": "Maciej Kusztal",
   "homepage": "https://ecom-project-mk-8e79c4754866.herokuapp.com/",
@@ -42,6 +42,7 @@
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "express-mysql-session": "^3.0.3",
     "express-session": "^1.18.0",
     "express-validator": "^7.1.0",
     "helmet": "^7.1.0",

@@ -12,6 +12,7 @@ const registration = require("./routes/users.routes");
 const email = require("./routes/email.routes");
 const { errorHandler, notFoundHandler } = require("./utils/errorHandlers");
 dotenv.config({ path: "./.env" });
+const MySQLStore = require("express-mysql-session")(session);
 const app = express();
 const port = process.env.PORT;
 
@@ -32,12 +33,22 @@ app.use(express.static(path.join(__dirname, "../client/build")));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/images", express.static(path.join(__dirname, "public/images")));
 app.use(helmet());
+
+const sessionStore = new MySQLStore({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT,
+});
+
 app.use(
   session({
     secret: process.env.ES_SECRET_KEY,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: true }, // Set secure: true if using HTTPS
+    store: sessionStore,
+    cookie: { secure: false }, // Set secure: true if using HTTPS
   }),
 );
 app.use((req, res, next) => {
@@ -61,13 +72,13 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
-const options = {
-  key: fs.readFileSync(path.join(`./config/cert`, "sslkey.pem")),
-  cert: fs.readFileSync(path.join(`./config/cert`, "sslcert.pem")),
-  passphrase: process.env.PASS_PHRASE,
-};
+// const options = {
+//   key: fs.readFileSync(path.join(`./config/cert`, "sslkey.pem")),
+//   cert: fs.readFileSync(path.join(`./config/cert`, "sslcert.pem")),
+//   passphrase: process.env.PASS_PHRASE,
+// };
 
-const server = https.createServer(options, app).listen(port || 8000, () => {
+const server = app.listen(port || 8000, () => {
   console.log(`Server is running on port 8000...`);
 });
 
