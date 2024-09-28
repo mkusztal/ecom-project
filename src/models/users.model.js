@@ -1,7 +1,7 @@
 const db = require("../../config/db");
 const bcrypt = require("bcrypt");
 
-const addUserToDatabase = async (id, email, password) => {
+const addUserToDatabase = async (id, email, password, role) => {
   // add regex
   try {
     if (typeof id !== "string" || id === "") {
@@ -16,15 +16,18 @@ const addUserToDatabase = async (id, email, password) => {
       throw new Error("Invalid password format");
     }
 
+    if (typeof role !== "string" || role === "") {
+      throw new Error("Invalid roles format");
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const [rows] = await db
       .promise()
-      .query(`INSERT INTO users (id, email, password) VALUES (?, ?, ?);`, [
-        id,
-        email,
-        `${hashedPassword}`,
-      ]);
+      .query(
+        `INSERT INTO users (id, email, password, role) VALUES (?, ?, ?, ?);`,
+        [id, email, `${hashedPassword}`, role],
+      );
 
     console.log(`Successfully added to the database: `, email);
 

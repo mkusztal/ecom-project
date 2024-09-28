@@ -11,7 +11,7 @@ const dotenv = require("dotenv");
 dotenv.config({ path: "../../.env" });
 
 const userRegistration = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, role = "User" } = req.body;
 
   // generate id
   const id = uuidv7().slice(0, 32); // id = 33 is max :D
@@ -27,7 +27,7 @@ const userRegistration = async (req, res) => {
   console.log("Network Interfaces: ", os.networkInterfaces());
 
   try {
-    const addUser = await addUserToDatabase(id, email, password);
+    const addUser = await addUserToDatabase(id, email, password, role);
 
     res.status(200).json(addUser);
   } catch (err) {
