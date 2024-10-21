@@ -57,19 +57,17 @@ const findUserInDatabase = async (email, password) => {
       .promise()
       .query(`SELECT * FROM users WHERE email = ?`, [email]);
 
-    if (row[0].length === 0) {
+    if (row.length === 0) {
       throw new Error("User doesn't exist");
     }
 
-    // Hash password
-    const user = row[0];
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcrypt.compare(password, row[0].password);
 
     if (!isMatch) {
       throw new Error("Invalid credentials");
     }
 
-    return user;
+    return row;
   } catch (err) {
     console.error("Error searching user in database", err);
     throw new Error("Failed to search for the user");
