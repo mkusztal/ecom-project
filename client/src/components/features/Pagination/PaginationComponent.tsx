@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useCallback, useMemo } from "react";
 import { Pagination } from "react-bootstrap";
 import styles from "./PaginationComponent.module.scss";
+import colors from "../../../styles/variables.module.scss";
 
 type PaginationComponentProps = {
   totalItems: number;
@@ -15,30 +16,44 @@ export const PaginationComponent: React.FC<PaginationComponentProps> = (
   const { totalItems, itemsPerPage, currentPage, onPageChange } = props;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
-  const handlePageChange = (pageNumber: number) => {
-    if (pageNumber < 0 && pageNumber > totalPages) {
-      return null;
-    }
-    onPageChange(pageNumber);
-  };
+  const handlePageChange = useCallback(
+    (pageNumber: number) => {
+      return pageNumber < 0 && pageNumber > totalPages
+        ? null
+        : onPageChange(pageNumber);
+    },
+    [onPageChange, totalPages],
+  );
 
-  const paginationItems = Array.from({ length: totalPages }, (_, index) => (
-    <Pagination.Item
-      key={index + 1}
-      active={index + 1 === currentPage}
-      onClick={() => handlePageChange(index + 1)}
-    >
-      {index + 1}
-    </Pagination.Item>
-  ));
+  const paginationItems = useMemo(() => {
+    return Array.from({ length: totalPages }, (_, index) => {
+      const pageNumber = index + 1;
+      const isActive = pageNumber === currentPage;
+
+      return (
+        <Pagination.Item
+          key={pageNumber}
+          active={isActive}
+          onClick={() => handlePageChange(pageNumber)}
+          linkClassName={isActive ? styles.activeItem : styles.inactiveItem}
+        >
+          {pageNumber}
+        </Pagination.Item>
+      );
+    });
+  }, [totalPages, currentPage, handlePageChange]);
 
   return (
-    <Pagination className={`${styles.customPagination}`}>
-      <Pagination.First onClick={() => handlePageChange(1)} />
+    <Pagination className={`${styles.custom_pagination}`}>
+      <Pagination.First
+        onClick={() => handlePageChange(1)}
+        linkClassName={styles.arrows}
+      />
       <Pagination.Prev
         onClick={() =>
           currentPage === 1 ? 1 : handlePageChange(currentPage - 1)
         }
+        linkClassName={styles.arrows}
       />
       {paginationItems}
       <Pagination.Next
@@ -47,8 +62,12 @@ export const PaginationComponent: React.FC<PaginationComponentProps> = (
             ? totalPages
             : handlePageChange(currentPage + 1)
         }
+        linkClassName={styles.arrows}
       />
-      <Pagination.Last onClick={() => handlePageChange(totalPages)} />
+      <Pagination.Last
+        onClick={() => handlePageChange(totalPages)}
+        linkClassName={styles.arrows}
+      />
     </Pagination>
   );
 };

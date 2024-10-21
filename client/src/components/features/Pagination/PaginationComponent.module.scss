@@ -1,21 +1,17 @@
 @import "../../../styles/variables.module.scss";
-/* PaginationComponent.module.scss */
-.custom-pagination {
-  .page-item.active .page-link {
-    background-color: $bg-brown; /* Active page background color */
-    border-color: $bg-brown; /* Active page border color */
+
+.custom_pagination {
+  .activeItem {
+    background-color: $button_color !important;
+    color: white;
+    border-color: $button_color !important;
   }
 
-  .page-link {
-    color: $bg-brown; /* Page link color */
+  .inactiveItem {
+    color: $button_color;
   }
 
-  .page-link:hover {
-    background-color: $bg-brown; /* Hover background color */
-    border-color: $bg-brown; /* Hover border color */
-  }
-
-  .page-item.disabled .page-link {
-    color: #6c757d; /* Disabled link color */
+  .arrows {
+    color: $button_color;
   }
 }
