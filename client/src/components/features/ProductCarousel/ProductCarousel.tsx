@@ -13,9 +13,9 @@ export const ProductCarousel: React.FC = () => {
     dispatch(fetchYerbamate());
   }, [dispatch]);
 
-  const allImages = yerbamateData
+  const allImages = Array.from(yerbamateData)
     .map((product) => product.image)
-    .filter((image): image is string => !!image && image.trim() !== "");
+    .filter((image: string) => !!image && image.trim() !== "");
 
   return (
     <section className={styles.root}>
@@ -35,7 +35,7 @@ export const ProductCarousel: React.FC = () => {
                 );
               })
             ) : (
-              <div></div>
+              <div>Not found</div>
             )}
             {allImages ? (
               allImages.map((image, index) => {
@@ -50,7 +50,7 @@ export const ProductCarousel: React.FC = () => {
                 );
               })
             ) : (
-              <div></div>
+              <div>Not found</div>
             )}
           </span>
         </div>
