@@ -30,7 +30,6 @@ export const NavigationBar: React.FC = () => {
 
   return (
     <div className={`${styles.root}`}>
-      {/* expand="lg"  */}
       <Navbar collapseOnSelect className={`${styles.navbar} wrap`}>
         <Container fluid className="d-flex flex-column">
           <Row className="w-100">
@@ -53,9 +52,6 @@ export const NavigationBar: React.FC = () => {
                       Accessories
                     </NavDropdown.Item>
                   </NavDropdown>
-                  {/* <Nav.Link href="/aboutus" rel="stylesheet">
-                    About us
-                  </Nav.Link> */}
                   <Nav.Link href="/contact" rel="stylesheet">
                     Contact
                   </Nav.Link>
@@ -102,9 +98,12 @@ export const NavigationBar: React.FC = () => {
                     Logout
                   </Nav.Link>
                 )}
-                <Nav.Link href="/register" rel="stylesheet">
-                  Register
-                </Nav.Link>
+                {localStoreUsers === null && (
+                  <Nav.Link href="/register" rel="stylesheet">
+                    Register
+                  </Nav.Link>
+                )}
+
                 <Nav.Link href="/basket" rel="stylesheet">
                   Basket
                 </Nav.Link>

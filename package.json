@@ -8,6 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "cross-env NODE_ENV=production node src/app.js",
+    "build": "cd client && npm install && npm run build",
     "nodemon-start": "cross-env NODE_ENV=production nodemon src/app.js",
     "test": "cross-env NODE_ENV=test mocha --exit",
     "lint": "eslint src/**/*.js",
