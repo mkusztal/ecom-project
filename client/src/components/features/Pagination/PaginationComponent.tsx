@@ -1,7 +1,6 @@
 import React, { useCallback, useMemo } from "react";
 import { Pagination } from "react-bootstrap";
 import styles from "./PaginationComponent.module.scss";
-import colors from "../../../styles/variables.module.scss";
 
 type PaginationComponentProps = {
   totalItems: number;

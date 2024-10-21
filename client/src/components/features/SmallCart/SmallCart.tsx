@@ -7,7 +7,7 @@ import {
   removeFromCart,
 } from "../../../redux/cartReducer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSquareXing } from "@fortawesome/free-brands-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { IYerbamate } from "../../../interfaces/IYerbamate";
 import styles from "./SmallCart.module.scss";
 import { Container, Button, ListGroup, Image } from "react-bootstrap";
@@ -67,7 +67,7 @@ export const SmallCart: React.FC = () => {
                   onClick={() => handleRemove(item.id)}
                   className={`mx-2 ${styles.buttons}`}
                 >
-                  <FontAwesomeIcon icon={faSquareXing} />
+                  <FontAwesomeIcon icon={faTrash} />
                 </Button>
               </div>
             </ListGroup.Item>
