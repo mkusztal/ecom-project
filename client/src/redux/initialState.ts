@@ -1,5 +1,5 @@
 export const initialState: any = {
   yerbamate: [],
-  user: {},
+  user: null,
   cart: [],
 };

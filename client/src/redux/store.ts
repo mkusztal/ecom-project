@@ -6,6 +6,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { userReducer } from "./userReducer";
 import { cartReducer } from "./cartReducer";
 import { loadState, saveState } from "../utils/localstore";
+import { thunk } from "redux-thunk";
 
 /**
  * A friendly abstraction over the standard Redux `createStore()` function.
@@ -43,7 +44,7 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
-    }),
+    }).concat(thunk),
   devTools: true,
 });
 

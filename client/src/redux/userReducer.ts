@@ -17,6 +17,7 @@ export const logIn = (payload: any) => ({
 export const logOut = () => ({ type: LOG_OUT });
 
 export const userReducer = (state = initialState, action: any) => {
+  console.log("initialState", initialState);
   switch (action.type) {
     case LOG_IN:
       return {
@@ -25,7 +26,7 @@ export const userReducer = (state = initialState, action: any) => {
         token: action.payload.token,
       };
     case LOG_OUT:
-      return null;
+      return initialState.user;
     case CLEAR_USER_STORE:
       return initialState.user;
     default:
