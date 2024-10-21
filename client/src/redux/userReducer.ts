@@ -17,7 +17,6 @@ export const logIn = (payload: any) => ({
 export const logOut = () => ({ type: LOG_OUT });
 
 export const userReducer = (state = initialState, action: any) => {
-  console.log("initialState", initialState);
   switch (action.type) {
     case LOG_IN:
       return {
