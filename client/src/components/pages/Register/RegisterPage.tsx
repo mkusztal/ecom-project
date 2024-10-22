@@ -1,11 +1,12 @@
 import React from "react";
 import { Registration } from "../../features/RegisterSystem/Registration";
 import styles from "./RegistrationPage.module.scss";
+import { Container } from "react-bootstrap";
 
 export const RegisterPage: React.FC = () => {
   return (
-    <div className={`${styles.root}`}>
+    <Container className={`${styles.root}`}>
       <Registration />
-    </div>
+    </Container>
   );
 };

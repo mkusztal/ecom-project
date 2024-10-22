@@ -45,28 +45,26 @@ export const ProductPage: React.FC = () => {
   };
 
   return (
-    <div className={`mx-4 ${styles.root}`}>
-      <Container>
-        <Row className={`mx-4 ${styles.first_row}`}>
-          <Col>
-            <ProductImages image={product.image} />
-          </Col>
-          <Col>
-            {product && (
-              <ProductDetails
-                title={product.name}
-                price={product.price}
-                size={product.size}
-                type={product.type}
-                handleClick={handleAddToCart(product)}
-              />
-            )}
-          </Col>
-        </Row>
-        <Row className={`${styles.second_row}`}>
-          <ProductsSlider image={product.image} />
-        </Row>
-      </Container>
-    </div>
+    <Container className={`mx-4 ${styles.root}`}>
+      <Row className={`mx-4 ${styles.first_row}`}>
+        <Col>
+          <ProductImages image={product.image} />
+        </Col>
+        <Col>
+          {product && (
+            <ProductDetails
+              title={product.name}
+              price={product.price}
+              size={product.size}
+              type={product.type}
+              handleClick={handleAddToCart(product)}
+            />
+          )}
+        </Col>
+      </Row>
+      <Row className={`${styles.second_row}`}>
+        <ProductsSlider image={product.image} />
+      </Row>
+    </Container>
   );
 };

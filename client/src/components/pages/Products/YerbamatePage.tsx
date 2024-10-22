@@ -46,46 +46,44 @@ export const YerbamatePage: React.FC = () => {
   const itemsToDisplay = inputSearchText ? filteredItems : currentItems;
 
   return (
-    <div className={`${styles.root}`}>
-      <Container>
-        <Row>
-          <SearchBar
-            yerbamateData={yerbamateData}
-            inputText={inputSearchText}
-            setInputText={setInputSearchText}
-          />
-        </Row>
+    <Container className={`${styles.root}`}>
+      <Row>
+        <SearchBar
+          yerbamateData={yerbamateData}
+          inputText={inputSearchText}
+          setInputText={setInputSearchText}
+        />
+      </Row>
 
-        <Row className={`${styles.row}`}>
-          {itemsToDisplay && itemsToDisplay.length > 0 ? (
-            itemsToDisplay.map((e) => {
-              return (
-                <Col key={e.id} xs={6} sm={4} lg={3} className="mb-4">
-                  <ProductCards
-                    id={e.id}
-                    name={e.name}
-                    price={e.price}
-                    type={e.type}
-                    image={e.image}
-                  />
-                </Col>
-              );
-            })
-          ) : (
-            <NotFound />
-          )}
-        </Row>
-        <Row className={`${styles.row}`}>
-          {!inputSearchText && (
-            <PaginationComponent
-              totalItems={yerbamateData.length}
-              itemsPerPage={itemsPerPage}
-              currentPage={currentPage}
-              onPageChange={handlePageChange}
-            />
-          )}
-        </Row>
-      </Container>
-    </div>
+      <Row className={`${styles.row}`}>
+        {itemsToDisplay && itemsToDisplay.length > 0 ? (
+          itemsToDisplay.map((e) => {
+            return (
+              <Col key={e.id} xs={6} sm={4} lg={3} className="mb-4">
+                <ProductCards
+                  id={e.id}
+                  name={e.name}
+                  price={e.price}
+                  type={e.type}
+                  image={e.image}
+                />
+              </Col>
+            );
+          })
+        ) : (
+          <NotFound />
+        )}
+      </Row>
+      <Row className={`${styles.row}`}>
+        {!inputSearchText && (
+          <PaginationComponent
+            totalItems={yerbamateData.length}
+            itemsPerPage={itemsPerPage}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+          />
+        )}
+      </Row>
+    </Container>
   );
 };
