@@ -52,9 +52,9 @@ export const NavigationBar: React.FC = () => {
                       Accessories
                     </NavDropdown.Item>
                   </NavDropdown>
-                  <Nav.Link href="/contact" rel="stylesheet">
+                  <Link to={"/contact"} rel="stylesheet">
                     Contact
-                  </Nav.Link>
+                  </Link>
                 </Nav>
               </Navbar.Collapse>
             </Col>
@@ -89,24 +89,24 @@ export const NavigationBar: React.FC = () => {
               </Dropdown>
               <div className={`${styles.login_system}`}>
                 {localStoreUsers === null && (
-                  <Nav.Link href="/login" rel="stylesheet">
+                  <Link to={"/login"} rel="stylesheet">
                     Login
-                  </Nav.Link>
+                  </Link>
                 )}
                 {localStoreUsers !== null && (
-                  <Nav.Link href="/logout" rel="stylesheet">
+                  <Link to={"/logout"} rel="stylesheet">
                     Logout
-                  </Nav.Link>
+                  </Link>
                 )}
                 {localStoreUsers === null && (
-                  <Nav.Link href="/register" rel="stylesheet">
+                  <Link to={"/register"} rel="stylesheet">
                     Register
-                  </Nav.Link>
+                  </Link>
                 )}
 
-                <Nav.Link href="/basket" rel="stylesheet">
+                <Link to={"/basket"} rel="stylesheet">
                   Basket
-                </Nav.Link>
+                </Link>
               </div>
             </Col>
           </Row>
