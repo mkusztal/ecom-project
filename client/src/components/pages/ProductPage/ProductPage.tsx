@@ -14,7 +14,7 @@ import styles from "./ProductPage.module.scss";
 import { ProductsSlider } from "../../features/ProductsSlider/ProductsSlider";
 import { addToCart, getCartItems } from "../../../redux/cartReducer";
 
-export const ProductPage: React.FC = () => {
+export const ProductPage: React.FC = (props) => {
   const { id } = useParams<{ id: string }>();
   const product: IYerbamate = useSelector(getSingleYerbamate);
   const cartProduct: IYerbamate[] = useSelector(getCartItems);

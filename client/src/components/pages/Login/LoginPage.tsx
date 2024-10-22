@@ -4,7 +4,7 @@ import { CheckLogin } from "../../features/LoginSystem/CheckLogin";
 import styles from "./LoginPage.module.scss";
 import { Container } from "react-bootstrap";
 
-export const LoginPage: React.FC = () => {
+export const LoginPage: React.FC = (props) => {
   return (
     <Container className={`${styles.root}`}>
       <LoginSystem />

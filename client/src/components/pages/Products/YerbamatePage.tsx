@@ -9,7 +9,7 @@ import styles from "./YerbaPage.module.scss";
 import { PaginationComponent } from "../../features/Pagination/PaginationComponent";
 import { SearchBar } from "../../features/SearchBar/SearchBar";
 
-export const YerbamatePage: React.FC = () => {
+export const YerbamatePage: React.FC = (props) => {
   const yerbamateData: IYerbamate[] = useSelector(getYerbamate);
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);

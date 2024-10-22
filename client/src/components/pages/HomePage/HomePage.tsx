@@ -3,7 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import styles from "./HomePage.module.scss";
 import { HomePageSlider } from "../../features/HomePageSlider/HomePageSlider";
 
-export const HomePage: React.FC = () => {
+export const HomePage: React.FC = (props) => {
   return (
     <Container className={`${styles.root} ${styles.container}`}>
       <Row className={`${styles.row}`}>
