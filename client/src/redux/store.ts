@@ -7,6 +7,7 @@ import { userReducer } from "./userReducer";
 import { cartReducer } from "./cartReducer";
 import { loadState, saveState } from "../utils/localstore";
 import { thunk } from "redux-thunk";
+import { initialState } from "./initialState";
 
 /**
  * A friendly abstraction over the standard Redux `createStore()` function.
@@ -26,7 +27,7 @@ const subreducers = {
 };
 
 const reducer = combineReducers(subreducers);
-const preloadedState = loadState();
+const preloadedState = loadState() || initialState;
 
 // export const store: Store<RootState> = configureStore({
 //   reducer,
