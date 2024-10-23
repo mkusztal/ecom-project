@@ -2,7 +2,7 @@
 // @import "../../../index.tsx/bootstrap";
 .root {
   .navbar {
-    border-bottom: solid 2px black;
+    border-bottom: solid 2px $text-color-dark;
     margin-bottom: 2rem;
 
     .title {
@@ -10,6 +10,20 @@
       font-family: "Lucida Handwriting", cursive;
       font-weight: 400;
       font-size: 2rem;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+    }
+
+    .links {
+      text-decoration: none;
+      color: $text-color-dark;
+    }
+
+    .dropdown_items:active {
+      background-color: $navbar_background_color_light;
     }
 
     .second_row {
@@ -47,6 +61,8 @@
 
       .login_system {
         margin-left: 2rem;
+        display: flex;
+        flex-direction: column;
       }
     }
 
@@ -58,7 +74,7 @@
 
     // .basket_link {
     //   text-decoration: none;
-    //   color: black;
+    //   color: $text-color-dark;
     //   border: solid 5px $button_color;
     //   background-color: $button_color;
     //   padding: 5px;
@@ -66,7 +82,7 @@
 
     .basket_link {
       background-color: $button_color;
-      color: white;
+      color: $text-color;
       border: solid 5px $button_color;
       padding: 5px 10px;
       text-decoration: none;

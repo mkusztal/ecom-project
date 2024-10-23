@@ -1,6 +1,9 @@
+@import "../../../styles/variables.module.scss";
+
 .root {
   display: flex;
   align-items: start;
+  flex-direction: column;
   width: 100%;
 
   .title {
@@ -10,7 +13,7 @@
   .p,
   .li {
     font-weight: 400;
-    color: black;
+    color: $text-color-dark;
     font-family: "Courier New", Courier, monospace;
   }
 
@@ -19,6 +22,7 @@
     display: flex;
     justify-content: end;
     align-items: center;
+    width: 100%;
   }
 
   .background {

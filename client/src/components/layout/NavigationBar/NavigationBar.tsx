@@ -43,16 +43,26 @@ export const NavigationBar: React.FC = () => {
             <Col className={`${styles.first_column}`}>
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="me-auto">
+                <Nav className={`me-auto ${styles.nav}`}>
                   <NavDropdown title="Products" id="collapsible-nav-dropdown">
-                    <NavDropdown.Item href="/yerbamate">
-                      Yerba mate
+                    <NavDropdown.Item className={`${styles.dropdown_items}`}>
+                      <Link
+                        to={`/yerbamate`}
+                        rel="stylesheet"
+                        className={`${styles.links}`}
+                      >
+                        Yerba mate
+                      </Link>
                     </NavDropdown.Item>
                     <NavDropdown.Item href="accessories">
                       Accessories
                     </NavDropdown.Item>
                   </NavDropdown>
-                  <Link to={"/contact"} rel="stylesheet">
+                  <Link
+                    to={"/contact"}
+                    rel="stylesheet"
+                    className={`${styles.links}`}
+                  >
                     Contact
                   </Link>
                 </Nav>
@@ -89,22 +99,38 @@ export const NavigationBar: React.FC = () => {
               </Dropdown>
               <div className={`${styles.login_system}`}>
                 {localStoreUsers === null && (
-                  <Link to={"/login"} rel="stylesheet">
+                  <Link
+                    to={"/login"}
+                    rel="stylesheet"
+                    className={`${styles.links}`}
+                  >
                     Login
                   </Link>
                 )}
                 {localStoreUsers !== null && (
-                  <Link to={"/logout"} rel="stylesheet">
+                  <Link
+                    to={"/logout"}
+                    rel="stylesheet"
+                    className={`${styles.links}`}
+                  >
                     Logout
                   </Link>
                 )}
                 {localStoreUsers === null && (
-                  <Link to={"/register"} rel="stylesheet">
+                  <Link
+                    to={"/register"}
+                    rel="stylesheet"
+                    className={`${styles.links}`}
+                  >
                     Register
                   </Link>
                 )}
 
-                <Link to={"/basket"} rel="stylesheet">
+                <Link
+                  to={"/basket"}
+                  rel="stylesheet"
+                  className={`${styles.links}`}
+                >
                   Basket
                 </Link>
               </div>
