@@ -4,7 +4,6 @@ import { fetchYerbamate, getYerbamate } from "../../../redux/yerbamateReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { ProductCards } from "../../features/ProductCards/ProductCards";
 import { Col, Container, Row } from "react-bootstrap";
-import { NotFound } from "../../features/NotFound/NotFound";
 import styles from "./YerbaPage.module.scss";
 import { PaginationComponent } from "../../features/Pagination/PaginationComponent";
 import { SearchBar } from "../../features/SearchBar/SearchBar";
@@ -71,7 +70,7 @@ export const YerbamatePage: React.FC = (props) => {
             );
           })
         ) : (
-          <NotFound />
+          <div>Not found</div>
         )}
       </Row>
       <Row className={`${styles.row}`}>

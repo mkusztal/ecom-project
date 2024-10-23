@@ -16,6 +16,7 @@ import { ProductPage } from "./components/pages/ProductPage/ProductPage";
 import { BasketPage } from "./components/pages/BasketPage/BasketPage";
 // import AboutUsPage from "./components/pages/AboutUsPage/AboutUsPage";
 import { ContactPage } from "./components/pages/ContactPage/ContactPage";
+import { NotFound } from "./components/pages/NotFound/NotFound";
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -45,6 +46,7 @@ const App: React.FC = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </div>
