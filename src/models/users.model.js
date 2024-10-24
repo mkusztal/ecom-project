@@ -22,16 +22,16 @@ const addUserToDatabase = async (id, email, password, role) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const [rows] = await db
-      .promise()
-      .query(
-        `INSERT INTO users (id, email, password, role) VALUES (?, ?, ?, ?);`,
-        [id, email, `${hashedPassword}`, role],
-      );
+    const result = await db.query(
+      `INSERT INTO users (id, email, password, role) VALUES ($1, $2, $3, $4) RETURNING *;`,
+      [id, email, hashedPassword, role], // Use parameterized query with $1, $2, $3, $4
+    );
+
+    const newUser = result.rows[0];
 
     console.log(`Successfully added to the database: `, email);
 
-    return rows;
+    return newUser;
   } catch (err) {
     console.error("Error adding user to database", err);
     throw new Error("Failed adding users");
@@ -53,9 +53,11 @@ const findUserInDatabase = async (email, password) => {
       1. `anything" OR "1"="1` |  protected
     */
 
-    const [row] = await db
-      .promise()
-      .query(`SELECT * FROM users WHERE email = ?`, [email]);
+    const result = await db.query(`SELECT * FROM users WHERE email = $1`, [
+      email,
+    ]);
+
+    const row = result.rows;
 
     if (row.length === 0) {
       throw new Error("User doesn't exist");

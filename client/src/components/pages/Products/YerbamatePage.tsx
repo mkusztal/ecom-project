@@ -20,9 +20,9 @@ export const YerbamatePage: React.FC = (props) => {
     dispatch(fetchYerbamate());
   }, [dispatch]);
 
-  if (yerbamateData.length === 0) {
-    throw new Error("Invalid yerbamateData");
-  }
+  // if (yerbamateData.length === 0) {
+  //   throw new Error("Invalid yerbamateData");
+  // }
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;

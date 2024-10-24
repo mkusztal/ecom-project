@@ -54,8 +54,14 @@ export const NavigationBar: React.FC = () => {
                         Yerba mate
                       </Link>
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="accessories">
-                      Accessories
+                    <NavDropdown.Item>
+                      <Link
+                        to={`*`}
+                        rel="stylesheet"
+                        className={`${styles.links}`}
+                      >
+                        Accessories
+                      </Link>
                     </NavDropdown.Item>
                   </NavDropdown>
                   <Link

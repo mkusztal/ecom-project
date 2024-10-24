@@ -7,7 +7,8 @@ const db = require("../../config/db");
 
 const findAllYerbamate = async () => {
   try {
-    const [rows] = await db.promise().query(`SELECT * FROM yerbamate`);
+    const result = await db.query(`SELECT * FROM yerbamate`);
+    const rows = result.rows;
 
     if (rows.lenth === 0) {
       throw new Error("Database is empty!");
@@ -27,9 +28,8 @@ const findAllYerbamate = async () => {
 
 const getOneProduct = async (id) => {
   try {
-    const [row] = await db
-      .promise()
-      .query(`SELECT * FROM yerbamate WHERE id = ?`, [id]);
+    const result = await db.query(`SELECT * FROM yerbamate WHERE id = ?`, [id]);
+    const row = result.rows;
 
     if (row.length === 0) {
       throw new Error("Database is empty!");
@@ -85,12 +85,14 @@ const addProductToDatabase = async (
       throw new Error("Invalid image format");
     }
 
-    const [rows] = await db
-      .promise()
-      .query(
-        `INSERT INTO yerbamate (id, name, size, price, commission, image, type) VALUES (?, ?, ?, ?, ?, ?, ?)`,
-        [id, name, size, price, commission, image, type],
-      );
+    const query = `
+    INSERT INTO yerbamate (id, name, size, price, commission, image, type)
+    VALUES ($1, $2, $3, $4, $5, $6, $7)
+  `;
+
+    const values = [id, name, size, price, commission, image, type];
+
+    const rows = await db.query(query, values);
 
     console.log("Successfully added product to the database: ", rows);
     return rows;
