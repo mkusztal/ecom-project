@@ -6,6 +6,13 @@
     flex-wrap: wrap;
     // width: 50%;
   }
+
+  .spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem 0 3rem 0;
+  }
 }
 
 @media (max-width: 430px) {

@@ -45,8 +45,8 @@ export const ProductPage: React.FC = (props) => {
   };
 
   return (
-    <Container className={`mx-4 ${styles.root}`}>
-      <Row className={`mx-4 ${styles.first_row}`}>
+    <Container className={`${styles.root}`}>
+      <Row className={`${styles.first_row}`}>
         <Col>
           <ProductImages image={product.image} />
         </Col>
@@ -62,9 +62,9 @@ export const ProductPage: React.FC = (props) => {
           )}
         </Col>
       </Row>
-      <Row className={`${styles.second_row}`}>
+      {/* <Row className={`${styles.second_row}`}>
         <ProductsSlider image={product.image} />
-      </Row>
+      </Row> */}
     </Container>
   );
 };

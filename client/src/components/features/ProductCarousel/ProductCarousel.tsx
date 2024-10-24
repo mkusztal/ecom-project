@@ -3,7 +3,7 @@ import styles from "./ProductCarousel.module.scss";
 import { IYerbamate } from "../../../interfaces/IYerbamate";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchYerbamate, getYerbamate } from "../../../redux/yerbamateReducer";
-import { Image } from "react-bootstrap";
+import { Image, Spinner } from "react-bootstrap";
 
 export const ProductCarousel: React.FC = () => {
   const yerbamateData: IYerbamate[] = useSelector(getYerbamate);
@@ -35,7 +35,9 @@ export const ProductCarousel: React.FC = () => {
                 );
               })
             ) : (
-              <div>Not found</div>
+              <div>
+                <Spinner />
+              </div>
             )}
             {allImages ? (
               allImages.map((image, index) => {
@@ -50,7 +52,9 @@ export const ProductCarousel: React.FC = () => {
                 );
               })
             ) : (
-              <div>Not found</div>
+              <div>
+                <Spinner />
+              </div>
             )}
           </span>
         </div>

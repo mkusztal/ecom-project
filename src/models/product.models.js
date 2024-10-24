@@ -28,7 +28,9 @@ const findAllYerbamate = async () => {
 
 const getOneProduct = async (id) => {
   try {
-    const result = await db.query(`SELECT * FROM yerbamate WHERE id = ?`, [id]);
+    const result = await db.query(`SELECT * FROM yerbamate WHERE id = $1`, [
+      id,
+    ]);
     const row = result.rows;
 
     if (row.length === 0) {

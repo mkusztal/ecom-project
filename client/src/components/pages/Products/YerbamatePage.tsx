@@ -3,7 +3,7 @@ import { IYerbamate } from "../../../interfaces/IYerbamate";
 import { fetchYerbamate, getYerbamate } from "../../../redux/yerbamateReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { ProductCards } from "../../features/ProductCards/ProductCards";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Row, Spinner } from "react-bootstrap";
 import styles from "./YerbaPage.module.scss";
 import { PaginationComponent } from "../../features/Pagination/PaginationComponent";
 import { SearchBar } from "../../features/SearchBar/SearchBar";
@@ -70,7 +70,9 @@ export const YerbamatePage: React.FC = (props) => {
             );
           })
         ) : (
-          <div>Not found</div>
+          <div className={`${styles.spinner}`}>
+            <Spinner />
+          </div>
         )}
       </Row>
       <Row className={`${styles.row}`}>
