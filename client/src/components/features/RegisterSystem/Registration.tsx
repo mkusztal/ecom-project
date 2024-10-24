@@ -82,6 +82,7 @@ export const Registration: React.FC = () => {
             placeholder="Enter email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            autoComplete="email"
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formGroupPassword">
@@ -91,6 +92,7 @@ export const Registration: React.FC = () => {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            autoComplete="current-password"
           />
         </Form.Group>
         <CommonButton
