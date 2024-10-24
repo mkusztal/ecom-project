@@ -44,8 +44,18 @@ export const NavigationBar: React.FC = () => {
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className={`me-auto ${styles.nav}`}>
-                  <NavDropdown title="Products" id="collapsible-nav-dropdown">
-                    <NavDropdown.Item className={`${styles.dropdown_items}`}>
+                  <NavDropdown
+                    title={
+                      <span className={`${styles.dropdown_title}`}>
+                        Products
+                      </span>
+                    }
+                    id="collapsible-nav-dropdown"
+                  >
+                    <NavDropdown.Item
+                      as="div"
+                      className={`${styles.dropdown_items}`}
+                    >
                       <Link
                         to={`/yerbamate`}
                         rel="stylesheet"
@@ -54,7 +64,10 @@ export const NavigationBar: React.FC = () => {
                         Yerba mate
                       </Link>
                     </NavDropdown.Item>
-                    <NavDropdown.Item>
+                    <NavDropdown.Item
+                      as="div"
+                      className={`${styles.dropdown_items}`}
+                    >
                       <Link
                         to={`*`}
                         rel="stylesheet"
