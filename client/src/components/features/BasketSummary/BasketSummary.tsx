@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { IYerbamate } from "../../../interfaces/IYerbamate";
-import { Container, Alert } from "react-bootstrap";
+import { Container, Alert, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import styles from "./BasketSummary.module.scss";
+import { PaymentModal } from "../PaymentModal/PaymentModal";
 
-type BasketSummaryProps = {
+type TBasketSummary = {
   cartItems: IYerbamate[];
 };
 
-export const BasketSummary: React.FC<BasketSummaryProps> = (props) => {
+export const BasketSummary: React.FC<TBasketSummary> = (props) => {
   const { cartItems } = props;
+  const [showPaymentModal, setShowPaymentModalShow] = useState(false);
 
   // Add button navigate to payment
 
@@ -17,9 +20,11 @@ export const BasketSummary: React.FC<BasketSummaryProps> = (props) => {
       ? cartItems.reduce((total, item) => total + item.price * item.quantity, 0)
       : 0;
 
+  const handlePaymentModal = (): void => setShowPaymentModalShow(true);
+
   return (
     <div>
-      <Container>
+      <Container className={`${styles.root}`}>
         <div>
           <h3>Order summary</h3>
           <h6>Products:</h6>
@@ -41,7 +46,17 @@ export const BasketSummary: React.FC<BasketSummaryProps> = (props) => {
           </div>
           <h4>Total price: ${totalPrice}</h4>
         </div>
-        <Link to={"/"}>Process payment</Link>
+        <Button
+          className={`${styles.payment_process_link}`}
+          onClick={handlePaymentModal}
+        >
+          Payment process
+        </Button>
+
+        <PaymentModal
+          show={showPaymentModal}
+          setShow={setShowPaymentModalShow}
+        />
       </Container>
     </div>
   );
