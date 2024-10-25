@@ -1,0 +1,10 @@
+@import "../../../styles/variables.module.scss";
+
+.root {
+  .payment_process_link {
+    // text-decoration: underline dotted;
+    color: $text-color-dark;
+    background-color: $navbar_background_color_dark;
+    border: solid 2px $navbar_background_color_dark;
+  }
+}

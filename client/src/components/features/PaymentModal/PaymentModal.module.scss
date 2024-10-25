@@ -1,0 +1,17 @@
+@import "../../../styles/variables.module.scss";
+
+.donate_link {
+  text-decoration: none;
+  color: $text-color-dark;
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  background-color: $navbar_background_color_dark;
+  border: solid 2px $navbar_background_color_dark;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.donate_link:hover {
+  background-color: darken($navbar_background_color_dark, 10%);
+  color: $text-color;
+}
