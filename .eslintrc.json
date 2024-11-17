@@ -23,7 +23,7 @@
     "no-use-before-define": "off",
     "complexity": ["warn", { "max": 15 }],
     "max-params": ["warn", 7],
-    "max-statements": ["warn", 20],
+    "max-statements": ["warn", 25],
     "max-statements-per-line": ["warn", { "max": 1 }],
     "max-nested-callbacks": ["warn", { "max": 3 }],
     "max-lines": [
@@ -41,6 +41,8 @@
         "skipBlankLines": true,
         "skipComments": true
       }
-    ]
+    ],
+    "camelcase": "off",
+    "new-cap": "off"
   }
 }

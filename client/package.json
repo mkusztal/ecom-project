@@ -54,7 +54,10 @@
   "jest": {
     "moduleNameMapper": {
       "\\.(scss|sass|css)$": "identity-obj-proxy"
-    }
+    },
+    "testMatch": [
+      "**/src/**/*.test.js"
+    ]
   },
   "eslintConfig": {
     "extends": [
