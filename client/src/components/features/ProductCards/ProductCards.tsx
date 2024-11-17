@@ -16,6 +16,7 @@ export const ProductCards: React.FC<ProductProps> = (props) => {
   return (
     <Card className={`${styles.card}`}>
       <Link
+        role="link"
         to={`/yerbamate/${id}`}
         rel="stylesheet"
         className={`${styles.link}`}
@@ -23,14 +24,16 @@ export const ProductCards: React.FC<ProductProps> = (props) => {
         <Card.Img
           variant="top"
           src={`data:image/jpeg;base64,${image}`}
+          alt=""
           width={30}
           height={200}
+          role="img"
           className={`${styles.image}`}
         />
         <Card.Body>
           <Card.Title className={`${styles.card_title}`}>{name}</Card.Title>
           <Card.Text className={`${styles.card_text}`}>{type}</Card.Text>
-          <Card.Text className={`${styles.card_text}`}>{price}$</Card.Text>
+          <Card.Text className={`${styles.card_text}`}>{`${price}$`}</Card.Text>
         </Card.Body>
       </Link>
     </Card>
