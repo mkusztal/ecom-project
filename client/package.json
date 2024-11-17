@@ -56,7 +56,9 @@
       "\\.(scss|sass|css)$": "identity-obj-proxy"
     },
     "testMatch": [
-      "**/src/**/*.test.js"
+      "**/src/*.test.js",
+      "**/src/**/*.test.js",
+      "**/src/**/**/*.test.js"
     ]
   },
   "eslintConfig": {
