@@ -11,7 +11,7 @@ import {
 import { IYerbamate } from "../../../interfaces/IYerbamate";
 import { AppDispatch } from "../../../redux/store";
 import styles from "./ProductPage.module.scss";
-import { ProductsSlider } from "../../features/ProductsSlider/ProductsSlider";
+// import { ProductsSlider } from "../../features/ProductsSlider/ProductsSlider";
 import { addToCart, getCartItems } from "../../../redux/cartReducer";
 
 export const ProductPage: React.FC = (props) => {
