@@ -1,6 +1,6 @@
 # Testing pipeline2
 
-name: Node.ts CI
+name: Node CI
 
 on:
   push:

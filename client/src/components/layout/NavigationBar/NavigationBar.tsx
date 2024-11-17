@@ -30,7 +30,11 @@ export const NavigationBar: React.FC = () => {
 
   return (
     <div className={`${styles.root}`}>
-      <Navbar collapseOnSelect className={`${styles.navbar} wrap`}>
+      <Navbar
+        collapseOnSelect
+        className={`${styles.navbar} wrap`}
+        role="navigation"
+      >
         <Container fluid className="d-flex flex-column">
           <Row className="w-100">
             <Col className="text-center">
@@ -98,7 +102,7 @@ export const NavigationBar: React.FC = () => {
 
                 <Dropdown.Menu
                   className={
-                    cartItems.length > 0
+                    cartItems && cartItems.length > 0
                       ? `${styles.dropdown_menu_with_items}`
                       : `${styles.dropdown_menu_empty}`
                   }
