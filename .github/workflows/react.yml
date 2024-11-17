@@ -36,7 +36,7 @@ jobs:
         run: npm run lint
 
       - name: Run Jest tests
-        run: cd client && npm run test -- --ci --silent --maxWorkers=2 --coverage
+        run: cd client && npm test
 
       - name: Build React app
         run: npm run build
