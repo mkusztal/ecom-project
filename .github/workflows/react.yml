@@ -32,6 +32,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install client dependencies
+        run: cd client && npm install
+
       - name: Lint code (eslint)
         run: npm run lint
 
@@ -39,7 +42,7 @@ jobs:
         run: cd client && npm test
 
       - name: Build React app
-        run: npm run build
+        run: cd client && npm run build
 
       - name: Upload coverage reports (optional)
         uses: actions/upload-artifact@v3
