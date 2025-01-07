@@ -114,6 +114,12 @@
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
-  "include": ["src", "declare.d.ts", "../src/jest.config.ts"],
+  "include": [
+    "src",
+    "declare.d.ts",
+    "../src/jest.config.ts",
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx"
+  ],
   "exclude": ["jest.config.ts"]
 }
