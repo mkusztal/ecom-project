@@ -3,7 +3,7 @@
     margin: 3rem;
   }
 
-  .image_prodiuct {
+  .image_product {
     width: 5rem;
     height: 5rem;
   }
@@ -20,6 +20,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 0.5rem;
   }
 
   .buttons {
@@ -35,5 +36,16 @@
   }
   .div_buttons p {
     margin: 0;
+  }
+}
+
+
+@media (max-width: 426px) {
+  .root {
+    .buttons {
+    height: 1.7rem;
+    width: 1.7rem;
+    font-size: 12.5px;
+  }
   }
 }
