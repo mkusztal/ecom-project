@@ -124,5 +124,5 @@
     "src/**/*.test.ts",
     "src/**/*.test.tsx"
   ],
-  "exclude": ["jest.config.ts"]
+  "exclude": ["node_modules"]
 }
