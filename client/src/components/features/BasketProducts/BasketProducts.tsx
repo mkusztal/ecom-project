@@ -8,7 +8,7 @@ import {
 } from "../../../redux/cartReducer";
 import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSquareXing } from "@fortawesome/free-brands-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import styles from "./BasketProducts.module.scss";
 
 type BasketProductsProps = {
@@ -41,7 +41,7 @@ export const BasketProducts: React.FC<BasketProductsProps> = (props) => {
               <Image
                 src={`data:image/png;base64,${item.image}`}
                 alt="small_product"
-                className={`${styles.image_prodiuct}`}
+                className={`${styles.image_product}`}
               />
               <div>
                 <p>{item.name}</p>
@@ -71,7 +71,7 @@ export const BasketProducts: React.FC<BasketProductsProps> = (props) => {
                   onClick={() => handleRemove(item.id)}
                   className={`mx-2 ${styles.buttons}`}
                 >
-                  <FontAwesomeIcon icon={faSquareXing} />
+                  <FontAwesomeIcon icon={faTrash} />
                 </Button>
               </div>
             </ListGroup.Item>

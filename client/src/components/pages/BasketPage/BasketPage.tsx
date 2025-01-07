@@ -14,7 +14,7 @@ export const BasketPage: React.FC = (props) => {
   return (
     <Container className={`${styles.container}`}>
       <Row>
-        <Col sm={9}>
+        <Col sm={9} className='my-3'>
           <BasketProducts cartItems={cartItems} />
         </Col>
         <Col sm={3}>
