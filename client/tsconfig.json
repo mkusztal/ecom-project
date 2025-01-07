@@ -119,6 +119,8 @@
     "src",
     "declare.d.ts",
     "../src/jest.config.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
     "src/**/*.test.ts",
     "src/**/*.test.tsx"
   ],
