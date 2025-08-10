@@ -1,0 +1,13 @@
+@media (max-width: 426px) {
+  .container {
+    .basket_products_col {
+      display: flex;
+      justify-content: center;
+    }
+
+    .basket_summary_col {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}

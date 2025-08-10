@@ -51,17 +51,9 @@
 
     .row {
       margin-bottom: 2rem;
+      display: flex;
       flex-direction: column;
-    }
-  }
-}
-
-@media (max-width: 430px) {
-  .root {
-    .row {
-      margin-bottom: 2rem;
-
-      flex-direction: column;
+      align-items: flex-start;
     }
   }
 }

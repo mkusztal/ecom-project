@@ -19,6 +19,7 @@ import { getCartItems } from "../../../redux/cartReducer";
 import { Link } from "react-router-dom";
 import { faBasketShopping } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { motion } from "framer-motion";
 
 export const NavigationBar: React.FC = () => {
   const [show, setShow] = useState(false);
@@ -39,7 +40,14 @@ export const NavigationBar: React.FC = () => {
           <Row className="w-100">
             <Col className="text-center">
               <Navbar.Brand href="/" className={`${styles.title} ms-3`}>
-                Yours Yerba
+                <motion.span
+                  className={styles.title}
+                  initial={{ y: -10, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 3, ease: "easeOut" }}
+                >
+                  Yours Yerba
+                </motion.span>
               </Navbar.Brand>
             </Col>
           </Row>
