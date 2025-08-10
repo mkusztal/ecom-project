@@ -5,6 +5,7 @@ import { API_URL } from "../../../config/urls";
 import { useNavigate } from "react-router-dom";
 import { CommonButton } from "../../common/CommonButton";
 import { registerValidation } from "../../../utils/validation";
+import { motion } from "framer-motion";
 
 export const Contact: React.FC = () => {
   const [message, setMessage] = useState<string>("");
@@ -18,6 +19,10 @@ export const Contact: React.FC = () => {
   const [statusMessage, setStatusMessage] = useState<string>("");
   const [letterCount, setLetterCount] = useState<number>(0);
 
+  const [isNameTouched, setIsNameTouched] = useState(false);
+  const [isEmailTouched, setIsEmailTouched] = useState(false);
+  const [isSubjectTouched, setIsSubjectTouched] = useState(false);
+
   const checkValidInputData =
     isNameValid && isEmailValid && !isWordLimitExceeded && isSubjectValid;
 
@@ -27,18 +32,21 @@ export const Contact: React.FC = () => {
   const handleEmailChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const inputEmail = event.target.value;
     setEmail(inputEmail);
+    if (!isEmailTouched) setIsEmailTouched(true);
     setIsEmailValid(registerValidation.email.test(inputEmail));
   };
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputName = event.target.value;
     setName(inputName);
+    if (!isNameTouched) setIsNameTouched(true);
     setIsNameValid(inputName.trim().length > 0);
   };
 
   const handleSubjectChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputName = event.target.value;
     setSubject(inputName);
+    if (!isSubjectTouched) setIsSubjectTouched(true);
     setIsSubjectValid(inputName.trim().length > 0);
   };
 
@@ -104,11 +112,13 @@ export const Contact: React.FC = () => {
       const response = await fetch(`${API_URL}api/sendEmail`, fetchEmailOption);
       if (response.ok) {
         setStatusMessage("Email sent successfully!");
-        setName("");
-        setEmail("");
-        setMessage("");
 
         setTimeout(() => {
+          setName("");
+          setEmail("");
+          setSubject("");
+          setMessage("");
+          setLetterCount(0);
           navigate("/");
         }, 2000);
       } else {
@@ -136,15 +146,22 @@ export const Contact: React.FC = () => {
         )}
         <Form.Group className={styles.custom_form_group}>
           <Form.Label className={`${styles.form_label}`}>Full Name</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter your name"
-            className={`${styles.form_control}`}
-            value={name}
-            onChange={handleNameChange}
-            isInvalid={!isNameValid}
-          />
-          {!isNameValid && (
+          <motion.div
+            animate={{
+              x: !isNameValid && isNameTouched ? [0, -5, 5, -5, 5, 0] : 0,
+            }}
+            transition={{ duration: 0.4 }}
+          >
+            <Form.Control
+              type="text"
+              placeholder="Enter your name"
+              className={`${styles.form_control}`}
+              value={name}
+              onChange={handleNameChange}
+              isInvalid={isNameTouched && !isNameValid}
+            />
+          </motion.div>
+          {isNameTouched && !isNameValid && (
             <div>
               <Form.Control.Feedback type="invalid">
                 Please enter your name.
@@ -158,15 +175,22 @@ export const Contact: React.FC = () => {
 
         <Form.Group className={`mb-3 ${styles.custom_form_group}`}>
           <Form.Label className={`${styles.form_label}`}>Subject</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter your subject"
-            className={`${styles.form_control}`}
-            value={subject}
-            onChange={handleSubjectChange}
-            isInvalid={!isSubjectValid}
-          />
-          {!isSubjectValid && (
+          <motion.div
+            animate={{
+              x: !isNameValid && isNameTouched ? [0, -5, 5, -5, 5, 0] : 0,
+            }}
+            transition={{ duration: 0.4 }}
+          >
+            <Form.Control
+              type="text"
+              placeholder="Enter your subject"
+              className={`${styles.form_control}`}
+              value={subject}
+              onChange={handleSubjectChange}
+              isInvalid={isSubjectTouched && !isSubjectValid}
+            />
+          </motion.div>
+          {isSubjectTouched && !isSubjectValid && (
             <div>
               <Form.Control.Feedback type="invalid">
                 Please enter your subject.
@@ -180,15 +204,22 @@ export const Contact: React.FC = () => {
 
         <Form.Group className={`mb-3 ${styles.custom_form_group}`}>
           <Form.Label className={`${styles.form_label}`}>Email</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Enter your email"
-            className={`${styles.form_control}`}
-            value={email}
-            onChange={handleEmailChange}
-            isInvalid={!isEmailValid}
-          />
-          {!isEmailValid && (
+          <motion.div
+            animate={{
+              x: !isNameValid && isNameTouched ? [0, -5, 5, -5, 5, 0] : 0,
+            }}
+            transition={{ duration: 0.4 }}
+          >
+            <Form.Control
+              type="email"
+              placeholder="Enter your email"
+              className={`${styles.form_control}`}
+              value={email}
+              onChange={handleEmailChange}
+              isInvalid={isEmailTouched && !isEmailValid}
+            />
+          </motion.div>
+          {isEmailTouched && !isEmailValid && (
             <div>
               <Form.Control.Feedback type="valid">
                 Please enter a valid email address

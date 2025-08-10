@@ -14,10 +14,10 @@ export const BasketPage: React.FC = (props) => {
   return (
     <Container className={`${styles.container}`}>
       <Row>
-        <Col sm={9} className='my-3'>
+        <Col sm={9} className={`my-3 ${styles.basket_products_col}`}>
           <BasketProducts cartItems={cartItems} />
         </Col>
-        <Col sm={3}>
+        <Col sm={3} className={`${styles.basket_summary_col}`}>
           <BasketSummary cartItems={cartItems} />
         </Col>
       </Row>

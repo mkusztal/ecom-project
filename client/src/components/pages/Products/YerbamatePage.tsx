@@ -58,7 +58,7 @@ export const YerbamatePage: React.FC = (props) => {
         {itemsToDisplay && itemsToDisplay.length > 0 ? (
           itemsToDisplay.map((e) => {
             return (
-              <Col key={e.id} xs={6} sm={4} lg={3} className="mb-4">
+              <Col key={e.id} xs={8} sm={6} lg={4} xl={3} className="mb-4">
                 <ProductCards
                   id={e.id}
                   name={e.name}

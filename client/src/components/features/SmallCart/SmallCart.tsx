@@ -45,7 +45,7 @@ export const SmallCart: React.FC = () => {
               </div>
               <div className={`${styles.div_buttons}`}>
                 <Button
-                  variant="outline-primary"
+                  variant="outline-success"
                   size="sm"
                   onClick={() => handleIncrease(item.id)}
                   className={`mx-2 ${styles.buttons}`}
@@ -54,7 +54,7 @@ export const SmallCart: React.FC = () => {
                 </Button>
                 <p>{item.quantity}</p>
                 <Button
-                  variant="outline-primary"
+                  variant="outline-success"
                   size="sm"
                   onClick={() => handleDecrease(item.id)}
                   className={`mx-2 ${styles.buttons}`}

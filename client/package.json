@@ -17,6 +17,7 @@
     "@types/react-dom": "^18.3.0",
     "bootstrap": "^5.3.3",
     "ecom-project": "file:..",
+    "framer-motion": "^12.23.12",
     "install": "^0.13.0",
     "npm": "^10.8.2",
     "react": "^18.3.1",

@@ -76,14 +76,6 @@
       align-items: center;
     }
 
-    // .basket_link {
-    //   text-decoration: none;
-    //   color: $text-color-dark;
-    //   border: solid 5px $button_color;
-    //   background-color: $button_color;
-    //   padding: 5px;
-    // }
-
     .basket_link {
       background-color: $button_color;
       color: $text-color;
@@ -146,6 +138,10 @@
         .login_system {
           margin-left: 0;
         }
+      }
+
+      .basket_dropdown_button {
+        font-size: 12px;
       }
 
       .dropdown-menu {

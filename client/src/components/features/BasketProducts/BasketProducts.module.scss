@@ -1,3 +1,5 @@
+@import "../../../styles/variables.module.scss";
+
 .root {
   .row_products {
     margin: 3rem;
@@ -39,13 +41,34 @@
   }
 }
 
+@media (max-width: 426px) {
+  .root {
+    display: flex;
+    .items {
+      flex-direction: column;
+      // width: 50%;
+    }
+  }
+}
+
+// .div_buttons {
+//   width: 100%;
+//   display: flex;
+//   justify-content: flex-end;
+//   gap: 0;
+// }
 
 @media (max-width: 426px) {
   .root {
+    .items {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
     .buttons {
-    height: 1.7rem;
-    width: 1.7rem;
-    font-size: 12.5px;
-  }
+      height: 1.7rem;
+      width: 1.7rem;
+      font-size: 12.5px;
+    }
   }
 }
