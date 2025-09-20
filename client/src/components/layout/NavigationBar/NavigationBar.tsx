@@ -45,6 +45,7 @@ export const NavigationBar: React.FC = () => {
                   initial={{ y: -10, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 3, ease: "easeOut" }}
+                  id='navbar-title'
                 >
                   Yours Yerba
                 </motion.span>
