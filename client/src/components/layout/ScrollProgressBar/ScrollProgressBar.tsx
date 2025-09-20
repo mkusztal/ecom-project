@@ -11,6 +11,7 @@ export const ScrollProgressBar = () => {
 
   return (
     <motion.div
+      id='progress-bar'
       style={{
         position: "fixed",
         top: 0,
