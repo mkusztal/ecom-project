@@ -39,7 +39,7 @@ export const SmallCart: React.FC = () => {
                 alt="small_product"
                 className={`${styles.image_prodiuct}`}
               />
-              <div>
+              <div className={`${styles.items_details}`}>
                 <p>{item.name}</p>
                 <p>Total price: ${item.price * item.quantity}</p>
               </div>

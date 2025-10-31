@@ -1,7 +1,6 @@
 .root {
-  .list {
-    width: 30rem !important;
-  }
+  // position: absolute;
+  // width: 35rem;
 
   .image_prodiuct {
     width: 5rem;
@@ -22,6 +21,11 @@
     align-items: center;
   }
 
+  .items_details {
+    margin-left: 1rem;
+    width: 11rem
+  }
+
   .buttons {
     height: 2rem;
     width: 3rem;
@@ -31,7 +35,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 0.5rem;
+    margin-left: 2rem;
+    gap: 0.3rem;
   }
   .div_buttons p {
     margin: 0;
