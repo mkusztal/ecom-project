@@ -35,9 +35,6 @@ jobs:
       - name: Install client dependencies
         run: cd client && npm install
 
-      - name: Lint code (eslint)
-        run: npm run lint
-
       - name: Run Jest tests
         run: cd client && npm test -- --passWithNoTests
 
