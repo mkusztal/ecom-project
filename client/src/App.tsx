@@ -17,6 +17,7 @@ import { BasketPage } from "./components/pages/BasketPage/BasketPage";
 // import AboutUsPage from "./components/pages/AboutUsPage/AboutUsPage";
 import { ContactPage } from "./components/pages/ContactPage/ContactPage";
 import { NotFound } from "./components/pages/NotFound/NotFound";
+import { ScrollProgressBar } from "./components/layout/ScrollProgressBar/ScrollProgressBar";
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ const App: React.FC = () => {
 
   return (
     <div className={styles.root}>
+      <ScrollProgressBar />
       <NavigationBar />
       <Routes>
         <Route path="/" element={<HomePage />} />

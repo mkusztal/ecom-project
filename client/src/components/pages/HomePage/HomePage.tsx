@@ -17,7 +17,7 @@ export const HomePage: React.FC = (props) => {
             to make tereré. Both the plant and the beverage contain caffeine.
           </p>
         </Col>
-        <Col xs={6} md={4}>
+        <Col xs={8} md={4}>
           <h3 className={`${styles.title}`}>Types of yerba mate</h3>
           <ul className={`${styles.li}`}>
             <li>Argentinian Yerba Mate</li>

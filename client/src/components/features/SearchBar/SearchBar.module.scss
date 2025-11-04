@@ -6,15 +6,14 @@
   align-items: center;
   .search_bar {
     border: solid 2px $bg-brown;
-    width: 25%;
+    width: 50%;
   }
-}
 
-@media (max-width: 430px) {
-  .root {
-    .search_bar {
-      border: solid 2px $bg-brown;
-      width: 75%;
-    }
+  input::placeholder {
+    text-align: center;
+  }
+
+  input {
+    text-align: left;
   }
 }

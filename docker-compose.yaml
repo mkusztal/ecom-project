@@ -1,0 +1,40 @@
+version: "3.9"
+services:
+  backend:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env   # store env vars locally
+    ports:
+      - "8000:80"
+    volumes:
+      - ./src:/app
+    depends_on:
+      - db   # if you have a DB service locally
+
+  frontend:
+    build: 
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  # optional local db for development
+  db:
+    image: postgres:15
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${LOCAL_DB_USER}
+      POSTGRES_PASSWORD: ${LOCAL_DB_PASSWORD}
+      POSTGRES_DB: ${LOCAL_DB_NAME}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
